@@ -14,7 +14,7 @@ import {
   ApplicationModal,
   useModalOpen,
   useToggleDelegateModal,
-  useTokenBalance,
+  useTokenBalanceHook,
 } from '@honeycomb-finance/state-hooks';
 import { JSBI, TokenAmount } from '@pangolindex/sdk';
 import React from 'react';
@@ -51,6 +51,8 @@ const GovernanceList = () => {
 
   // get data to list all proposals
   const allProposals = useGetProposalsViaSubgraph();
+
+  const useTokenBalance = useTokenBalanceHook[chainId];
 
   // user data
   const availableVotes: TokenAmount | undefined = useUserVotes();

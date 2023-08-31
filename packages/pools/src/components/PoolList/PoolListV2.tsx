@@ -30,7 +30,7 @@ const PoolListV2: React.FC<EarnProps> = ({ version, stakingInfos, setMenu, activ
   const togglePoolDetailModal = usePoolDetailnModalToggle();
 
   const chain = CHAINS[chainId];
-  const existContract = Boolean(chain.contracts!.mini_chef && chain.contracts!.mini_chef!.active);
+  const existContract = Boolean(chain.contracts?.mini_chef && chain.contracts?.mini_chef?.active);
 
   const handleSearch = useCallback((value) => {
     setSearchQuery(value.trim());

@@ -42,4 +42,6 @@ export const usePoolTVLHook: UsePoolTVLHookType = {
   [ChainId.MOONBEAM]: useDummyPoolTVL,
   [ChainId.OP]: useDummyPoolTVL,
   [ChainId.SKALE_BELLATRIX_TESTNET]: usePoolTVL,
+  [ChainId.SOROBAN]: useDummyPoolTVL,
+  [ChainId.SOROBAN_TESTNET]: useDummyPoolTVL,
 };

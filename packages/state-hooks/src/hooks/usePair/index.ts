@@ -4,8 +4,12 @@ import { useMemo } from 'react';
 import { usePairs, usePairsContract, usePairsViaSubgraph } from './evm';
 import { useGetNearAllPool, useGetNearPoolId, useNearPairs } from './near';
 
+export function useDummyPairs(): [PairState, Pair][]{
+  return [];
+}
+
 export type UsePairsHookType = {
-  [chainId in ChainId]: typeof usePairsContract | typeof useNearPairs | typeof usePairsViaSubgraph | typeof usePairs;
+  [chainId in ChainId]: typeof usePairsContract | typeof useNearPairs | typeof usePairsViaSubgraph | typeof usePairs | typeof useDummyPairs;
 };
 
 export const usePairsHook: UsePairsHookType = {
@@ -39,6 +43,8 @@ export const usePairsHook: UsePairsHookType = {
   [ChainId.MOONBEAM]: usePairsContract,
   [ChainId.OP]: usePairsContract,
   [ChainId.SKALE_BELLATRIX_TESTNET]: usePairsContract,
+  [ChainId.SOROBAN]: useDummyPairs,
+  [ChainId.SOROBAN_TESTNET]: useDummyPairs,
 };
 
 export function usePair(tokenA?: Currency, tokenB?: Currency): [PairState, Pair | null] {

@@ -1,6 +1,7 @@
-import { HashConnector, SUPPORTED_XDEFI_CHAINS, hashConnect, near, xDefi } from '@honeycomb-finance/wallet-connectors';
+import { HashConnector, SUPPORTED_XDEFI_CHAINS, hashConnect, near, xDefi, freighter } from '@honeycomb-finance/wallet-connectors';
 import { ChainId, NetworkType } from '@pangolindex/sdk';
 import hashIcon from 'src/assets/images/hashConnect.png';
+import freighterIcon from 'src/assets/images/freighter.jpg';
 import xDefiIcon from 'src/assets/images/xDefi.png';
 import nearIcon from 'src/assets/svg/near.svg';
 import { Wallet, activeFunctionType } from './wallet';
@@ -71,6 +72,23 @@ export class HashPackWallet extends Wallet {
     }
 
     await super.tryActivation({ activate, onSuccess, onError });
+  }
+
+  public installed(): boolean {
+    return true;
+  }
+}
+
+export class FreighterWallet extends Wallet{
+  constructor(){
+    super({
+      connector: freighter,
+      name: 'Freighter Wallet',
+      href: 'https://www.freighter.app/',
+      icon: freighterIcon,
+      description: 'A Stellar wallet for every website.',
+      supportedChains: [NetworkType.SorobanVM],
+    });
   }
 
   public installed(): boolean {

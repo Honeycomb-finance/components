@@ -44,4 +44,6 @@ export const useUSDCPriceHook: UseUSDCPriceHookType = {
   [ChainId.MOONBEAM]: useDummyHook,
   [ChainId.OP]: useDummyHook,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useUSDCPrice,
+  [ChainId.SOROBAN]: useDummyHook,
+  [ChainId.SOROBAN_TESTNET]: useDummyHook,
 };

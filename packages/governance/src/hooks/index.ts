@@ -46,6 +46,8 @@ export const useAllProposalDataHook: UseAllProposalDataHookType = {
   [ChainId.MOONBEAM]: useDummyAllProposalData,
   [ChainId.OP]: useDummyAllProposalData,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useDummyAllProposalData,
+  [ChainId.SOROBAN]: useDummyAllProposalData,
+  [ChainId.SOROBAN_TESTNET]: useDummyAllProposalData,
 };
 
 export type UseVoteCallbackHookType = {
@@ -83,6 +85,8 @@ export const useVoteCallbackHook: UseVoteCallbackHookType = {
   [ChainId.MOONBEAM]: useDummyVoteCallback,
   [ChainId.OP]: useDummyVoteCallback,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useDummyVoteCallback,
+  [ChainId.SOROBAN]: useDummyVoteCallback,
+  [ChainId.SOROBAN_TESTNET]: useDummyVoteCallback,
 };
 
 export function useProposalData(id: string): ProposalData | undefined {

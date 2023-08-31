@@ -1,8 +1,8 @@
 import { Box, CloseButton, Modal, Text, TextInput, ToggleButtons } from '@honeycomb-finance/core';
+import { CHAINS, Chain, ChainId, NetworkType } from '@pangolindex/sdk';
 import { MEDIA_WIDTHS, useDebounce, usePangolinWeb3, useTranslation, wait } from '@honeycomb-finance/shared';
 import { useUserAtom } from '@honeycomb-finance/state-hooks';
 import { UserRejectedRequestError } from '@honeycomb-finance/wallet-connectors';
-import { CHAINS, Chain, ChainId } from '@pangolindex/sdk';
 import { useWeb3React } from '@web3-react/core';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import Scrollbars from 'react-custom-scrollbars';
@@ -132,7 +132,7 @@ export default function WalletModal({
   }, [supportedWallets]);
 
   const filteredWallets = useMemo(() => {
-    const selectedChain = CHAINS[selectedChainId];
+    const selectedChain = sortedChains.find(_chain => _chain.chain_id === selectedChainId);
     // return  an array with filtered wallets
     // if selected chain by user supports this wallet (have same network type)
     // and name of wallet includes the search name
@@ -141,12 +141,12 @@ export default function WalletModal({
     return Object.values(wallets)
       .filter((wallet) => {
         // if selected chain by user supports this wallet and
-        const bool = Boolean(wallet.supportedChains.includes(selectedChain.network_type) && wallet.showWallet());
+        const bool = Boolean(wallet.supportedChains.includes(selectedChain?.network_type ?? NetworkType.EVM) && wallet.showWallet());
 
         if (!wallet.supportedChainsId) {
           return bool;
         }
-        return bool && wallet.supportedChainsId.includes(selectedChain.chain_id ?? NaN);
+        return bool && wallet.supportedChainsId.includes(selectedChainId ?? NaN);
       })
       .sort((a, b) => a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }));
   }, [wallets, selectedChainId]);

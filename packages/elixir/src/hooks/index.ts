@@ -47,6 +47,8 @@ export const usePoolsHook: UsePoolsHookType = {
   [ChainId.MOONBEAM]: useDummyPools,
   [ChainId.OP]: useDummyPools,
   [ChainId.SKALE_BELLATRIX_TESTNET]: usePoolsViaSubgraph,
+  [ChainId.SOROBAN]: useDummyPools,
+  [ChainId.SOROBAN_TESTNET]: useDummyPools,
 };
 
 export type UseUnderlyingTokensHookType = {
@@ -83,6 +85,8 @@ export const useUnderlyingTokensHook: UseUnderlyingTokensHookType = {
   [ChainId.MOONBEAM]: useDummyUnderlyingTokens,
   [ChainId.OP]: useDummyUnderlyingTokens,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useUnderlyingTokens,
+  [ChainId.SOROBAN]: useDummyUnderlyingTokens,
+  [ChainId.SOROBAN_TESTNET]: useDummyUnderlyingTokens,
 };
 
 export type UseConcLiqPositionFeesHookType = {
@@ -119,6 +123,8 @@ export const useConcLiqPositionFeesHook: UseConcLiqPositionFeesHookType = {
   [ChainId.MOONBEAM]: useDummyConcLiqPositionFees,
   [ChainId.OP]: useDummyConcLiqPositionFees,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useConcLiqPositionFees,
+  [ChainId.SOROBAN]: useDummyConcLiqPositionFees,
+  [ChainId.SOROBAN_TESTNET]: useDummyConcLiqPositionFees,
 };
 
 export type UsePositionTokenURIHookType = {
@@ -155,4 +161,6 @@ export const usePositionTokenURIHook: UsePositionTokenURIHookType = {
   [ChainId.MOONBEAM]: useDummyPositionTokenURI,
   [ChainId.OP]: useDummyPositionTokenURI,
   [ChainId.SKALE_BELLATRIX_TESTNET]: usePositionTokenURI,
+  [ChainId.SOROBAN]: useDummyPositionTokenURI,
+  [ChainId.SOROBAN_TESTNET]: useDummyPositionTokenURI,
 };

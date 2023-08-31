@@ -1,8 +1,9 @@
 import { ChainId } from '@pangolindex/sdk';
 import { useElixirRemoveLiquidity } from './evm';
+import { useDummyHook } from '@honeycomb-finance/shared';
 
 export type useElixirRemoveLiquidityHookType = {
-  [chainId in ChainId]: typeof useElixirRemoveLiquidity;
+  [chainId in ChainId]: typeof useElixirRemoveLiquidity | typeof useDummyHook;
 };
 
 export const useElixirRemoveLiquidityHook: useElixirRemoveLiquidityHookType = {
@@ -35,4 +36,6 @@ export const useElixirRemoveLiquidityHook: useElixirRemoveLiquidityHookType = {
   [ChainId.MOONBEAM]: useElixirRemoveLiquidity,
   [ChainId.OP]: useElixirRemoveLiquidity,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useElixirRemoveLiquidity,
+  [ChainId.SOROBAN]: useDummyHook,
+  [ChainId.SOROBAN_TESTNET]: useDummyHook,
 };

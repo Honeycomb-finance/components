@@ -40,6 +40,8 @@ export const useMinichefStakingInfosHook: UseMinichefStakingInfosHookType = {
   [ChainId.EVMOS_TESTNET]: useDummyMinichefHook,
   [ChainId.EVMOS_MAINNET]: useDummyMinichefHook,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useDummyMinichefHook,
+  [ChainId.SOROBAN]: useDummyMinichefHook,
+  [ChainId.SOROBAN_TESTNET]: useDummyMinichefHook,
 };
 
 export { useMinichefStakingInfos, useGetMinichefStakingInfosViaSubgraph, useDerivedStakeInfo, useMinichefPools };

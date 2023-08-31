@@ -92,6 +92,8 @@ export const validateAddressMapping: { [chainId in ChainId]: (value: any) => str
   [ChainId.EVMOS_TESTNET]: isAddress,
   [ChainId.EVMOS_MAINNET]: isAddress,
   [ChainId.SKALE_BELLATRIX_TESTNET]: isAddress,
+  [ChainId.SOROBAN]: isDummyAddress,
+  [ChainId.SOROBAN_TESTNET]: isDummyAddress,
 };
 
 export const checkAddressNetworkBaseMapping: {
@@ -102,6 +104,7 @@ export const checkAddressNetworkBaseMapping: {
   [NetworkType.HEDERA]: isDummyAddress,
   [NetworkType.NEAR]: isDummyAddress,
   [NetworkType.SUBNET]: isAddress,
+  [NetworkType.SorobanVM]: isDummyAddress,
 };
 
 const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
@@ -134,6 +137,8 @@ const ETHERSCAN_PREFIXES: { [chainId in ChainId]: string } = {
   [ChainId.EVMOS_TESTNET]: CHAINS[ChainId.EVMOS_TESTNET].blockExplorerUrls?.[0] || '',
   [ChainId.EVMOS_MAINNET]: CHAINS[ChainId.EVMOS_MAINNET].blockExplorerUrls?.[0] || '',
   [ChainId.SKALE_BELLATRIX_TESTNET]: CHAINS[ChainId.SKALE_BELLATRIX_TESTNET].blockExplorerUrls?.[0] || '',
+  [ChainId.SOROBAN]: '',
+  [ChainId.SOROBAN_TESTNET]: '',
 };
 
 const transactionPath: { [chainId in ChainId]: string } = {
@@ -166,6 +171,8 @@ const transactionPath: { [chainId in ChainId]: string } = {
   [ChainId.EVMOS_TESTNET]: 'tx',
   [ChainId.EVMOS_MAINNET]: 'tx',
   [ChainId.SKALE_BELLATRIX_TESTNET]: 'tx',
+  [ChainId.SOROBAN]: '',
+  [ChainId.SOROBAN_TESTNET]: '',
 };
 
 const addressPath: { [chainId in ChainId]: string } = {
@@ -198,6 +205,8 @@ const addressPath: { [chainId in ChainId]: string } = {
   [ChainId.EVMOS_TESTNET]: 'address',
   [ChainId.EVMOS_MAINNET]: 'address',
   [ChainId.SKALE_BELLATRIX_TESTNET]: 'address',
+  [ChainId.SOROBAN]: '',
+  [ChainId.SOROBAN_TESTNET]: '',
 };
 
 const blockPath: { [chainId in ChainId]: string } = {
@@ -230,6 +239,8 @@ const blockPath: { [chainId in ChainId]: string } = {
   [ChainId.EVMOS_TESTNET]: 'block',
   [ChainId.EVMOS_MAINNET]: 'block',
   [ChainId.SKALE_BELLATRIX_TESTNET]: 'block',
+  [ChainId.SOROBAN]: '',
+  [ChainId.SOROBAN_TESTNET]: '',
 };
 
 const tokenPath: { [chainId in ChainId]: string } = {
@@ -262,6 +273,8 @@ const tokenPath: { [chainId in ChainId]: string } = {
   [ChainId.EVMOS_TESTNET]: 'token',
   [ChainId.EVMOS_MAINNET]: 'token',
   [ChainId.SKALE_BELLATRIX_TESTNET]: 'token',
+  [ChainId.SOROBAN]: '',
+  [ChainId.SOROBAN_TESTNET]: '',
 };
 
 export function getEtherscanLink(
@@ -418,6 +431,8 @@ export const shortenAddressMapping: { [chainId in ChainId]: (address: string, ch
   [ChainId.EVMOS_TESTNET]: shortenAddress,
   [ChainId.EVMOS_MAINNET]: shortenAddress,
   [ChainId.SKALE_BELLATRIX_TESTNET]: shortenAddress,
+  [ChainId.SOROBAN]: shortenDummyAddress,
+  [ChainId.SOROBAN_TESTNET]: shortenDummyAddress,
 };
 
 // shorten the checksummed version of the input address to have 0x + 4 characters at start and end
@@ -427,6 +442,11 @@ export function shortenAddress(address: string, chainId: ChainId = ChainId.AVALA
     throw Error(`Invalid 'address' parameter '${address}'.`);
   }
   return `${parsed.substring(0, chars)}...${parsed.substring(parsed.length - chars)}`;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function shortenDummyAddress(_address: string, _chainId: ChainId){
+  return `${_address.substring(0, 4)}...${_address.substring(_address.length - 4)}`;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -46,4 +46,6 @@ export const COINGECKO_CURRENCY_ID: { [chainId in ChainId]: string | undefined }
   [ChainId.EVMOS_TESTNET]: undefined,
   [ChainId.EVMOS_MAINNET]: 'evmos',
   [ChainId.SKALE_BELLATRIX_TESTNET]: undefined,
+  [ChainId.SOROBAN]: undefined,
+  [ChainId.SOROBAN_TESTNET]: undefined,
 };

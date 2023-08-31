@@ -34,4 +34,6 @@ export const ANALYTICS_PAGE_MAPPING: { [chainId in ChainId]: string } = {
   [ChainId.EVMOS_TESTNET]: '',
   [ChainId.EVMOS_MAINNET]: '',
   [ChainId.SKALE_BELLATRIX_TESTNET]: '',
+  [ChainId.SOROBAN]: '',
+  [ChainId.SOROBAN_TESTNET]: '',
 };

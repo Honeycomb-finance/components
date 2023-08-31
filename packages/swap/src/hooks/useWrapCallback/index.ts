@@ -1,10 +1,23 @@
-import { ChainId } from '@pangolindex/sdk';
+import { ChainId, Currency } from '@pangolindex/sdk';
 import { useWrapCallback } from './evm';
 import { useWrapHbarCallback } from './hedera';
 import { useWrapNearCallback } from './near';
+import { WrapType } from './constant';
+
+export function useDummyWrapCallback(
+  inputCurrency: Currency | undefined,
+  outputCurrency: Currency | undefined,
+  typedValue: string | undefined,
+): { wrapType: WrapType; execute?: () => Promise<void>; inputError?: string; executing?: boolean } {
+  return { wrapType: WrapType.NOT_APPLICABLE, execute: undefined, inputError: undefined, executing: undefined };
+}
 
 export type UseWrapCallbackHookType = {
-  [chainId in ChainId]: typeof useWrapCallback | typeof useWrapNearCallback | typeof useWrapHbarCallback;
+  [chainId in ChainId]:
+    | typeof useWrapCallback
+    | typeof useWrapNearCallback
+    | typeof useWrapHbarCallback
+    | typeof useDummyWrapCallback;
 };
 
 export const useWrapCallbackHook: UseWrapCallbackHookType = {
@@ -38,4 +51,6 @@ export const useWrapCallbackHook: UseWrapCallbackHookType = {
   [ChainId.MOONBEAM]: useWrapCallback,
   [ChainId.OP]: useWrapCallback,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useWrapCallback,
+  [ChainId.SOROBAN]: useDummyWrapCallback,
+  [ChainId.SOROBAN_TESTNET]: useDummyWrapCallback,
 };

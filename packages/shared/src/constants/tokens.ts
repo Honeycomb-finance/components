@@ -110,6 +110,8 @@ export const PNG: { [chainId in ChainId]: Token } = {
     CHAINS[ChainId.SKALE_BELLATRIX_TESTNET].png_symbol,
     'Pangolin Skale Testnet',
   ),
+  [ChainId.SOROBAN]: new Token(ChainId.SOROBAN, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.SOROBAN_TESTNET]: new Token(ChainId.SOROBAN_TESTNET, ZERO_ADDRESS, 18, '', ''),
 };
 
 export const DAIe: { [chainId in ChainId]: Token } = {
@@ -148,6 +150,8 @@ export const DAIe: { [chainId in ChainId]: Token } = {
   [ChainId.MOONBEAM]: new Token(ChainId.MOONBEAM, ZERO_ADDRESS, 18, '', ''),
   [ChainId.OP]: new Token(ChainId.OP, ZERO_ADDRESS, 18, '', ''),
   [ChainId.SKALE_BELLATRIX_TESTNET]: new Token(ChainId.SKALE_BELLATRIX_TESTNET, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.SOROBAN]: new Token(ChainId.SOROBAN, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.SOROBAN_TESTNET]: new Token(ChainId.SOROBAN_TESTNET, ZERO_ADDRESS, 18, '', ''),
 };
 
 export const USDCe: { [chainId in ChainId]: Token } = {
@@ -186,6 +190,8 @@ export const USDCe: { [chainId in ChainId]: Token } = {
   [ChainId.MOONBEAM]: new Token(ChainId.MOONBEAM, ZERO_ADDRESS, 18, '', ''),
   [ChainId.OP]: new Token(ChainId.OP, ZERO_ADDRESS, 18, '', ''),
   [ChainId.SKALE_BELLATRIX_TESTNET]: new Token(ChainId.SKALE_BELLATRIX_TESTNET, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.SOROBAN]: new Token(ChainId.SOROBAN, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.SOROBAN_TESTNET]: new Token(ChainId.SOROBAN_TESTNET, ZERO_ADDRESS, 18, '', ''),
 };
 
 export const USDC: { [chainId in ChainId]: Token } = {
@@ -230,6 +236,8 @@ export const USDC: { [chainId in ChainId]: Token } = {
   [ChainId.MOONBEAM]: new Token(ChainId.MOONBEAM, ZERO_ADDRESS, 18, '', ''),
   [ChainId.OP]: new Token(ChainId.OP, ZERO_ADDRESS, 18, '', ''),
   [ChainId.SKALE_BELLATRIX_TESTNET]: new Token(ChainId.SKALE_BELLATRIX_TESTNET, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.SOROBAN]: new Token(ChainId.SOROBAN, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.SOROBAN_TESTNET]: new Token(ChainId.SOROBAN_TESTNET, ZERO_ADDRESS, 18, '', ''),
 };
 
 export const USDTe: { [chainId in ChainId]: Token } = {
@@ -274,6 +282,8 @@ export const USDTe: { [chainId in ChainId]: Token } = {
   [ChainId.MOONBEAM]: new Token(ChainId.MOONBEAM, ZERO_ADDRESS, 18, '', ''),
   [ChainId.OP]: new Token(ChainId.OP, ZERO_ADDRESS, 18, '', ''),
   [ChainId.SKALE_BELLATRIX_TESTNET]: new Token(ChainId.SKALE_BELLATRIX_TESTNET, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.SOROBAN]: new Token(ChainId.SOROBAN, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.SOROBAN_TESTNET]: new Token(ChainId.SOROBAN_TESTNET, ZERO_ADDRESS, 18, '', ''),
 };
 
 /* eslint-enable max-lines */

@@ -47,6 +47,8 @@ export const useTotalSupplyHook: UseTotalSupplyHookType = {
   [ChainId.MOONBEAM]: useDummyHook,
   [ChainId.OP]: useDummyHook,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useTotalSupply,
+  [ChainId.SOROBAN]: useDummyHook,
+  [ChainId.SOROBAN_TESTNET]: useDummyHook,
 };
 
 export { useTotalSupply, useHederaTotalSupply, useNearTotalSupply };

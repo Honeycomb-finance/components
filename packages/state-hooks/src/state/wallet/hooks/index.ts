@@ -1,12 +1,17 @@
 /* eslint-disable max-lines */
 import { useDummyHook } from '@honeycomb-finance/shared';
-import { ChainId } from '@pangolindex/sdk';
+import { ChainId, CurrencyAmount, Token, TokenAmount } from '@pangolindex/sdk';
 import { useETHBalances, useTokenBalance, useTokenBalances } from './evm';
 import { useHederaBalance, useHederaTokenBalance, useHederaTokenBalances } from './hedera';
 import { useNearBalance, useNearTokenBalance, useNearTokenBalances } from './near';
+import { useDummyETHBalance, useDummyTokenBalance, useDummyTokensBalances } from './common';
 
 export type UseAccountBalanceHookType = {
-  [chainId in ChainId]: typeof useETHBalances | typeof useNearBalance | typeof useHederaBalance | typeof useDummyHook;
+  [chainId in ChainId]:
+    | typeof useETHBalances
+    | typeof useNearBalance
+    | typeof useHederaBalance
+    | typeof useDummyETHBalance;
 };
 
 export const useAccountBalanceHook: UseAccountBalanceHookType = {
@@ -40,10 +45,16 @@ export const useAccountBalanceHook: UseAccountBalanceHookType = {
   [ChainId.EVMOS_TESTNET]: useETHBalances,
   [ChainId.EVMOS_MAINNET]: useETHBalances,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useETHBalances,
+  [ChainId.SOROBAN]: useDummyETHBalance,
+  [ChainId.SOROBAN_TESTNET]: useDummyETHBalance,
 };
 
 export type UseTokenBalancesHookType = {
-  [chainId in ChainId]: typeof useTokenBalances | typeof useNearTokenBalances | typeof useHederaTokenBalances;
+  [chainId in ChainId]:
+    | typeof useTokenBalances
+    | typeof useNearTokenBalances
+    | typeof useHederaTokenBalances
+    | typeof useDummyTokensBalances;
 };
 
 export const useTokenBalancesHook: UseTokenBalancesHookType = {
@@ -77,6 +88,8 @@ export const useTokenBalancesHook: UseTokenBalancesHookType = {
   [ChainId.MOONBEAM]: useTokenBalances,
   [ChainId.OP]: useTokenBalances,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useTokenBalances,
+  [ChainId.SOROBAN]: useDummyTokensBalances,
+  [ChainId.SOROBAN_TESTNET]: useDummyTokensBalances,
 };
 
 export type UseTokenBalanceHookType = {
@@ -84,7 +97,7 @@ export type UseTokenBalanceHookType = {
     | typeof useTokenBalance
     | typeof useNearTokenBalance
     | typeof useHederaTokenBalance
-    | typeof useDummyHook;
+    | typeof useDummyTokenBalance;
 };
 
 export const useTokenBalanceHook: UseTokenBalanceHookType = {
@@ -117,6 +130,8 @@ export const useTokenBalanceHook: UseTokenBalanceHookType = {
   [ChainId.EVMOS_TESTNET]: useTokenBalance,
   [ChainId.EVMOS_MAINNET]: useTokenBalance,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useTokenBalance,
+  [ChainId.SOROBAN]: useDummyTokenBalance,
+  [ChainId.SOROBAN_TESTNET]: useDummyTokenBalance,
 };
 
 export * from './hedera';

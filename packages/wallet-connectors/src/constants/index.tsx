@@ -33,6 +33,8 @@ export const PROVIDER_MAPPING: { [chainId in ChainId]: (provider: any) => any } 
   [ChainId.EVMOS_TESTNET]: CommonEVMProvider,
   [ChainId.EVMOS_MAINNET]: CommonEVMProvider,
   [ChainId.SKALE_BELLATRIX_TESTNET]: CommonEVMProvider,
+  [ChainId.SOROBAN]: CommonEVMProvider,
+  [ChainId.SOROBAN_TESTNET]: CommonEVMProvider,
 };
 
 /* eslint-enable max-lines */
