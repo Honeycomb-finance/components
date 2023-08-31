@@ -15,7 +15,7 @@
     "postinstall": "patch-package"
   },
   "devDependencies": {
-    "@pangolindex/sdk": "5.3.4",
+    "@pangolindex/sdk": "5.3.5-internal.e898a72",
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
     "patch-package": "6.4.7",

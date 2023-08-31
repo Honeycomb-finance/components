@@ -14,7 +14,7 @@
   "dependencies": {
     "@ethersproject/providers": "^5.7.2",
     "@honeycomb/governance": "*",
-    "@pangolindex/sdk": "5.3.4",
+    "@pangolindex/sdk": "5.3.5-internal.e898a72",
     "@pangolindex/airdrop": "*",
     "@pangolindex/bridge": "*",
     "@pangolindex/core": "*",

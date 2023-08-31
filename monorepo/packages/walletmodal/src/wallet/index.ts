@@ -1,11 +1,11 @@
-import { CHAINS, ChainId, NetworkType } from '@pangolindex/sdk';
+import { CHAINS, Chain, ChainId, NetworkType, SOROBAN, SOROBAN_TESTNET } from '@pangolindex/sdk';
 import { SUPPORTED_EVM_CHAINS_ID } from '@pangolindex/wallet-connectors';
 import { isMobile } from 'react-device-detect';
 import injectWalletIcon from 'src/assets/images/inject-wallet.png';
 import metamaskIcon from 'src/assets/images/metamask.png';
 import rabbyIcon from 'src/assets/svg/rabby.svg';
 import { AvalancheCoreWallet, BitKeepWallet, InjectedWallet, TalismanWallet } from './classes/injected';
-import { HashPackWallet, NearWallet, XDefiWallet } from './classes/nonInjected';
+import { FreighterWallet, HashPackWallet, NearWallet, XDefiWallet } from './classes/nonInjected';
 import { CoinbaseWallet, GnosisSafeWallet, WalletConnectWallet } from './classes/others';
 import { Wallet } from './classes/wallet';
 
@@ -42,6 +42,7 @@ export const avalancheCoreWallet = new AvalancheCoreWallet();
 export const xDefiWallet = new XDefiWallet();
 export const nearWallet = new NearWallet();
 export const hashPack = new HashPackWallet([ChainId.HEDERA_MAINNET, ChainId.HEDERA_TESTNET]);
+export const freighterWallet = new FreighterWallet();
 
 export const gnosisSafeWallet = new GnosisSafeWallet();
 export const coinbaseWallet = new CoinbaseWallet();
@@ -58,11 +59,14 @@ export const SUPPORTED_WALLETS: { [key: string]: Wallet } = {
   HASH_CONNECT: hashPack,
   GNOSISSAFE: gnosisSafeWallet,
   WALLET_LINK: coinbaseWallet,
+  FREIGHTER: freighterWallet,
 };
 
 export const SUPPORTED_CHAINS = Object.values(CHAINS).filter(
   (chain) => chain.pangolin_is_live || chain.supported_by_bridge,
 );
+
+SUPPORTED_CHAINS.push(SOROBAN, SOROBAN_TESTNET);
 
 export { WalletConnectWallet as PangolinWalletConnectWallet };
 
