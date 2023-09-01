@@ -3950,10 +3950,10 @@
     tiny-warning "^1.0.3"
     toformat "^2.0.0"
 
-"@pangolindex/sdk@5.3.4":
-  version "5.3.4"
-  resolved "https://registry.npmjs.org/@pangolindex/sdk/-/sdk-5.3.4.tgz"
-  integrity sha512-Xj2pLgI0EK9DNEhuMQVchmmk6UC6G27hdzjiL71AnNYpB+abt7ZB5Ou6SdjeeHQJIxsxfVhV/BRY096XDGquog==
+"@pangolindex/sdk@5.3.5-internal.e898a72":
+  version "5.3.5-internal.e898a72"
+  resolved "https://registry.yarnpkg.com/@pangolindex/sdk/-/sdk-5.3.5-internal.e898a72.tgz#1bc13e1e75a65adcbe333631c0c9bae2be2f760c"
+  integrity sha512-uQWDrXRDTQQfnW577HotiqnikHwYadqhltpNaDTUILicOAwTj2N3rDRpMj+8ZlvV4yo6qiT9UHPG0Iq5RRgjtQ==
   dependencies:
     big.js "^5.2.2"
     decimal.js-light "^2.5.0"
@@ -4343,6 +4343,11 @@
     "@stablelib/keyagreement" "^1.0.1"
     "@stablelib/random" "^1.0.2"
     "@stablelib/wipe" "^1.0.1"
+
+"@stellar/freighter-api@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@stellar/freighter-api/-/freighter-api-1.6.0.tgz#14deceba47be041ed13a325aad6d05add6646a08"
+  integrity sha512-Z6CRY+3+whzMspda6PiHEc4Rs9tdQkHLin9FopdnHhij/FEEAK+IiuF8Ki2ROcQweXdazb8N237aSim10s+Zgw==
 
 "@storybook/addon-actions@7.0.10":
   version "7.0.10"

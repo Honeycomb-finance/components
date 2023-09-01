@@ -4,6 +4,7 @@ import { TalismanConnector } from '@talismn/web3react-v6-connector';
 import { AvalancheCoreConnector } from './AvalancheCoreConnector';
 import { BitKeepConnector } from './BitKeepConnector';
 import { DefiConnector } from './DefiConnector';
+import { FreighterConnector } from './FreighterConnector';
 import { HashConnectEvents, HashConnector, hashconnectEvent } from './HashConnector';
 import {
   FunctionCallOptions as NearFunctionCallOptions,
@@ -73,6 +74,12 @@ export const venly = new VenlyConnector({
 
 export const avalancheCore = new AvalancheCoreConnector({
   supportedChainIds: SUPPORTED_EVM_CHAINS_ID,
+});
+
+export const freighter = new FreighterConnector({
+  supportedChainIds: [7566437, 7566438],
+  normalizeAccount: false,
+  normalizeChainId: false,
 });
 
 export { HashConnector, HashConnectEvents, hashconnectEvent, WalletConnectConnector, NetworkConnector };
