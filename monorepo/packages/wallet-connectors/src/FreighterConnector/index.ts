@@ -21,6 +21,8 @@ export class FreighterConnector extends AbstractConnector {
   private network!: string;
   private publicKey!: string;
   readonly url = `https://rpc-futurenet.stellar.org`; // This rpc not accepts EVM methods
+  private normalizeChainId!: boolean;
+  private normalizeAccount!: boolean;
 
   constructor(
     kwargs: AbstractConnectorArguments & {
@@ -29,6 +31,8 @@ export class FreighterConnector extends AbstractConnector {
     },
   ) {
     super(kwargs);
+    this.normalizeChainId = kwargs.normalizeChainId;
+    this.normalizeAccount = kwargs.normalizeAccount;
   }
 
   public async activate(): Promise<ConnectorUpdate> {
