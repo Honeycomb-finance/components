@@ -21,6 +21,9 @@
     },
     "example-app#start": {
       "dependsOn": ["^build"]
+    },
+    "walletmodal-example-app#start": {
+      "dependsOn": ["^build"]
     }
   }
 }

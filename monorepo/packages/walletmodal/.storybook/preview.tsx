@@ -5,7 +5,6 @@ import { HoneycombProvider } from '@pangolindex/honeycomb-provider';
 import { NetworkContextName } from '@pangolindex/shared';
 import { Web3ReactProvider, createWeb3ReactRoot } from '@web3-react/core';
 import getLibrary from '../src/utils/getLibrary';
-import { injected } from '@pangolindex/wallet-connectors';
 
 const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
 

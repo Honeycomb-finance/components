@@ -89,6 +89,20 @@ export const EvmApplicationUpdater = () => {
   return null;
 };
 
+const DummyApplicationUpdater = () => {
+  const chainId = useChainId();
+  const { updateBlockNumber } = useApplicationState();
+
+  const blockNumber = 0;
+  useEffect(() => {
+    if (blockNumber) {
+      updateBlockNumber({ chainId, blockNumber });
+    }
+  }, []);
+
+  return null;
+};
+
 const updaterMapping: { [chainId in ChainId]: () => null } = {
   [ChainId.AVALANCHE]: EvmApplicationUpdater,
   [ChainId.FUJI]: EvmApplicationUpdater,
@@ -125,7 +139,12 @@ const updaterMapping: { [chainId in ChainId]: () => null } = {
 export default function ApplicationUpdater() {
   const chainId = useChainId();
 
-  const Updater = updaterMapping[chainId];
+  let Updater = updaterMapping[chainId];
+
+  // TODO: update this to support stellar
+  if(!Updater){
+    Updater = DummyApplicationUpdater;
+  }
 
   return <Updater />;
 }
