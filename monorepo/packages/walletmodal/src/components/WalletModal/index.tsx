@@ -132,7 +132,7 @@ export default function WalletModal({
   }, [supportedWallets]);
 
   const filteredWallets = useMemo(() => {
-    const selectedChain = sortedChains.find(_chain => _chain.chain_id === selectedChainId);
+    const selectedChain = sortedChains.find((_chain) => _chain.chain_id === selectedChainId);
     // return  an array with filtered wallets
     // if selected chain by user supports this wallet (have same network type)
     // and name of wallet includes the search name
@@ -141,7 +141,9 @@ export default function WalletModal({
     return Object.values(wallets)
       .filter((wallet) => {
         // if selected chain by user supports this wallet and
-        const bool = Boolean(wallet.supportedChains.includes(selectedChain?.network_type ?? NetworkType.EVM) && wallet.showWallet());
+        const bool = Boolean(
+          wallet.supportedChains.includes(selectedChain?.network_type ?? NetworkType.EVM) && wallet.showWallet(),
+        );
 
         if (!wallet.supportedChainsId) {
           return bool;
@@ -289,7 +291,12 @@ export default function WalletModal({
                       <WalletFrame>
                         {filteredWallets.map((wallet, index) => {
                           return (
-                            <WalletButton variant="plain" onClick={() => onWalletClick(wallet)} key={index}>
+                            <WalletButton
+                              variant="plain"
+                              onClick={() => onWalletClick(wallet)}
+                              key={index}
+                              id={wallet.name.replace(' ', '').toLowerCase()}
+                            >
                               <StyledLogo title={wallet.name} srcs={[wallet.icon]} alt={`${wallet.name} Logo`} />
                               <Text color="text1" fontSize="12px" fontWeight={600}>
                                 {wallet.name}

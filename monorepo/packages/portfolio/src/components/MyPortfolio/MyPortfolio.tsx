@@ -1,5 +1,5 @@
 import { Box, Loader, Text } from '@pangolindex/core';
-import { ALL_CHAINS, CHAINS, Chain } from '@pangolindex/sdk';
+import { ALL_CHAINS, CHAINS, Chain, SOROBAN, SOROBAN_TESTNET } from '@pangolindex/sdk';
 import { MixPanelEvents, useChainId, useMixpanel, usePangolinWeb3, useTranslation } from '@pangolindex/shared';
 import { useShowBalancesManager } from '@pangolindex/state-hooks';
 import React, { useCallback, useEffect, useState } from 'react';
@@ -21,12 +21,21 @@ const MyPortfolio: React.FC = () => {
 
   const mixpanel = useMixpanel();
 
+  // TODO: update this to support stellar
+  let chain = CHAINS[chainId]
+  if((chainId) as number === 7566437){
+    chain = SOROBAN;
+  }
+  if((chainId) as number === 7566437){
+    chain = SOROBAN_TESTNET;
+  }
+
   useEffect(() => {
     if (balances) {
       if (Object.keys(balances).length > 0) {
         // if chainId in balances.chains then selectChain = chainId
         const _chain = Object.keys(balances).find(
-          (chainID) => chainID.toLowerCase() === CHAINS[chainId].symbol.toLowerCase(),
+          (chainID) => chainID.toLowerCase() === chain.symbol.toLowerCase(),
         );
         // find in ALL_CHAINS the chainid of first chain key in balances, if doesn't exist put avalance
         const firstChainId =
