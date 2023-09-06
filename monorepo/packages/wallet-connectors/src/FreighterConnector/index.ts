@@ -2,7 +2,6 @@ import { JsonRpcProvider } from '@ethersproject/providers';
 import { getNetwork, getPublicKey, isAllowed, isConnected, setAllowed, signTransaction } from '@stellar/freighter-api';
 import { AbstractConnector } from '@web3-react/abstract-connector';
 import { AbstractConnectorArguments, ConnectorUpdate } from '@web3-react/types';
-import { NoEthereumProviderError } from '..';
 import axios from 'axios';
 
 interface TransactionResponse{
@@ -17,7 +16,7 @@ interface TransactionResponse{
 
 export class FreighterConnector extends AbstractConnector {
   private provider!: JsonRpcProvider;
-  private chainId!: number;
+  private chainId!: 7566437 | 7566438;
   private network!: string;
   private publicKey!: string;
   readonly url = `https://rpc-futurenet.stellar.org`; // This rpc not accepts EVM methods
@@ -33,12 +32,13 @@ export class FreighterConnector extends AbstractConnector {
     super(kwargs);
     this.normalizeChainId = kwargs.normalizeChainId;
     this.normalizeAccount = kwargs.normalizeAccount;
+    this.chainId = 7566437;
   }
 
   public async activate(): Promise<ConnectorUpdate> {
     const connected = await isConnected();
     if (!connected) {
-      throw new NoEthereumProviderError();
+      throw new Error('Not found Freighter');
     }
 
     let publickey = '';
@@ -87,7 +87,7 @@ export class FreighterConnector extends AbstractConnector {
   public async getAccount(): Promise<null | string> {
     const connected = await isConnected();
     if (!connected) {
-      throw new NoEthereumProviderError();
+      return null;
     }
 
     const publickey = await getPublicKey();
@@ -132,3 +132,9 @@ export class FreighterConnector extends AbstractConnector {
     return response.data.result.hash
   }
 }
+
+export const freighter = new FreighterConnector({
+  supportedChainIds: [7566437, 7566438],
+  normalizeAccount: false,
+  normalizeChainId: false,
+});

@@ -6,7 +6,8 @@
     "rootDir": "src",
     "paths": {
       "src/*": ["src/*"]
-    }
+    },
+    "types": ["jest"],
   },
   "include": ["src", "./src/**/*.ts", "./src/**/*.tsx", "./index.d.ts"],
   "exclude": ["dist", "build", "lib", "node_modules"]
