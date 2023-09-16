@@ -1,11 +1,24 @@
-import { Octokit } from "@octokit/rest";
+const { Octokit } = require("@octokit/rest");
 
-const repo = process.env.GITHUB_REPOSITORY as string;
+// declare global {
+//   namespace NodeJS {
+//     interface ProcessEnv {
+//       GITHUB_REPOSITORY: string;
+//       GITHUB_REPOSITORY_OWNER: string;
+//       GITHUB_TOKEN?: string;
+//       PR_NUMBER: string;
+//     }
+//   }
+// }
+
+
+const repo = process.env.GITHUB_REPOSITORY;
 const repoName = repo?.split("/")?.[1];
-const repoOwner = process.env.GITHUB_REPOSITORY_OWNER as string;
-const token = process.env.GITHUB_TOKEN as string;
+const repoOwner = process.env.GITHUB_REPOSITORY_OWNER;
+const token = process.env.GITHUB_TOKEN;
 const head = "dev";
 const base = "main";
+
 
 async function createOrUpdatePR() {
   const octokit = new Octokit({
