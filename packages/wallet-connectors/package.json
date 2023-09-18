@@ -8,6 +8,7 @@
   "scripts": {
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint --fix ./src --ext .js,.jsx,.ts,.tsx",
+    "tsc": "tsc",
     "build": "rollup -c --environment ENV:production",
     "dev": "rollup -c --watch"
   },
@@ -21,8 +22,6 @@
     "@rollup/plugin-url": "^7.0.0",
     "@types/react": "^18.2.5",
     "@types/react-dom": "^18.2.4",
-    "eslint": "^7.32.0",
-    "eslint-config-custom": "*",
     "react": "^18.2.0",
     "rollup": "^2.79.0",
     "rollup-plugin-cleaner": "^1.0.0",

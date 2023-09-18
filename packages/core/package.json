@@ -8,6 +8,7 @@
   "scripts": {
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint --fix ./src --ext .js,.jsx,.ts,.tsx",
+    "tsc": "tsc",
     "build": "rollup -c --environment ENV:production",
     "dev": "rollup -c --watch",
     "storybook": "storybook dev -p 6006",
@@ -36,8 +37,6 @@
     "@types/react-tabs": "2.3.4",
     "@types/styled-components": "5.1.15",
     "@types/styled-system": "5.1.13",
-    "eslint": "^7.32.0",
-    "eslint-config-custom": "*",
     "prop-types": "15.8.1",
     "react": "^18.2.0",
     "react-dom": "18.2.0",
