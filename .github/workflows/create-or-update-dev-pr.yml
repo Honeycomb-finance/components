@@ -36,7 +36,7 @@ jobs:
           yarn add @octokit/rest ts-node typescript @types/node -W
 
       - name: Run TypeScript script
-        run: node ./scripts/test.js
+        run: node ./scripts/create-update-dev-pr.js
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_ACCESS_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}

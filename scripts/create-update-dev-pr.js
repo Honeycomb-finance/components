@@ -1,17 +1,5 @@
 const { Octokit } = require("@octokit/rest");
 
-// declare global {
-//   namespace NodeJS {
-//     interface ProcessEnv {
-//       GITHUB_REPOSITORY: string;
-//       GITHUB_REPOSITORY_OWNER: string;
-//       GITHUB_TOKEN?: string;
-//       PR_NUMBER: string;
-//     }
-//   }
-// }
-
-
 const repo = process.env.GITHUB_REPOSITORY;
 const repoName = repo?.split("/")?.[1];
 const repoOwner = process.env.GITHUB_REPOSITORY_OWNER;
