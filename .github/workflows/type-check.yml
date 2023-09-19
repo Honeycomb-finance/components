@@ -19,6 +19,11 @@ jobs:
           cache: 'yarn'
           registry-url: 'https://registry.npmjs.org/'
 
+      - name: Set Swap Space
+        uses: pierotofy/set-swap-space@master
+        with:
+          swap-size-gb: 10
+
       - run: yarn --frozen-lockfile
 
       - run: yarn build:packages
