@@ -3,8 +3,8 @@ import { ZERO_ADDRESS, useChainId, usePangolinWeb3 } from '@honeycomb-finance/sh
 import { useAllTokens, useWalletModalToggle } from '@honeycomb-finance/state-hooks';
 import { SelectTokenDrawer } from '@honeycomb-finance/token-drawer';
 import React, { Suspense, useCallback, useContext } from 'react';
-import { Root } from 'src/SwapWidget/styled';
 import { ThemeContext } from 'styled-components';
+import { Root } from 'src/SwapWidget/styled';
 import { SwapTypes } from 'src/constants';
 import { Field } from 'src/state/atom';
 import { useSwapActionHandlers } from 'src/state/hooks/common';
