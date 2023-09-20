@@ -1,5 +1,5 @@
 import { Web3Provider } from '@ethersproject/providers';
-import { GelatoProvider } from '@gelatonetwork/limit-orders-react';
+import { GelatoProvider, Order } from '@gelatonetwork/limit-orders-react';
 import { ZERO_ADDRESS, isEvmChain, useChainId, useLibrary, usePangolinWeb3 } from '@honeycomb-finance/shared';
 import { CHAINS } from '@pangolindex/sdk';
 import React, { useState } from 'react';
@@ -107,4 +107,4 @@ const SwapWidget: React.FC<SwapWidgetProps> = ({
     </Root>
   );
 };
-export { SwapWidget };
+export { SwapWidget, type Order };
