@@ -1,5 +1,5 @@
 import { SUPPORTED_EVM_CHAINS_ID } from '@honeycomb-finance/wallet-connectors';
-import { HoneycombWallet, HoneycombWalletEvents, SUPPORTED_WALLETS } from '@honeycomb-finance/walletmodal';
+import { HoneycombWallet, HoneycombWalletConnectWallet, SUPPORTED_WALLETS } from '@honeycomb-finance/walletmodal';
 import { CHAINS, ChainId } from '@pangolindex/sdk';
 
 const walletConnectProjectId = import.meta.env.VITE_WALLETCONNECT_PROJECTID;
@@ -18,7 +18,7 @@ if (walletConnectProjectId) {
     return acc;
   }, {} as { [chainId in number]: string });
 
-  const walletConnectWallet = new HoneycombWalletEvents({
+  const walletConnectWallet = new HoneycombWalletConnectWallet({
     rpcMap: rpcs,
     projectId: walletConnectProjectId,
     metadata: {
