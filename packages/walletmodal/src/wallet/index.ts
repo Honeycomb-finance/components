@@ -65,25 +65,11 @@ export const SUPPORTED_CHAINS = Object.values(CHAINS).filter(
 );
 
 // wallet misc
-export {
-  AvalancheCoreWallet as PangolinAvalancheCoreWallet,
-  BitKeepWallet as PangolinBitKeepWallet,
-  InjectedWallet as PangolinInjectedWallet,
-  TalismanWallet as PangolinTalismanWallet,
-} from './classes/injected';
-export {
-  HashPackWallet as PangolinHashPackWallet,
-  NearWallet as PangolinNearWallet,
-  XDefiWallet as PangolinXDefiWallet,
-} from './classes/nonInjected';
-export {
-  CoinbaseWallet as PangolinCoinbaseWallet,
-  GnosisSafeWallet as PangolinGnosisSafeWallet,
-  WalletConnectWallet as PangolinWalletConnectWallet,
-} from './classes/others';
+export { InjectedWallet as HoneycombInjectedWallet } from './classes/injected';
+export { WalletConnectWallet as HoneycombWalletConnectWallet } from './classes/others';
 
 export {
-  Wallet as PangolinWallet,
-  WalletEvents as PangolinWalletEvents,
-  walletEvent as pangolinWalletEvent,
+  Wallet as HoneycombWallet,
+  WalletEvents as HoneycombWalletEvents,
+  walletEvent as honeycombWalletEvent,
 } from './classes/wallet';
