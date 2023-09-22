@@ -1,10 +1,11 @@
 import { useGelatoLimitOrdersListHook } from 'src/state/hooks';
+import { galetoStore } from 'src/state';
 import { LimitOrderInfo, useDerivedSwapInfo, useGelatoLimitOrderDetail } from 'src/state/hooks/common';
 import { SwapWidget } from './SwapWidget';
 
 export { TIMEFRAME, SwapTypes } from 'src/constants';
 export * from '@gelatonetwork/limit-orders-react';
-export { SwapWidget };
+export { galetoStore, SwapWidget };
 
 export type { LimitOrderInfo };
 
