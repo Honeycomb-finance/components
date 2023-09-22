@@ -1,5 +1,5 @@
-import { useGelatoLimitOrdersListHook } from 'src/state/hooks';
 import { galetoStore } from 'src/state';
+import { useGelatoLimitOrdersListHook } from 'src/state/hooks';
 import { LimitOrderInfo, useDerivedSwapInfo, useGelatoLimitOrderDetail } from 'src/state/hooks/common';
 import { SwapWidget } from './SwapWidget';
 
