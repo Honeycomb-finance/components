@@ -417,3 +417,4 @@ export function usePositionTokenURI(tokenId: TokenId | undefined): UsePositionTo
 
   return res;
 }
+/* eslint-enable max-lines */
