@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { ChevronDown, ChevronUp } from 'react-feather';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '@honeycomb-finance/shared';
 import { ThemeContext } from 'styled-components';
 import { Text } from '../Text';
 import { Wrapper } from './styled';

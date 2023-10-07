@@ -7,6 +7,7 @@ import {
   usePangolinWeb3,
   wrappedCurrency,
   wrappedCurrencyAmount,
+  useTranslation
 } from '@honeycomb-finance/shared';
 import { useCurrency, useCurrencyBalances, usePair } from '@honeycomb-finance/state-hooks';
 import {
@@ -28,7 +29,6 @@ import {
   tickToPrice,
 } from '@pangolindex/sdk';
 import { useCallback, useEffect, useMemo } from 'react';
-import { useTranslation } from 'react-i18next';
 import { usePool } from 'src/hooks/common';
 import { PoolState } from 'src/hooks/types';
 import { Bound, Field, initialState, useMintStateAtom } from './atom';
