@@ -5,9 +5,9 @@ import {
   tryParseAmount,
   useChainId,
   usePangolinWeb3,
+  useTranslation,
   wrappedCurrency,
   wrappedCurrencyAmount,
-  useTranslation
 } from '@honeycomb-finance/shared';
 import { useCurrency, useCurrencyBalances, usePair } from '@honeycomb-finance/state-hooks';
 import {

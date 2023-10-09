@@ -1,9 +1,9 @@
 /* eslint-disable max-lines */
 import { useDummyHook } from '@honeycomb-finance/shared';
 import { ChainId } from '@pangolindex/sdk';
-import { useETHBalances, useTokenBalances, useTokenBalance } from './evm';
-import { useHederaBalance, useHederaTokenBalances, useHederaTokenBalance } from './hedera';
-import { useNearBalance, useNearTokenBalances, useNearTokenBalance } from './near';
+import { useETHBalances, useTokenBalance, useTokenBalances } from './evm';
+import { useHederaBalance, useHederaTokenBalance, useHederaTokenBalances } from './hedera';
+import { useNearBalance, useNearTokenBalance, useNearTokenBalances } from './near';
 
 export type UseAccountBalanceHookType = {
   [chainId in ChainId]: typeof useETHBalances | typeof useNearBalance | typeof useHederaBalance | typeof useDummyHook;
