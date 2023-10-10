@@ -35,5 +35,4 @@ yarn-error.log*
 .turbo
 
 .storybook-static
-
 .env
