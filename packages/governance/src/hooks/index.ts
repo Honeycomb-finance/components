@@ -17,7 +17,7 @@ export type UseAllProposalDataHookType = {
 
 export const useAllProposalDataHook: UseAllProposalDataHookType = {
   [ChainId.FUJI]: useDummyAllProposalData,
-  [ChainId.AVALANCHE]: useGetProposalsViaSubgraph,
+  [ChainId.AVALANCHE]: useAllProposalData,
   [ChainId.WAGMI]: useDummyAllProposalData,
   [ChainId.COSTON]: useGetProposalsViaSubgraph,
   [ChainId.SONGBIRD]: useGetProposalsViaSubgraph,
