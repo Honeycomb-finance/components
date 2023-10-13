@@ -27,7 +27,6 @@
     "@honeycomb-finance/swap": "*",
     "@honeycomb-finance/wallet-connectors": "*",
     "@honeycomb-finance/walletmodal": "*",
-    "@pangolindex/sdk": "5.3.4",
     "@types/react-router-dom": "^5.3.3",
     "@web3-react/core": "6.0.9",
     "react": "^18.2.0",
