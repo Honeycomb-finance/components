@@ -1,5 +1,5 @@
 ---
-'@honeycomb-finance/governance': major
+'@honeycomb-finance/governance': minor
 ---
 
-GovernorPango
+Added GovernorPango methods.
