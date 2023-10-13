@@ -18,10 +18,10 @@ import { ChainId, TokenAmount } from '@pangolindex/sdk';
 import { ethers, utils } from 'ethers';
 import { isAddress } from 'ethers/lib/utils';
 import { useCallback, useEffect, useState } from 'react';
+import { GovernorAlphaABI } from 'src/constants';
 import { enumerateProposalState } from './common';
 import { ProposalData } from './types';
 import { useGovernorAlphaContract, usePngContract } from './useContract';
-import { GovernorAlphaABI } from 'src/constants';
 
 // get count of all proposals made
 export function useProposalCount(): number | undefined {

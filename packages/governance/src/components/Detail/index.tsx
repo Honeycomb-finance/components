@@ -19,6 +19,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { useProposalData } from 'src/hooks/common';
 import { useUserDelegate, useUserVotes } from 'src/hooks/evm';
+import { ProposalData } from 'src/hooks/types';
 import VoteModal from './VoteModal';
 import {
   ArrowWrapper,
@@ -36,7 +37,6 @@ import {
   WrapSmall,
   Wrapper,
 } from './styleds';
-import { ProposalData } from 'src/hooks/types';
 
 export type GovernanceDetailProps = Record<'id', 'string'>;
 
