@@ -25,6 +25,7 @@ export const INITIAL_ALLOWED_SLIPPAGE = 50;
 export const DEFAULT_DEADLINE_FROM_NOW = '600';
 
 export const RANGO_API_KEY = '6165008b-282e-446f-acf8-13c2b06d0775';
+export const LIFI_API_KEY = '5d299fcf-533b-439f-9624-593010e3e9c3.3941ff81-39b3-4f9e-93a4-36a797cd10cf';
 // one basis point
 export const ONE_BIPS = new Percent(JSBI.BigInt(1), JSBI.BigInt(10000));
 

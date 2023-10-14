@@ -1,8 +1,13 @@
 import { parseUnits } from '@ethersproject/units';
 import { calculateTransactionTime } from '@honeycomb-finance/shared';
-import LIFI, { Step as LifiStep, RouteOptions, RoutesRequest, isLifiStep } from '@lifi/sdk';
+import { LIFI_API_KEY } from '@honeycomb-finance/shared';
+import { LiFi, LifiStep as PureLifiStep, RouteOptions, RoutesRequest } from '@lifi/sdk';
 import { Currency, LIFI as LIFIBridge, Token, TokenAmount } from '@pangolindex/sdk';
 import { BridgePrioritizations, GetRoutes, GetRoutesProps, Route } from '../types';
+
+function isLifiStep(value: any): value is PureLifiStep {
+  return value && value.type === 'lifi' && Array.isArray(value.includedSteps);
+}
 
 export const getLiFiRoutes: GetRoutes = async ({
   amount,
@@ -16,7 +21,10 @@ export const getLiFiRoutes: GetRoutes = async ({
 GetRoutesProps) => {
   const parsedAmount = parseUnits(amount, fromCurrency?.decimals).toString();
 
-  const lifi = new LIFI();
+  const lifi = new LiFi({
+    integrator: 'pangolin',
+    apiKey: LIFI_API_KEY,
+  });
 
   const routeOptions: RouteOptions = {
     slippage: parseFloat(slipLimit) / 100,
@@ -57,12 +65,12 @@ GetRoutesProps) => {
       toAmountNet: new TokenAmount(toCurrency as Currency as Token, route?.toAmountMin).toFixed(4),
       toAmountUSD: `${route?.toAmountUSD} USD`,
       gasCostUSD: route?.gasCostUSD,
-      steps: route?.steps?.map((step: LifiStep) => {
+      steps: route?.steps?.map((step: any) => {
         return {
           bridge: LIFIBridge,
           type: step?.type,
           ...(isLifiStep(step) && {
-            includedSteps: step?.includedSteps.map((subStep: LifiStep) => {
+            includedSteps: step?.includedSteps.map((subStep: any) => {
               return {
                 type: subStep?.type,
                 integrator: subStep.tool,
