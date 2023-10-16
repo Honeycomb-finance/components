@@ -1,6 +1,6 @@
 import { Squid, TokenData } from '@0xsquid/sdk';
-import { RANGO_API_KEY, SQUID_API, ZERO_ADDRESS } from '@honeycomb-finance/shared';
-import LIFI from '@lifi/sdk';
+import { LIFI_API_KEY, RANGO_API_KEY, SQUID_API, ZERO_ADDRESS } from '@honeycomb-finance/shared';
+import { LiFi, TokensResponse } from '@lifi/sdk';
 import { BridgeCurrency, LIFI as LIFIBridge, RANGO, SQUID } from '@pangolindex/sdk';
 import { BlockchainMeta, TransactionType as RangoChainType, RangoClient, Token as RangoToken } from 'rango-sdk-basic';
 import { useMemo } from 'react';
@@ -8,8 +8,11 @@ import { useQuery } from 'react-query';
 
 export function useLiFiSwapCurrencies() {
   return useQuery(['lifiCurrencies'], async () => {
-    const lifi = new LIFI();
-    const data = await lifi.getTokens();
+    const lifi = new LiFi({
+      integrator: 'pangolin',
+      apiKey: LIFI_API_KEY,
+    });
+    const data: TokensResponse = await lifi.getTokens();
     let formattedCurrencies: BridgeCurrency[] = [];
 
     Object.entries(data?.tokens).forEach(([chainId, tokens]) => {

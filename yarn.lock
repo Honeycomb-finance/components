@@ -4070,30 +4070,22 @@
   resolved "https://registry.yarnpkg.com/@juggle/resize-observer/-/resize-observer-3.4.0.tgz#08d6c5e20cf7e4cc02fd181c4b0c225cd31dbb60"
   integrity sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==
 
-"@lifi/sdk@1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@lifi/sdk/-/sdk-1.6.0.tgz#abb849c10def311708e0ae241ca307bbfa64a2f3"
-  integrity sha512-C6TjVLnIcb2DJI4FAyVWuTTIsgIJE3eXaQCwJwNWz54TXyCAgIdr4DM6lPmE8RwYWAL5xpwPkNTBnzccy3sowg==
+"@lifi/sdk@2.4.3":
+  version "2.4.3"
+  resolved "https://registry.yarnpkg.com/@lifi/sdk/-/sdk-2.4.3.tgz#36621c8cef39baa4f65b2db0045cd8cd7fc93bd5"
+  integrity sha512-9/oGg6TB+d+7DRrRWg9hlVeXM2EkC1dWkvnw2KaWbV0kCrClGtwjak6h5Dre1mnQty9wb2Dw4i7SPohXYZA5ZA==
   dependencies:
     "@ethersproject/abi" "^5.7.0"
     "@ethersproject/contracts" "^5.7.0"
-    "@lifi/types" "^1.7.0"
-    axios "^0.27.2"
-    bignumber.js "^9.1.0"
+    "@lifi/types" "^9.0.3"
+    bignumber.js "^9.1.2"
     eth-rpc-errors "^4.0.3"
-    ethers "^5.7.1"
+    ethers "^5.7.2"
 
-"@lifi/types@1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@lifi/types/-/types-1.6.0.tgz#ab8203bbfd063e406170e21b710cf4c9e6b03582"
-  integrity sha512-8oFhHmI+2z2b2nyKfSBWEsrtX1LIcWvjI88OC06maq7G6i8tbzMfD5N1lHW2JwTjamfavvALwEYpJVttZu1r2w==
-  dependencies:
-    ethers "^5.6.9"
-
-"@lifi/types@^1.7.0":
-  version "1.24.0"
-  resolved "https://registry.yarnpkg.com/@lifi/types/-/types-1.24.0.tgz#3098d260c118ccb530227b2ae387cb602dd7aaf6"
-  integrity sha512-QQpyLovOVrfl2BFCOGP3gepZeXgn1IOWq7R5N7+zjKIC1UjNJ6zyH2Tss+K2eTlGMJqIT0DW5Pxef7exdo9cSw==
+"@lifi/types@9.1.0", "@lifi/types@^9.0.3":
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/@lifi/types/-/types-9.1.0.tgz#43e2e6ed824dac6c068eaeb844e99e7313c7d705"
+  integrity sha512-AQuUjqbRMgsjY/Ag+sw/CcWi0hEdR4fVZhLVYH7XQjGbJ8NNZWtYTwyYHIes03qAjdAIQNbKQ4gRjo41VBN8LA==
   dependencies:
     ethers "^5.7.2"
 
@@ -8752,7 +8744,7 @@ bigint-crypto-utils@^3.0.23:
   resolved "https://registry.yarnpkg.com/bigint-crypto-utils/-/bigint-crypto-utils-3.3.0.tgz#72ad00ae91062cf07f2b1def9594006c279c1d77"
   integrity sha512-jOTSb+drvEDxEq6OuUybOAv/xxoh3cuYRUIPyu8sSHQNKM303UQ2R1DAo45o1AkcIXw6fzbaFI1+xGGdaXs2lg==
 
-bignumber.js@*, bignumber.js@9.x, bignumber.js@^9.0.0, bignumber.js@^9.1.0, bignumber.js@^9.1.1:
+bignumber.js@*, bignumber.js@9.x, bignumber.js@^9.0.0, bignumber.js@^9.1.1, bignumber.js@^9.1.2:
   version "9.1.2"
   resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-9.1.2.tgz#b7c4242259c008903b13707983b5f4bbd31eda0c"
   integrity sha512-2/mKyZH9K85bzOEfhXDBFZTGd1CTs+5IHpeFQo9luiBG7hghdC851Pj2WAhb6E3R6b9tZj/XKhbg4fum+Kepug==
@@ -11828,7 +11820,7 @@ ethers@^4.0.40:
     uuid "2.0.1"
     xmlhttprequest "1.8.0"
 
-ethers@^5.0.15, ethers@^5.3.1, ethers@^5.4.6, ethers@^5.4.7, ethers@^5.5.3, ethers@^5.6.1, ethers@^5.6.9, ethers@^5.7.0, ethers@^5.7.1, ethers@^5.7.2:
+ethers@^5.0.15, ethers@^5.3.1, ethers@^5.4.6, ethers@^5.4.7, ethers@^5.5.3, ethers@^5.6.1, ethers@^5.7.0, ethers@^5.7.1, ethers@^5.7.2:
   version "5.7.2"
   resolved "https://registry.yarnpkg.com/ethers/-/ethers-5.7.2.tgz#3a7deeabbb8c030d4126b24f84e525466145872e"
   integrity sha512-wswUsmWo1aOK8rR7DIKiWSw9DbLWe6x98Jrn8wcTflTVvaXhAMaB5zGAXy0GYQEQp9iO1iSHWVyARQm11zUtyg==

@@ -3,6 +3,7 @@ import { Squid, RouteData as SquidRouteData } from '@0xsquid/sdk';
 import { JsonRpcSigner } from '@ethersproject/providers';
 import { parseUnits } from '@ethersproject/units';
 import {
+  LIFI_API_KEY,
   RANGO_API_KEY,
   SQUID_API,
   getSigner,
@@ -11,7 +12,7 @@ import {
   useTranslation,
 } from '@honeycomb-finance/shared';
 import { useCurrencyBalances } from '@honeycomb-finance/state-hooks';
-import LIFI, { Route as LifiRoute } from '@lifi/sdk';
+import { LiFi, Route as LifiRoute } from '@lifi/sdk';
 import {
   BRIDGES,
   Bridge,
@@ -332,7 +333,10 @@ export function useBridgeSwapActionHandlers(): {
 
   const sendTransactionLifi = async (library: any, selectedRoute?: Route, account?: string | null) => {
     changeTransactionLoaderStatus({ transactionLoaderStatus: true, transactionStatus: undefined });
-    const lifi = new LIFI();
+    const lifi = new LiFi({
+      integrator: 'pangolin',
+      apiKey: LIFI_API_KEY,
+    });
 
     const signer: JsonRpcSigner = await getSigner(library, account || '');
     // executing a route

@@ -1,6 +1,6 @@
 import { ChainData, Squid } from '@0xsquid/sdk';
-import { RANGO_API_KEY, SQUID_API } from '@honeycomb-finance/shared';
-import LIFI from '@lifi/sdk';
+import { LIFI_API_KEY, RANGO_API_KEY, SQUID_API } from '@honeycomb-finance/shared';
+import { LiFi } from '@lifi/sdk';
 import { BridgeChain, LIFI as LIFIBridge, NetworkType, RANGO, SQUID } from '@pangolindex/sdk';
 import {
   BlockchainMeta as RangoChainMeta,
@@ -14,7 +14,10 @@ import { useQuery } from 'react-query';
 
 export function useLiFiSwapChains() {
   return useQuery(['lifiChains'], async () => {
-    const lifi = new LIFI();
+    const lifi = new LiFi({
+      integrator: 'pangolin',
+      apiKey: LIFI_API_KEY,
+    });
     const chains = await lifi.getChains();
     const formattedChains: BridgeChain[] = chains.map((chain) => {
       return {
