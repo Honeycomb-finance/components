@@ -51,7 +51,7 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-explicit-any': 'off',
     'import/named': 'off',
-    '@typescript-eslint/no-non-null-assertion': "off",
+    '@typescript-eslint/no-non-null-assertion': 'off',
     // 'no-nested-ternary': 'warn',
     '@typescript-eslint/no-unused-vars': ['error', { varsIgnorePattern: '[Rr]eact' }],
     '@typescript-eslint/no-empty-function': 'off',
