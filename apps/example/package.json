@@ -1,0 +1,49 @@
+{
+  "name": "example-app",
+  "private": true,
+  "version": "0.0.1-rc.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "dev:app": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint --fix ./src --ext .js,.jsx,.ts,.tsx",
+    "tsc": "tsc",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ethersproject/providers": "^5.7.2",
+    "@honeycomb-finance/airdrop": "0.0.1-rc.0",
+    "@honeycomb-finance/bridge": "0.1.0-rc.0",
+    "@honeycomb-finance/core": "0.0.1-rc.0",
+    "@honeycomb-finance/elixir": "0.0.1-rc.0",
+    "@honeycomb-finance/governance": "0.1.0-rc.0",
+    "@honeycomb-finance/honeycomb-provider": "0.0.1-rc.0",
+    "@honeycomb-finance/pools": "0.0.1-rc.0",
+    "@honeycomb-finance/portfolio": "0.0.1-rc.0",
+    "@honeycomb-finance/sar": "0.0.1-rc.0",
+    "@honeycomb-finance/shared": "0.1.0-rc.0",
+    "@honeycomb-finance/swap": "0.0.1-rc.0",
+    "@honeycomb-finance/wallet-connectors": "0.0.1-rc.0",
+    "@honeycomb-finance/walletmodal": "0.0.1-rc.0",
+    "@types/react-router-dom": "^5.3.3",
+    "@web3-react/core": "6.0.9",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.6.1"
+  },
+  "devDependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "node-stdlib-browser": "1.2.0",
+    "rollup-plugin-node-polyfills": "0.2.1",
+    "tsconfig": "*",
+    "typescript": "4.5.2",
+    "vite": "^4.1.4",
+    "vite-plugin-node-stdlib-browser": "0.1.1",
+    "vite-plugin-svgr": "^2.4.0"
+  }
+}
