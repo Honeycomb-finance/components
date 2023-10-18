@@ -1,5 +1,11 @@
 # @honeycomb-finance/governance
 
+## 0.1.0-rc.1
+
+### Patch Changes
+
+- [#23](https://github.com/Honeycomb-finance/components/pull/23) [`be8300d9`](https://github.com/Honeycomb-finance/components/commit/be8300d9b49e016df73aaa83677236ebdae348dc) Thanks [@SarjuHansaliya](https://github.com/SarjuHansaliya)! - show delegate vote button only for standard governance type
+
 ## 0.1.0-rc.0
 
 ### Minor Changes
