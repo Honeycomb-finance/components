@@ -16,7 +16,7 @@ import {
   useToggleDelegateModal,
   useTokenBalance,
 } from '@honeycomb-finance/state-hooks';
-import { JSBI, TokenAmount } from '@pangolindex/sdk';
+import { GovernanceType, JSBI, TokenAmount } from '@pangolindex/sdk';
 import React from 'react';
 import { useGetProposalsViaSubgraph } from 'src/hooks/common';
 import { useUserDelegate, useUserVotes } from 'src/hooks/evm';
@@ -59,7 +59,10 @@ const GovernanceList = () => {
 
   // show delegation option if they have have a balance, but have not delegated
   const showUnlockVoting = Boolean(
-    pngBalance && JSBI.notEqual(pngBalance.raw, JSBI.BigInt(0)) && userDelegatee === ZERO_ADDRESS,
+    pngBalance &&
+      JSBI.notEqual(pngBalance.raw, JSBI.BigInt(0)) &&
+      userDelegatee === ZERO_ADDRESS &&
+      chain.contracts?.governor?.type === GovernanceType.STANDARD,
   );
 
   function getAddress() {
