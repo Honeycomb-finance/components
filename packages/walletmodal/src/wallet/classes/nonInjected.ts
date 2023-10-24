@@ -1,4 +1,11 @@
-import { HashConnector, SUPPORTED_XDEFI_CHAINS, hashConnect, near, xDefi, freighter } from '@honeycomb-finance/wallet-connectors';
+import {
+  HashConnector,
+  SUPPORTED_XDEFI_CHAINS,
+  hashConnect,
+  near,
+  xDefi,
+  freighter,
+} from '@honeycomb-finance/wallet-connectors';
 import { ChainId, NetworkType } from '@pangolindex/sdk';
 import hashIcon from 'src/assets/images/hashConnect.png';
 import freighterIcon from 'src/assets/images/freighter.jpg';
@@ -79,8 +86,8 @@ export class HashPackWallet extends Wallet {
   }
 }
 
-export class FreighterWallet extends Wallet{
-  constructor(){
+export class FreighterWallet extends Wallet {
+  constructor() {
     super({
       connector: freighter,
       name: 'Freighter Wallet',

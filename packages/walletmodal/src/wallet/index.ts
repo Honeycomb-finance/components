@@ -68,7 +68,7 @@ export const SUPPORTED_CHAINS = Object.values(CHAINS).filter(
 
 SUPPORTED_CHAINS.push(SOROBAN, SOROBAN_TESTNET);
 
-export { WalletConnectWallet as HoneycombWalletConnectWallet };
+export { InjectedWallet as HoneycombInjectedWallet, WalletConnectWallet as HoneycombWalletConnectWallet };
 
 export {
   Wallet as HoneycombWallet,

@@ -1,4 +1,5 @@
 import { JsonRpcProvider } from '@ethersproject/providers';
+import { ChainId } from '@pangolindex/sdk';
 import { getNetwork, getPublicKey, isAllowed, isConnected, setAllowed, signTransaction } from '@stellar/freighter-api';
 import { AbstractConnector } from '@web3-react/abstract-connector';
 import { AbstractConnectorArguments, ConnectorUpdate } from '@web3-react/types';
@@ -16,7 +17,7 @@ interface TransactionResponse{
 
 export class FreighterConnector extends AbstractConnector {
   private provider!: JsonRpcProvider;
-  private chainId!: 7566437 | 7566438;
+  private chainId!: ChainId.SOROBAN | ChainId.SOROBAN_TESTNET;
   private network!: string;
   private publicKey!: string;
   readonly url = `https://rpc-futurenet.stellar.org`; // This rpc not accepts EVM methods
@@ -32,7 +33,7 @@ export class FreighterConnector extends AbstractConnector {
     super(kwargs);
     this.normalizeChainId = kwargs.normalizeChainId;
     this.normalizeAccount = kwargs.normalizeAccount;
-    this.chainId = 7566437;
+    this.chainId = ChainId.SOROBAN;
   }
 
   public async activate(): Promise<ConnectorUpdate> {
@@ -60,8 +61,7 @@ export class FreighterConnector extends AbstractConnector {
 
     const network = await getNetwork();
 
-    // TODO: this is random numbers, we need to decide the numbers
-    this.chainId = network === 'PUBLIC' ? 7566437 : 7566438;
+    this.chainId = network === 'PUBLIC' ? ChainId.SOROBAN : ChainId.SOROBAN_TESTNET;
     this.network = network;
     this.publicKey = publickey;
 
