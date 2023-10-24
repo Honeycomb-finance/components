@@ -6,6 +6,7 @@ import {
   useElixirPositionsFromTokenIds,
   useGetUserPositions,
 } from './evm';
+import { useDummyHook } from '@honeycomb-finance/shared';
 
 export type UseGetUserPositionsHookType = {
   [chainId in ChainId]: typeof useGetUserPositions | typeof useDummyGetUserPositions;
@@ -41,6 +42,8 @@ export const useGetUserPositionsHook: UseGetUserPositionsHookType = {
   [ChainId.MOONBEAM]: useDummyGetUserPositions,
   [ChainId.OP]: useDummyGetUserPositions,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useGetUserPositions,
+  [ChainId.SOROBAN]: useDummyGetUserPositions,
+  [ChainId.SOROBAN_TESTNET]: useDummyGetUserPositions,
 };
 
 export type UseElixirPositionsFromTokenIdsHookType = {
@@ -77,10 +80,12 @@ export const useElixirPositionsFromTokenIdsHook: UseElixirPositionsFromTokenIdsH
   [ChainId.MOONBEAM]: useDummyElixirPositionsFromTokenIds,
   [ChainId.OP]: useDummyElixirPositionsFromTokenIds,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useElixirPositionsFromTokenIds,
+  [ChainId.SOROBAN]: useDummyElixirPositionsFromTokenIds,
+  [ChainId.SOROBAN_TESTNET]: useDummyElixirPositionsFromTokenIds,
 };
 
 export type UseElixirAddLiquidityHookType = {
-  [chainId in ChainId]: typeof useElixirAddLiquidity;
+  [chainId in ChainId]: typeof useElixirAddLiquidity | typeof useDummyHook;
 };
 
 export const useElixirAddLiquidityHook: UseElixirAddLiquidityHookType = {
@@ -113,10 +118,12 @@ export const useElixirAddLiquidityHook: UseElixirAddLiquidityHookType = {
   [ChainId.MOONBEAM]: useElixirAddLiquidity,
   [ChainId.OP]: useElixirAddLiquidity,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useElixirAddLiquidity,
+  [ChainId.SOROBAN]: useDummyHook,
+  [ChainId.SOROBAN_TESTNET]: useDummyHook,
 };
 
 export type UseElixirCollectEarnedFeesHookType = {
-  [chainId in ChainId]: typeof useElixirCollectEarnedFees;
+  [chainId in ChainId]: typeof useElixirCollectEarnedFees | typeof useDummyHook;
 };
 
 export const useElixirCollectEarnedFeesHook: UseElixirCollectEarnedFeesHookType = {
@@ -149,4 +156,6 @@ export const useElixirCollectEarnedFeesHook: UseElixirCollectEarnedFeesHookType 
   [ChainId.MOONBEAM]: useElixirCollectEarnedFees,
   [ChainId.OP]: useElixirCollectEarnedFees,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useElixirCollectEarnedFees,
+  [ChainId.SOROBAN]: useDummyHook,
+  [ChainId.SOROBAN_TESTNET]: useDummyHook,
 };

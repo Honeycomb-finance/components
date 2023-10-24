@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import { useLastSubgraphBlock } from 'src/graphql';
 import { useChainId } from 'src/provider';
+import { useDummyHook } from './useDummyHook';
 
 export type RPCResponse<T> = {
   jsonrpc: string;
@@ -75,7 +76,7 @@ export function useLastBlock() {
 }
 
 export type useLastBlockType = {
-  [chainId in ChainId]: typeof useLastBlock | typeof useLastSubgraphBlock;
+  [chainId in ChainId]: typeof useLastBlock | typeof useLastSubgraphBlock | typeof useDummyHook;
 };
 
 export const useLastBlockHook: useLastBlockType = {
@@ -108,6 +109,8 @@ export const useLastBlockHook: useLastBlockType = {
   [ChainId.MOONBEAM]: useLastBlock,
   [ChainId.OP]: useLastBlock,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useLastBlock,
+  [ChainId.SOROBAN]: useDummyHook,
+  [ChainId.SOROBAN_TESTNET]: useDummyHook,
 };
 
 /**
@@ -129,7 +132,7 @@ export function useLastBlockTimestampViaSubgraph() {
 }
 
 export type useLastBlockTimestampType = {
-  [chainId in ChainId]: typeof useLastBlockTimestamp | typeof useLastBlockTimestampViaSubgraph;
+  [chainId in ChainId]: typeof useLastBlockTimestamp | typeof useLastBlockTimestampViaSubgraph | typeof useDummyHook;
 };
 
 export const useLastBlockTimestampHook: useLastBlockTimestampType = {
@@ -162,4 +165,6 @@ export const useLastBlockTimestampHook: useLastBlockTimestampType = {
   [ChainId.MOONBEAM]: useLastBlockTimestamp,
   [ChainId.OP]: useLastBlockTimestamp,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useLastBlockTimestamp,
+  [ChainId.SOROBAN]: useDummyHook,
+  [ChainId.SOROBAN_TESTNET]: useDummyHook,
 };

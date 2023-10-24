@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es5", "dom"],
+    "jsx": "react-jsx",
+    "types": ["cypress", "node", "cypress-wait-until"]
+  },
+  "include": ["**/*.ts", "**/*.tsx"]
+}

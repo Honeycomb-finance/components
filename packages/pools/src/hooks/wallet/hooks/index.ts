@@ -19,7 +19,11 @@ import {
 } from './near';
 
 export type UsePairBalanceHookType = {
-  [chainId in ChainId]: typeof useEVMPairBalance | typeof useHederaPairBalance | typeof useNearPairBalance;
+  [chainId in ChainId]:
+    | typeof useEVMPairBalance
+    | typeof useHederaPairBalance
+    | typeof useNearPairBalance
+    | typeof useDummyHook;
 };
 
 export const usePairBalanceHook: UsePairBalanceHookType = {
@@ -53,10 +57,16 @@ export const usePairBalanceHook: UsePairBalanceHookType = {
   [ChainId.MOONBEAM]: useEVMPairBalance,
   [ChainId.OP]: useEVMPairBalance,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useEVMPairBalance,
+  [ChainId.SOROBAN]: useDummyHook,
+  [ChainId.SOROBAN_TESTNET]: useDummyHook,
 };
 
 export type UseAddLiquidityHookType = {
-  [chainId in ChainId]: typeof useAddLiquidity | typeof useNearAddLiquidity | typeof useHederaAddLiquidity;
+  [chainId in ChainId]:
+    | typeof useAddLiquidity
+    | typeof useNearAddLiquidity
+    | typeof useHederaAddLiquidity
+    | typeof useDummyHook;
 };
 
 export const useAddLiquidityHook: UseAddLiquidityHookType = {
@@ -90,10 +100,16 @@ export const useAddLiquidityHook: UseAddLiquidityHookType = {
   [ChainId.MOONBEAM]: useAddLiquidity,
   [ChainId.OP]: useAddLiquidity,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useAddLiquidity,
+  [ChainId.SOROBAN]: useDummyHook,
+  [ChainId.SOROBAN_TESTNET]: useDummyHook,
 };
 
 export type UseRemoveLiquidityHookType = {
-  [chainId in ChainId]: typeof useRemoveLiquidity | typeof useNearRemoveLiquidity | typeof useHederaRemoveLiquidity;
+  [chainId in ChainId]:
+    | typeof useRemoveLiquidity
+    | typeof useNearRemoveLiquidity
+    | typeof useHederaRemoveLiquidity
+    | typeof useDummyHook;
 };
 
 export const useRemoveLiquidityHook: UseRemoveLiquidityHookType = {
@@ -127,6 +143,8 @@ export const useRemoveLiquidityHook: UseRemoveLiquidityHookType = {
   [ChainId.MOONBEAM]: useRemoveLiquidity,
   [ChainId.OP]: useRemoveLiquidity,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useRemoveLiquidity,
+  [ChainId.SOROBAN]: useDummyHook,
+  [ChainId.SOROBAN_TESTNET]: useDummyHook,
 };
 
 export type UseGetUserLPHookType = {
@@ -168,6 +186,8 @@ export const useGetUserLPHook: UseGetUserLPHookType = {
   [ChainId.MOONBEAM]: useGetUserLP,
   [ChainId.OP]: useGetUserLP,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useGetUserLP,
+  [ChainId.SOROBAN]: useDummyGetUserLP,
+  [ChainId.SOROBAN_TESTNET]: useDummyGetUserLP,
 };
 
 export type UseCreatePairHookType = {
@@ -212,6 +232,8 @@ export const useCreatePairHook: UseCreatePairHookType = {
   [ChainId.MOONBEAM]: useDummyHook,
   [ChainId.OP]: useDummyHook,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useDummyCreatePair,
+  [ChainId.SOROBAN]: useDummyCreatePair,
+  [ChainId.SOROBAN_TESTNET]: useDummyCreatePair,
 };
 
 export { useGetUserLP };

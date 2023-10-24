@@ -62,3 +62,21 @@ export function useAllTokenBalances(): { [tokenAddress: string]: TokenAmount | u
   const [balances] = useTokenBalances_(account ?? undefined, allTokensArray);
   return balances ?? {};
 }
+
+export function useDummyTokensBalances(
+  _address?: string,
+  _tokens?: (Token | undefined)[],
+): [{ [tokenAddress: string]: TokenAmount | undefined }, boolean] {
+  return [{}, false];
+}
+
+export function useDummyETHBalance(
+  _chainId: ChainId,
+  _uncheckedAddresses?: (string | undefined)[],
+): { [address: string]: CurrencyAmount | undefined } {
+  return {};
+}
+
+export function useDummyTokenBalance(_account?: string, _token?: Token): TokenAmount | undefined {
+  return undefined;
+}

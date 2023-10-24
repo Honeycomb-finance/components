@@ -62,6 +62,8 @@ export const usePangoChefInfosHook: UsePangoChefInfosHookType = {
   [ChainId.EVMOS_TESTNET]: usePangoChefInfos,
   [ChainId.EVMOS_MAINNET]: useDummyPangoChefInfos,
   [ChainId.SKALE_BELLATRIX_TESTNET]: usePangoChefInfos,
+  [ChainId.SOROBAN]: useDummyPangoChefInfos,
+  [ChainId.SOROBAN_TESTNET]: useDummyPangoChefInfos,
 };
 
 export type UsePangoChefStakeCallbackHookType = {
@@ -101,6 +103,8 @@ export const usePangoChefStakeCallbackHook: UsePangoChefStakeCallbackHookType = 
   [ChainId.EVMOS_TESTNET]: useEVMPangoChefStakeCallback,
   [ChainId.EVMOS_MAINNET]: useDummyPangoChefCallback,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useEVMPangoChefStakeCallback,
+  [ChainId.SOROBAN]: useDummyPangoChefCallback,
+  [ChainId.SOROBAN_TESTNET]: useDummyPangoChefCallback,
 };
 
 export type UsePangoChefClaimRewardCallbackHookType = {
@@ -140,6 +144,8 @@ export const usePangoChefClaimRewardCallbackHook: UsePangoChefClaimRewardCallbac
   [ChainId.EVMOS_TESTNET]: useEVMPangoChefClaimRewardCallback,
   [ChainId.EVMOS_MAINNET]: useDummyPangoChefCallback,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useEVMPangoChefClaimRewardCallback,
+  [ChainId.SOROBAN]: useDummyPangoChefCallback,
+  [ChainId.SOROBAN_TESTNET]: useDummyPangoChefCallback,
 };
 
 export type UsePangoChefWithdrawCallbackHookType = {
@@ -179,6 +185,8 @@ export const usePangoChefWithdrawCallbackHook: UsePangoChefWithdrawCallbackHookT
   [ChainId.EVMOS_TESTNET]: useEVMPangoChefWithdrawCallback,
   [ChainId.EVMOS_MAINNET]: useDummyPangoChefCallback,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useEVMPangoChefWithdrawCallback,
+  [ChainId.SOROBAN]: useDummyPangoChefCallback,
+  [ChainId.SOROBAN_TESTNET]: useDummyPangoChefCallback,
 };
 
 export type UsePangoChefCompoundCallbackHookType = {
@@ -218,6 +226,8 @@ export const usePangoChefCompoundCallbackHook: UsePangoChefCompoundCallbackHookT
   [ChainId.EVMOS_TESTNET]: useEVMPangoChefCompoundCallback,
   [ChainId.EVMOS_MAINNET]: useDummyPangoChefCallback,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useEVMPangoChefCompoundCallback,
+  [ChainId.SOROBAN]: useDummyPangoChefCallback,
+  [ChainId.SOROBAN_TESTNET]: useDummyPangoChefCallback,
 };
 
 export type UseGetLockingPoolsForPoolIdHookType = {
@@ -257,6 +267,8 @@ export const useGetLockingPoolsForPoolIdHook: UseGetLockingPoolsForPoolIdHookTyp
   [ChainId.EVMOS_TESTNET]: useDummyIsLockingPoolZero,
   [ChainId.EVMOS_MAINNET]: useDummyIsLockingPoolZero,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useDummyIsLockingPoolZero,
+  [ChainId.SOROBAN]: useDummyIsLockingPoolZero,
+  [ChainId.SOROBAN_TESTNET]: useDummyIsLockingPoolZero,
 };
 
 /**

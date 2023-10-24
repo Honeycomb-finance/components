@@ -88,6 +88,8 @@ const WAVAX_AND_PNG_ONLY: ChainTokenList = {
   [ChainId.EVMOS_TESTNET]: [WAVAX[ChainId.EVMOS_TESTNET], PNG[ChainId.EVMOS_TESTNET]],
   [ChainId.EVMOS_MAINNET]: [WAVAX[ChainId.EVMOS_MAINNET]],
   [ChainId.SKALE_BELLATRIX_TESTNET]: [WAVAX[ChainId.SKALE_BELLATRIX_TESTNET], PNG[ChainId.SKALE_BELLATRIX_TESTNET]],
+  [ChainId.SOROBAN]: [],
+  [ChainId.SOROBAN_TESTNET]: [],
 };
 
 // used to construct the list of all pairs we consider by default in the frontend

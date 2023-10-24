@@ -1,13 +1,35 @@
-import { ChainId } from '@pangolindex/sdk';
+import { ChainId, CurrencyAmount, ElixirTrade, Trade } from '@pangolindex/sdk';
 import { useApproveCallback, useApproveCallbackFromTrade } from './evm';
 import { useApproveCallbackFromHederaTrade, useHederaApproveCallback } from './hedera';
 import { useApproveCallbackFromNearTrade, useNearApproveCallback } from './near';
+import { useDummyHook } from '../multiChainsHooks';
+import { ApprovalState } from './constant';
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function useDummyApproveCallback(
+  _chainId: ChainId,
+  _amountToApprove?: CurrencyAmount,
+  _spender?: string,
+): [ApprovalState, () => Promise<void>] {
+  const callback = async () => {};
+  return [ApprovalState.UNKNOWN, callback];
+}
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function useDummyApproveCallbackFromTrade(
+  _chainId: ChainId,
+  _trade?: Trade | ElixirTrade,
+  _allowedSlippage = 0,
+): [ApprovalState, () => Promise<void>] {
+  const callback = async () => {};
+  return [ApprovalState.UNKNOWN, callback];
+}
 
 export type UseApproveCallbackFromTradeHookType = {
   [chainId in ChainId]:
     | typeof useApproveCallbackFromTrade
     | typeof useApproveCallbackFromNearTrade
-    | typeof useApproveCallbackFromHederaTrade;
+    | typeof useApproveCallbackFromHederaTrade
+    | typeof useDummyApproveCallbackFromTrade;
 };
 
 export const useApproveCallbackFromTradeHook: UseApproveCallbackFromTradeHookType = {
@@ -41,10 +63,16 @@ export const useApproveCallbackFromTradeHook: UseApproveCallbackFromTradeHookTyp
   [ChainId.MOONBEAM]: useApproveCallbackFromTrade,
   [ChainId.OP]: useApproveCallbackFromTrade,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useApproveCallbackFromTrade,
+  [ChainId.SOROBAN]: useDummyApproveCallbackFromTrade,
+  [ChainId.SOROBAN_TESTNET]: useDummyApproveCallbackFromTrade,
 };
 
 export type UseApproveCallbackHookType = {
-  [chainId in ChainId]: typeof useApproveCallback | typeof useNearApproveCallback | typeof useHederaApproveCallback;
+  [chainId in ChainId]:
+    | typeof useApproveCallback
+    | typeof useNearApproveCallback
+    | typeof useHederaApproveCallback
+    | typeof useDummyHook;
 };
 
 export const useApproveCallbackHook: UseApproveCallbackHookType = {
@@ -78,4 +106,6 @@ export const useApproveCallbackHook: UseApproveCallbackHookType = {
   [ChainId.MOONBEAM]: useApproveCallback,
   [ChainId.OP]: useApproveCallback,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useApproveCallback,
+  [ChainId.SOROBAN]: useDummyApproveCallback,
+  [ChainId.SOROBAN_TESTNET]: useDummyApproveCallback,
 };

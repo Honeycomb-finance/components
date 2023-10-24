@@ -9,7 +9,7 @@ import {
   usePngSymbol,
   useTranslation,
 } from '@honeycomb-finance/shared';
-import { useTokenBalance } from '@honeycomb-finance/state-hooks';
+import { useTokenBalanceHook } from '@honeycomb-finance/state-hooks';
 import { isAddress } from 'ethers/lib/utils';
 import React, { useContext, useState } from 'react';
 import { ThemeContext } from 'styled-components';
@@ -45,6 +45,7 @@ export default function DelegateModal({ isOpen, onDismiss, title }: VoteModalPro
   const { address: parsedAddress } = useENS(activeDelegate);
 
   // get the number of votes available to delegate
+  const useTokenBalance = useTokenBalanceHook[chainId];
   const pngBalance = useTokenBalance(account ?? undefined, chainId ? PNG[chainId] : undefined);
 
   const delegateCallback = useDelegateCallback();

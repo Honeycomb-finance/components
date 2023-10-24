@@ -44,4 +44,6 @@ export const useFeeTierDistributionHook: UseFeeTierDistributionHookType = {
   [ChainId.MOONBEAM]: useDummyFeeTierDistribution,
   [ChainId.OP]: useDummyFeeTierDistribution,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useFeeTierDistribution,
+  [ChainId.SOROBAN]: useDummyFeeTierDistribution,
+  [ChainId.SOROBAN_TESTNET]: useDummyFeeTierDistribution,
 };

@@ -4,6 +4,7 @@ import { TalismanConnector } from '@talismn/web3react-v6-connector';
 import { AvalancheCoreConnector } from './AvalancheCoreConnector';
 import { BitKeepConnector } from './BitKeepConnector';
 import { DefiConnector } from './DefiConnector';
+import { FreighterConnector } from './FreighterConnector';
 import { HashConnectEvents, HashConnector, hashconnectEvent } from './HashConnector';
 import { NearConnector } from './NearConnector';
 import {
@@ -76,7 +77,21 @@ export const avalancheCore = new AvalancheCoreConnector({
   supportedChainIds: SUPPORTED_EVM_CHAINS_ID,
 });
 
-export { NearConnector, HashConnector, HashConnectEvents, hashconnectEvent, WalletConnectConnector, NetworkConnector };
+export const freighter = new FreighterConnector({
+  supportedChainIds: [ChainId.SOROBAN, ChainId.SOROBAN_TESTNET],
+  normalizeAccount: false,
+  normalizeChainId: false,
+});
+
+export {
+  NearConnector,
+  HashConnector,
+  HashConnectEvents,
+  hashconnectEvent,
+  WalletConnectConnector,
+  NetworkConnector,
+  FreighterConnector,
+};
 export { UserRejectedRequestError, NoEthereumProviderError };
 export type { WalletConnectConnectorArguments, NearTransaction, NearFunctionCallOptions, NearTokenMetadata };
 

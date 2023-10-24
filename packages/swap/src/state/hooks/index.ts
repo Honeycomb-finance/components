@@ -46,6 +46,8 @@ export const useGelatoLimitOrdersListHook: UseGelatoLimitOrdersListHookType = {
   [ChainId.MOONBEAM]: useDummyGelatoLimitOrdersList,
   [ChainId.OP]: useDummyGelatoLimitOrdersList,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useDummyGelatoLimitOrdersList,
+  [ChainId.SOROBAN]: useDummyGelatoLimitOrdersList,
+  [ChainId.SOROBAN_TESTNET]: useDummyGelatoLimitOrdersList,
 };
 
 const useDummyGelatoLimitOrders = () => ({
@@ -132,4 +134,6 @@ export const useGelatoLimitOrdersHook: useGelatoLimitiOrdersHookType = {
   [ChainId.MOONBEAM]: useGelatoLimitOrders,
   [ChainId.OP]: useGelatoLimitOrders,
   [ChainId.SKALE_BELLATRIX_TESTNET]: useDummyGelatoLimitOrders,
+  [ChainId.SOROBAN]: useDummyGelatoLimitOrders,
+  [ChainId.SOROBAN_TESTNET]: useDummyGelatoLimitOrders,
 };
