@@ -565,7 +565,7 @@ export const useGetMinichefStakingInfosViaSubgraph = (): MinichefStakingInfo[] =
       const isPeriodFinished =
         periodFinishMs === 0 ? false : periodFinishMs < Date.now() || poolAllocPointAmount.equalTo('0');
 
-      const minichefTvl = parseUnits(farm?.tvl?.toString());
+      const minichefTvl = parseUnits(farm?.balance?.toString());
       const totalSupplyReserve0 = parseUnits(farm?.pair?.reserve0.toString());
       const totalSupply = parseUnits(
         farm?.pair?.totalSupply.toString() === '0' ? '1' : farm?.pair?.totalSupply.toString(),

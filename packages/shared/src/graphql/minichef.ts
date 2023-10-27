@@ -10,7 +10,7 @@ export const GET_MINICHEF = gql`
       farms(first: 1000) {
         id
         pid
-        tvl
+        balance
         allocPoint
         rewarderAddress
         chefAddress

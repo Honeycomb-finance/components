@@ -127,7 +127,7 @@ export interface FarmingPositions {
 export interface MinichefFarm {
   id: string;
   pid: string;
-  tvl: number;
+  balance: number;
   allocPoint: number;
   rewarderAddress: string;
   chefAddress: string;
