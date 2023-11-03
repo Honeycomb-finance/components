@@ -7,6 +7,7 @@ import {
   useGetHederaUserLP,
   useHederaAddLiquidity,
   useHederaCreatePair,
+  useHederaPGLToken,
   useHederaPairBalance,
   useHederaRemoveLiquidity,
 } from './hedera';
@@ -214,4 +215,4 @@ export const useCreatePairHook: UseCreatePairHookType = {
   [ChainId.SKALE_BELLATRIX_TESTNET]: useDummyCreatePair,
 };
 
-export { useGetUserLP };
+export { useGetUserLP, useHederaPGLToken };

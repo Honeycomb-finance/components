@@ -1,4 +1,5 @@
 import { Box, Button, Loader, Text, Visible } from '@honeycomb-finance/core';
+import { ElixirVaults } from '@honeycomb-finance/elixirvaults';
 import { BIG_INT_ZERO, useChainId, useDebounce, useTranslation } from '@honeycomb-finance/shared';
 import React, { useCallback, useMemo, useState } from 'react';
 import AddLiquidity from 'src/components/AddLiquidity';
@@ -170,7 +171,10 @@ const Elixir = () => {
             {activeMenu === MenuType.topPools && (
               <PoolList setMenu={handleSetMenu} activeMenu={activeMenu} menuItems={menuItems} />
             )}
-            {activeMenu !== MenuType.topPools && (
+            {activeMenu === MenuType.elixirVaults && (
+              <ElixirVaults setMenu={handleSetMenu} activeMenu={activeMenu} menuItems={menuItems} />
+            )}
+            {activeMenu !== MenuType.topPools && activeMenu !== MenuType.elixirVaults && (
               <>
                 {positionsLoading ? (
                   <Loader height={'auto'} size={100} />

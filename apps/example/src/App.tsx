@@ -5,6 +5,7 @@ import Layout from './layout';
 import AirdropUI from './pages/Airdrop';
 import BridgeUI from './pages/Bridge';
 import ElixirUI from './pages/Elixir';
+import ElixirVaultsUI from './pages/ElixirVault';
 import Governance from './pages/Governance';
 import GovernanceDetailV2 from './pages/GovernanceDetail';
 import Pool from './pages/Pool';
@@ -53,6 +54,7 @@ export default function App() {
             <Route path="bridge" element={<BridgeUI />} />
             <Route path="airdrop" element={<AirdropUI />} />
             <Route path="elixir" element={<ElixirUI />} />
+            <Route path="elixirVaults" element={<ElixirVaultsUI />} />
             <Route path="vote" element={<Governance />} />
             <Route path="vote/:id" element={<GovernanceDetailV2 />} />
             <Route path="*" element={<Swap />} />
