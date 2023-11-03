@@ -75,7 +75,7 @@ const Remove = ({ vault }: WithdrawProps) => {
 
   return (
     <RemoveWrapper>
-      {showRemoveTab && (
+      {/* TODO: {showRemoveTab && (
         <Box mt="5px" width="100%" mb="5px">
           <ToggleButtons
             options={[REMOVE_TYPE.FARM, REMOVE_TYPE.LIQUIDITY]}
@@ -85,7 +85,7 @@ const Remove = ({ vault }: WithdrawProps) => {
             }}
           />
         </Box>
-      )}
+      )} */}
 
       {removeType === REMOVE_TYPE.FARM ? (
         // <RemoveFarm
