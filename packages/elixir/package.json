@@ -1,6 +1,6 @@
 {
   "name": "@honeycomb-finance/elixir",
-  "version": "0.0.0",
+  "version": "0.0.1-rc.0",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
@@ -54,11 +54,11 @@
   },
   "dependencies": {
     "@ethersproject/contracts": "5.6.2",
-    "@honeycomb-finance/core": "*",
-    "@honeycomb-finance/token-drawer": "*",
-    "@honeycomb-finance/shared": "*",
-    "@honeycomb-finance/state-hooks": "*",
     "@honeycomb-finance/elixirvaults": "*",
+    "@honeycomb-finance/core": "0.0.1-rc.0",
+    "@honeycomb-finance/token-drawer": "0.0.1-rc.0",
+    "@honeycomb-finance/shared": "0.1.0-rc.0",
+    "@honeycomb-finance/state-hooks": "0.0.1-rc.0",
     "@web3-react/core": "6.0.9",
     "d3": "7.6.1",
     "ethers": "5.6.4",

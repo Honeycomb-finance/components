@@ -1,28 +1,32 @@
 /* eslint-disable max-lines */
 import { useChainId } from '@honeycomb-finance/shared';
 import { ChainId } from '@pangolindex/sdk';
-import { useSarNftAllProposalData } from './common';
+import { useGetProposalsViaSubgraph, useSarNftAllProposalData } from './common';
 import { useDummyAllProposalData, useDummyVoteCallback } from './dummy';
 import { useAllProposalData, useVoteCallback } from './evm';
 import { useHederaVoteCallback } from './hedera';
 import { ProposalData } from './types';
 
 export type UseAllProposalDataHookType = {
-  [chainId in ChainId]: typeof useSarNftAllProposalData | typeof useAllProposalData | typeof useDummyAllProposalData;
+  [chainId in ChainId]:
+    | typeof useSarNftAllProposalData
+    | typeof useAllProposalData
+    | typeof useGetProposalsViaSubgraph
+    | typeof useDummyAllProposalData;
 };
 
 export const useAllProposalDataHook: UseAllProposalDataHookType = {
   [ChainId.FUJI]: useDummyAllProposalData,
   [ChainId.AVALANCHE]: useAllProposalData,
   [ChainId.WAGMI]: useDummyAllProposalData,
-  [ChainId.COSTON]: useDummyAllProposalData,
-  [ChainId.SONGBIRD]: useDummyAllProposalData,
-  [ChainId.FLARE_MAINNET]: useDummyAllProposalData,
+  [ChainId.COSTON]: useGetProposalsViaSubgraph,
+  [ChainId.SONGBIRD]: useGetProposalsViaSubgraph,
+  [ChainId.FLARE_MAINNET]: useGetProposalsViaSubgraph,
   [ChainId.HEDERA_TESTNET]: useSarNftAllProposalData,
   [ChainId.HEDERA_MAINNET]: useDummyAllProposalData,
   [ChainId.NEAR_MAINNET]: useDummyAllProposalData,
   [ChainId.NEAR_TESTNET]: useDummyAllProposalData,
-  [ChainId.COSTON2]: useDummyAllProposalData,
+  [ChainId.COSTON2]: useGetProposalsViaSubgraph,
   [ChainId.EVMOS_TESTNET]: useDummyAllProposalData,
   [ChainId.EVMOS_MAINNET]: useDummyAllProposalData,
   // TODO: We need to check following chains

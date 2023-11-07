@@ -1,0 +1,34 @@
+{
+  "mode": "exit",
+  "tag": "rc",
+  "initialVersions": {
+    "example-app": "0.0.1-rc.0",
+    "@honeycomb-finance/airdrop": "0.0.1-rc.0",
+    "@honeycomb-finance/bridge": "0.1.0-rc.0",
+    "@honeycomb-finance/core": "0.0.1-rc.0",
+    "@honeycomb-finance/elixir": "0.0.1-rc.0",
+    "@honeycomb-finance/governance": "0.1.0-rc.0",
+    "@honeycomb-finance/honeycomb-provider": "0.0.1-rc.0",
+    "@honeycomb-finance/pools": "0.0.1-rc.0",
+    "@honeycomb-finance/portfolio": "0.0.1-rc.0",
+    "rollup-plugin-tsc-alias": "0.0.0",
+    "@honeycomb-finance/sar": "0.0.1-rc.0",
+    "@honeycomb-finance/shared": "0.1.0-rc.0",
+    "@honeycomb-finance/state-hooks": "0.0.1-rc.0",
+    "@honeycomb-finance/swap": "0.0.1-rc.0",
+    "@honeycomb-finance/token-drawer": "0.0.1-rc.0",
+    "tsconfig": "0.0.0",
+    "@honeycomb-finance/wallet-connectors": "0.0.1-rc.0",
+    "@honeycomb-finance/walletmodal": "0.0.1-rc.0"
+  },
+  "changesets": [
+    "brown-yaks-share",
+    "curvy-actors-refuse",
+    "good-pumpkins-impress",
+    "hot-meals-count",
+    "olive-fans-scream",
+    "quiet-poems-itch",
+    "slow-cougars-watch",
+    "small-hounds-rule"
+  ]
+}

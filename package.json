@@ -4,6 +4,9 @@
     "apps/*",
     "packages/*"
   ],
+  "engines": {
+    "node": ">=18.x.x <=20.x.x"
+  },
   "scripts": {
     "lint": "turbo run lint --concurrency=20",
     "lint:fix": "turbo run lint:fix --concurrency=20",
