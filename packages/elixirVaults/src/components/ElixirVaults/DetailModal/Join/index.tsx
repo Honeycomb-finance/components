@@ -4,7 +4,7 @@ import { useTranslation } from '@honeycomb-finance/shared';
 import React, { useState } from 'react';
 import { ElixirVault } from 'src/hooks/types';
 import Stake from './Farm';
-import EarnOption, { TradeType } from './Options';
+import { TradeType } from './Options';
 import JoinVault from './Vault';
 
 interface JoinProps {
@@ -13,7 +13,7 @@ interface JoinProps {
 }
 
 const Join = ({ stakingInfo, vault }: JoinProps) => {
-  const [type, setType] = useState(TradeType.Pool as string);
+  const [type] = useState(TradeType.Pool as string);
   const { t } = useTranslation();
 
   return (

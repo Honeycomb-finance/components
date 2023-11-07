@@ -1,4 +1,4 @@
-import { Box, Text, ToggleButtons } from '@honeycomb-finance/core';
+import { Box, Text } from '@honeycomb-finance/core';
 import { DoubleSideStakingInfo } from '@honeycomb-finance/pools';
 import { useChainId, usePangolinWeb3, useTranslation } from '@honeycomb-finance/shared';
 import { useTokenBalance } from '@honeycomb-finance/state-hooks';
@@ -56,6 +56,7 @@ const Remove = ({ vault }: WithdrawProps) => {
           userVaultLiquidity={userVaultLiquidity.toFixed(8)}
           onLoading={(isLoadingOrComplete: boolean) => {
             setShowRemoveTab(!isLoadingOrComplete);
+            console.log(showRemoveTab);
           }}
           onComplete={(percetage) => {
             onComplete(percetage, REMOVE_TYPE.LIQUIDITY);

@@ -6,7 +6,7 @@ import { RemoveDrawerProps } from './types';
 
 const RemoveDrawer: React.FC<RemoveDrawerProps> = (props) => {
   const { t } = useTranslation();
-  const { isOpen, onClose, vault, stakingInfo } = props;
+  const { isOpen, vault, stakingInfo } = props;
   return (
     <Drawer title={t('common.remove')} isOpen={isOpen} onClose={() => {}}>
       <Remove vault={vault} stakingInfo={stakingInfo} />
