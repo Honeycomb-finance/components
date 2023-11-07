@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "@ethersproject/contracts": "5.6.2",
+    "@honeycomb-finance/elixirvaults": "*",
     "@honeycomb-finance/core": "0.0.1-rc.0",
     "@honeycomb-finance/token-drawer": "0.0.1-rc.0",
     "@honeycomb-finance/shared": "0.1.0-rc.0",

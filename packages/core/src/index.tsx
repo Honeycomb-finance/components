@@ -17,6 +17,7 @@ export { NumberOptions } from './NumberOptions';
 export { default as CloseButton } from './CloseButton';
 export { DoubleCurrencyLogo } from './DoubleCurrencyLogo';
 export { CurrencyInput } from './CurrencyInput';
+export { default as DataTable } from './DataTable';
 export { default as CurrencyLogo } from './CurrencyLogo';
 export { Stat } from './Stat';
 export { ChainInput } from './ChainInput';
@@ -39,6 +40,7 @@ export { ExternalLink } from './ExternalLink';
 export * from './Icons';
 export * from './Column';
 export * from './Tabs';
+export * from './DataTable/types';
 
 export { ANALYTICS_PAGE_MAPPING } from './constants';
 export { getTokenLogoURL } from './utils/getTokenLogoURL';

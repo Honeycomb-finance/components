@@ -525,6 +525,8 @@ export const useGetMinichefStakingInfosViaSubgraph = (): MinichefStakingInfo[] =
 
       const pair = farm.pair;
 
+      const pairAddress = farm.pairAddress;
+
       const pairToken0 = pair?.token0;
 
       const token0 = new Token(
@@ -685,6 +687,7 @@ export const useGetMinichefStakingInfosViaSubgraph = (): MinichefStakingInfo[] =
         multiplier,
         isPeriodFinished,
         periodFinish: undefined,
+        pairAddress,
         totalStakedAmount,
         totalStakedInUsd,
         totalStakedInWavax,

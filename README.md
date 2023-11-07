@@ -10,6 +10,7 @@ It contains below packages.
 - `@honeycomb-finance/bridge`: Bridge Widget
 - `@honeycomb-finance/core`: honeycomb core component library
 - `@honeycomb-finance/elixir`: Elixir Widget which is based on Pangolin v2 pools
+- `@honeycomb-finance/elixirVaults`: Elixir Vaults
 - `@honeycomb-finance/governance`: Governance Widget 
 - `@honeycomb-finance/honeycomb-provider`: main entrypoint package for most of the consumer
 - `@honeycomb-finance/pools`: Pangolin Pools Widget 
