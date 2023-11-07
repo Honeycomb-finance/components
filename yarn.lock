@@ -4890,18 +4890,6 @@
     tiny-warning "^1.0.3"
     toformat "^2.0.0"
 
-"@pangolindex/sdk@5.3.6-rc.3":
-  version "5.3.6-rc.3"
-  resolved "https://registry.yarnpkg.com/@pangolindex/sdk/-/sdk-5.3.6-rc.3.tgz#6a3a4c702c5d1d79ab9096472baec21ef97cebc6"
-  integrity sha512-AbyW8g2u6uG2kskZLZ5UTFTrV2KB1JxSanPxjzXtlQF4A2Y2D4Gi81DsLhGtbyUG5t3rxGEjJSQ5wh9fYl06Gg==
-  dependencies:
-    big.js "^5.2.2"
-    decimal.js-light "^2.5.0"
-    jsbi "^3.1.1"
-    tiny-invariant "^1.1.0"
-    tiny-warning "^1.0.3"
-    toformat "^2.0.0"
-
 "@pangolindex/sdk@^1.4.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@pangolindex/sdk/-/sdk-1.5.0.tgz#5b51d76775b2e6fc23aa82264dea291fc12fbd8a"
@@ -8914,7 +8902,7 @@ bigint-crypto-utils@^3.0.23:
   resolved "https://registry.yarnpkg.com/bigint-crypto-utils/-/bigint-crypto-utils-3.3.0.tgz#72ad00ae91062cf07f2b1def9594006c279c1d77"
   integrity sha512-jOTSb+drvEDxEq6OuUybOAv/xxoh3cuYRUIPyu8sSHQNKM303UQ2R1DAo45o1AkcIXw6fzbaFI1+xGGdaXs2lg==
 
-bignumber.js@*, bignumber.js@9.x, bignumber.js@^9.0.0, bignumber.js@^9.0.1, bignumber.js@^9.1.0, bignumber.js@^9.1.1:
+bignumber.js@*, bignumber.js@9.x, bignumber.js@^9.0.0, bignumber.js@^9.0.1, bignumber.js@^9.1.1, bignumber.js@^9.1.2:
   version "9.1.2"
   resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-9.1.2.tgz#b7c4242259c008903b13707983b5f4bbd31eda0c"
   integrity sha512-2/mKyZH9K85bzOEfhXDBFZTGd1CTs+5IHpeFQo9luiBG7hghdC851Pj2WAhb6E3R6b9tZj/XKhbg4fum+Kepug==
@@ -11990,7 +11978,7 @@ ethers@^4.0.40:
     uuid "2.0.1"
     xmlhttprequest "1.8.0"
 
-ethers@^5.0.15, ethers@^5.3.1, ethers@^5.4.6, ethers@^5.4.7, ethers@^5.5.3, ethers@^5.6.1, ethers@^5.6.8, ethers@^5.6.9, ethers@^5.7.0, ethers@^5.7.1, ethers@^5.7.2:
+ethers@^5.0.15, ethers@^5.3.1, ethers@^5.4.6, ethers@^5.4.7, ethers@^5.5.3, ethers@^5.6.1, ethers@^5.6.8, ethers@^5.7.0, ethers@^5.7.1, ethers@^5.7.2:
   version "5.7.2"
   resolved "https://registry.yarnpkg.com/ethers/-/ethers-5.7.2.tgz#3a7deeabbb8c030d4126b24f84e525466145872e"
   integrity sha512-wswUsmWo1aOK8rR7DIKiWSw9DbLWe6x98Jrn8wcTflTVvaXhAMaB5zGAXy0GYQEQp9iO1iSHWVyARQm11zUtyg==
