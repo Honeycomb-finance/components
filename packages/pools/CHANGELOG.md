@@ -1,5 +1,11 @@
 # @honeycomb-finance/pools
 
+## 0.1.0-rc.2
+
+### Patch Changes
+
+- [#26](https://github.com/Honeycomb-finance/components/pull/26) [`3e09f06a`](https://github.com/Honeycomb-finance/components/commit/3e09f06a86196004f4cc775f098795948ea30704) Thanks [@SarjuHansaliya](https://github.com/SarjuHansaliya)! - fix useGetMinichefStakingInfosViaSubgraph hook crash due to null pair
+
 ## 0.1.0-rc.1
 
 ### Minor Changes
