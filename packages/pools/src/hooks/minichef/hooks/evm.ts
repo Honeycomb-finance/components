@@ -519,7 +519,7 @@ export const useGetMinichefStakingInfosViaSubgraph = (): MinichefStakingInfo[] =
       const rewardsAddress = farm?.rewarderAddress;
 
       // if is loading or not exist pair continue
-      if (extraPendingTokensRewardState?.loading || userPendingRewardState?.loading) {
+      if (extraPendingTokensRewardState?.loading || userPendingRewardState?.loading || !farm.pair) {
         continue;
       }
 
