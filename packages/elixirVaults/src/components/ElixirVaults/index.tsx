@@ -9,9 +9,9 @@ import {
   Text,
   TextInput,
 } from '@honeycomb-finance/core';
-import { DoubleSideStakingInfo, MinichefStakingInfo, useMinichefStakingInfosHook } from '@honeycomb-finance/pools';
-import { BIG_INT_ZERO, unwrappedToken, useChainId, useDebounce, useTranslation } from '@honeycomb-finance/shared';
-import { ALL_CHAINS, Chain, ElixirVaultProvider, JSBI, Token } from '@pangolindex/sdk';
+import { DoubleSideStakingInfo } from '@honeycomb-finance/pools';
+import { unwrappedToken, useChainId, useDebounce, useTranslation } from '@honeycomb-finance/shared';
+import { ALL_CHAINS, Chain, ElixirVaultProvider, Token } from '@pangolindex/sdk';
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Inbox, Search } from 'react-feather';
 import { ThemeContext } from 'styled-components';
@@ -31,10 +31,11 @@ const ElixirVaults: React.FC<ElixirVaultProps> = (props) => {
   const { getVaults } = useVaultActionHandlers();
   const { onChangeElixirVaultLoaderStatus, onCloseDetailModal } = useElixirVaultActionHandlers();
   const { menuItems, activeMenu, setMenu } = props;
-  const [stakingInfo, setStakingInfo] = useState<DoubleSideStakingInfo | undefined>(undefined);
+  const [stakingInfo] = useState<DoubleSideStakingInfo | undefined>(undefined);
 
-  const useMiniChefStakingInfos = useMinichefStakingInfosHook[chainId];
-  const miniChefFarmStakingInfos = useMiniChefStakingInfos();
+  // TODO:
+  // const useMiniChefStakingInfos = useMinichefStakingInfosHook[chainId];
+  // const miniChefFarmStakingInfos = useMiniChefStakingInfos();
 
   const { elixirVaults, elixirVaultsLoaderStatus } = useDerivedElixirVaultInfo();
   const relatedChain: Chain = ALL_CHAINS.find((x) => x.chain_id === chainId) as Chain;
@@ -65,17 +66,18 @@ const ElixirVaults: React.FC<ElixirVaultProps> = (props) => {
     getVaults({ chain: relatedChain });
   }, []);
 
-  const ownMiniChefStakingInfos = useMemo(
-    () =>
-      (miniChefFarmStakingInfos || []).filter((stakingInfo: MinichefStakingInfo) => {
-        return Boolean(
-          stakingInfo.stakedAmount.greaterThan('0') ||
-            stakingInfo.earnedAmount.greaterThan('0') ||
-            stakingInfo.extraPendingRewards.some((pendingRewards) => JSBI.greaterThan(pendingRewards, BIG_INT_ZERO)),
-        );
-      }),
-    [miniChefFarmStakingInfos],
-  );
+  // TODO: Open it after farm is ready
+  // const ownMiniChefStakingInfos = useMemo(
+  //   () =>
+  //     (miniChefFarmStakingInfos || []).filter((stakingInfo: MinichefStakingInfo) => {
+  //       return Boolean(
+  //         stakingInfo.stakedAmount.greaterThan('0') ||
+  //           stakingInfo.earnedAmount.greaterThan('0') ||
+  //           stakingInfo.extraPendingRewards.some((pendingRewards) => JSBI.greaterThan(pendingRewards, BIG_INT_ZERO)),
+  //       );
+  //     }),
+  //   [miniChefFarmStakingInfos],
+  // );
 
   const finalVaults = useMemo(() => {
     let vaults: ElixirVault[] | undefined = elixirVaults;
@@ -116,9 +118,10 @@ const ElixirVaults: React.FC<ElixirVaultProps> = (props) => {
         const newSelectedPosition = finalVaults.find((vault) => vault.address.toString() === selectedVaultAddress);
 
         if (newSelectedPosition) {
-          setStakingInfo(
-            ownMiniChefStakingInfos?.find((stakingInfo) => stakingInfo?.pairAddress === selectedVaultAddress),
-          );
+          // TODO: Open it after farm is ready
+          // setStakingInfo(
+          //   ownMiniChefStakingInfos?.find((stakingInfo) => stakingInfo?.pairAddress === selectedVaultAddress),
+          // );
           return newSelectedPosition;
         }
       }
@@ -164,9 +167,12 @@ const ElixirVaults: React.FC<ElixirVaultProps> = (props) => {
     );
   };
 
-  const incentivizedRenderer = (info) => {
-    const address: string = info.getValue();
-    const isFarmExists = ownMiniChefStakingInfos?.some((stakingInfo) => stakingInfo?.pairAddress === address);
+  const incentivizedRenderer = () => {
+    //(info)
+    // TODO: Open it after farm is ready
+    // const address: string = info.getValue();
+    // const isFarmExists = ownMiniChefStakingInfos?.some((stakingInfo) => stakingInfo?.pairAddress === address);
+    const isFarmExists = false;
     return isFarmExists ? 'Yes' : 'No';
   };
 
