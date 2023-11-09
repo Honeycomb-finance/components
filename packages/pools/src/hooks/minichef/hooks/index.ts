@@ -7,19 +7,18 @@ import {
   useMinichefPools,
 } from './common';
 import { useDummyMinichefHook } from './dummy';
-import { useGetMinichefStakingInfosViaSubgraph, useMinicheInfos, useMinichefStakingInfos } from './evm';
+import { useGetMinichefStakingInfosViaSubgraph, useMinichefStakingInfos } from './evm';
 
 export type UseMinichefStakingInfosHookType = {
   [chainId in ChainId]:
     | typeof useMinichefStakingInfos
     | typeof useDummyMinichefHook
-    | typeof useGetMinichefStakingInfosViaSubgraph
-    | typeof useMinicheInfos;
+    | typeof useGetMinichefStakingInfosViaSubgraph;
 };
 
 export const useMinichefStakingInfosHook: UseMinichefStakingInfosHookType = {
   [ChainId.FUJI]: useMinichefStakingInfos,
-  [ChainId.AVALANCHE]: useMinicheInfos,
+  [ChainId.AVALANCHE]: useGetMinichefStakingInfosViaSubgraph,
   [ChainId.WAGMI]: useMinichefStakingInfos,
   [ChainId.COSTON]: useDummyMinichefHook,
   [ChainId.SONGBIRD]: useDummyMinichefHook,
