@@ -94,7 +94,7 @@ export const useMinichefStakingInfos = (version = 2, pairToFilterBy?: Pair | nul
     lpTokens.shift();
   }
 
-  if(chainId === ChainId.AVALANCHE){
+  if (chainId === ChainId.AVALANCHE) {
     const index = lpTokens.indexOf(DEFIEDGE_TOKEN);
     index >= 0 && delete lpTokens[index];
   }
