@@ -1915,7 +1915,7 @@
     typechain "8.x"
     typescript "4.x"
 
-"@defiedge/sdk@^0.0.7-b":
+"@defiedge/sdk@0.0.7-b":
   version "0.0.7-b"
   resolved "https://registry.yarnpkg.com/@defiedge/sdk/-/sdk-0.0.7-b.tgz#ec88531e483854e823469d5c8bd708871f4097c2"
   integrity sha512-mFbOncgdIbH3X1TUWGPFh4VlFdVuFU8h9mM5cv/duXJN2a6pBF0Kw1AVC2UpINRyab94s3wDRbmBGB6UUhpJhA==
