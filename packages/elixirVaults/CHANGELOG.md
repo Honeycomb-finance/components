@@ -1,5 +1,11 @@
 # @honeycomb-finance/elixirvaults
 
+## 1.0.0-rc.2
+
+### Minor Changes
+
+- [#28](https://github.com/Honeycomb-finance/components/pull/28) [`ae29b735`](https://github.com/Honeycomb-finance/components/commit/ae29b735daa615c11aa3ec55865a8f5308b1557e) Thanks [@bilalcorbacioglu](https://github.com/bilalcorbacioglu)! - used strict version of defiedge sdk
+
 ## 1.0.0-rc.1
 
 ### Patch Changes

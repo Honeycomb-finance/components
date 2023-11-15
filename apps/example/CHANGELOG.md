@@ -1,5 +1,13 @@
 # example-app
 
+## 0.0.1-rc.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @honeycomb-finance/elixir@0.1.0-rc.3
+  - @honeycomb-finance/swap@0.0.1-rc.3
+
 ## 0.0.1-rc.3
 
 ### Patch Changes

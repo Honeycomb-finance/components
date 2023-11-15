@@ -1,5 +1,12 @@
 # @honeycomb-finance/elixir
 
+## 0.1.0-rc.3
+
+### Patch Changes
+
+- Updated dependencies [[`ae29b735`](https://github.com/Honeycomb-finance/components/commit/ae29b735daa615c11aa3ec55865a8f5308b1557e)]:
+  - @honeycomb-finance/elixirvaults@1.0.0-rc.2
+
 ## 0.1.0-rc.2
 
 ### Patch Changes
