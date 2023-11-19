@@ -2,6 +2,8 @@
 import { Box, Button, CurrencyInput, Loader, Stat, Text } from '@honeycomb-finance/core';
 import {
   MixPanelEvents,
+  USDC,
+  USDT,
   getEtherscanLink,
   unwrappedToken,
   useChainId,
@@ -41,6 +43,7 @@ import {
   Link,
 } from './styles';
 import { JoinVaultProps } from './types';
+import { Token, WAVAX } from '@pangolindex/sdk';
 
 const JoinVault: React.FC<JoinVaultProps> = (props) => {
   const { t } = useTranslation();
@@ -294,6 +297,18 @@ const JoinVault: React.FC<JoinVaultProps> = (props) => {
     return shouldDisableOtherInput(Field.CURRENCY_B);
   }, [selectedVaultDetails?.ratio, formattedAmounts]);
 
+  const NonTWAPTokens = [USDC[chainId], USDT[chainId], WAVAX[chainId]];
+  const isNonTwapPool: boolean = useMemo(() => {
+    if (vault?.poolTokens[0] && vault?.poolTokens[1]) {
+      // Check if all vault.poolTokens are in NonTWAPTokens
+      return vault.poolTokens.every((poolToken) =>
+        NonTWAPTokens.some((nonTWAPToken: Token) => nonTWAPToken.address === poolToken.address),
+      );
+    } else {
+      return false;
+    }
+  }, [selectedVaultDetails?.ratio, vault?.poolTokens]);
+
   useEffect(() => {
     if (vault?.poolTokens[0] && vault?.poolTokens[1]) {
       vault?.poolTokens[0] && onCurrencySelection(Field.CURRENCY_A, vault?.poolTokens[0]);
@@ -348,6 +363,10 @@ const JoinVault: React.FC<JoinVaultProps> = (props) => {
             </Button>
           </ButtonWrapper>
         </BlackWrapper>
+      )}
+
+      {!isNonTwapPool && selectedVaultDetails?.ratio && selectedVaultDetails?.ratio < 0 && (
+        <BlackWrapper>This position is not available to deposit now.</BlackWrapper>
       )}
 
       <div>
