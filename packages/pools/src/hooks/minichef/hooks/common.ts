@@ -6,6 +6,7 @@ import {
   useChainId,
   usePangolinWeb3,
   useTranslation,
+  DEFIEDGE_FARM_INFORMATION,
 } from '@honeycomb-finance/shared';
 import {
   CallState,
@@ -32,7 +33,27 @@ export const useMinichefPools = (): { [key: string]: number } => {
     const poolMap: { [key: string]: number } = {};
     if (lpTokensArr) {
       lpTokensArr.forEach((address: string, index: number) => {
-        poolMap[address] = index;
+        if (!DEFIEDGE_FARM_INFORMATION.some((x) => x.address === address.toLocaleLowerCase())) {
+          poolMap[address] = index;
+        }
+      });
+    }
+    return poolMap;
+  }, [lpTokensArr]);
+};
+
+export const useDefiEdgeMinichefPools = (): { [key: string]: number } => {
+  const minichefContract = useMiniChefContract();
+  const lpTokens = useSingleCallResult(minichefContract, 'lpTokens', []).result;
+  const lpTokensArr = lpTokens?.[0];
+
+  return useMemo(() => {
+    const poolMap: { [key: string]: number } = {};
+    if (lpTokensArr) {
+      lpTokensArr.forEach((address: string, index: number) => {
+        if (DEFIEDGE_FARM_INFORMATION.some((x) => x.address === address.toLowerCase())) {
+          poolMap[address] = index;
+        }
       });
     }
     return poolMap;

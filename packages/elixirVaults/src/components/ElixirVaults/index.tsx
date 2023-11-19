@@ -9,8 +9,14 @@ import {
   Text,
   TextInput,
 } from '@honeycomb-finance/core';
-import { DoubleSideStakingInfo, MinichefStakingInfo, useMinichefStakingInfosHook } from '@honeycomb-finance/pools';
-import { BIG_INT_ZERO, unwrappedToken, useChainId, useDebounce, useTranslation } from '@honeycomb-finance/shared';
+import { DoubleSideStakingInfo, MinichefStakingInfo, useMinichefDefiEdgeStakingInfos } from '@honeycomb-finance/pools';
+import {
+  DEFIEDGE_FARM_INFORMATION,
+  unwrappedToken,
+  useChainId,
+  useDebounce,
+  useTranslation,
+} from '@honeycomb-finance/shared';
 import { ALL_CHAINS, Chain, ElixirVaultProvider, JSBI, Token } from '@pangolindex/sdk';
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { Inbox, Search } from 'react-feather';
@@ -33,8 +39,7 @@ const ElixirVaults: React.FC<ElixirVaultProps> = (props) => {
   const { menuItems, activeMenu, setMenu } = props;
   const [stakingInfo, setStakingInfo] = useState<DoubleSideStakingInfo | undefined>(undefined);
 
-  const useMiniChefStakingInfos = useMinichefStakingInfosHook[chainId];
-  const miniChefFarmStakingInfos = useMiniChefStakingInfos();
+  const farmStakingInfos = useMinichefDefiEdgeStakingInfos(2);
 
   const { elixirVaults, elixirVaultsLoaderStatus } = useDerivedElixirVaultInfo();
   const relatedChain: Chain = ALL_CHAINS.find((x) => x.chain_id === chainId) as Chain;
@@ -65,17 +70,15 @@ const ElixirVaults: React.FC<ElixirVaultProps> = (props) => {
     getVaults({ chain: relatedChain });
   }, []);
 
-  const ownMiniChefStakingInfos = useMemo(
-    () =>
-      (miniChefFarmStakingInfos || []).filter((stakingInfo: MinichefStakingInfo) => {
-        return Boolean(
-          stakingInfo.stakedAmount.greaterThan('0') ||
-            stakingInfo.earnedAmount.greaterThan('0') ||
-            stakingInfo.extraPendingRewards.some((pendingRewards) => JSBI.greaterThan(pendingRewards, BIG_INT_ZERO)),
-        );
-      }),
-    [miniChefFarmStakingInfos],
-  );
+  const ownMiniChefStakingInfos = useMemo(() => {
+    console.log('farmStakingInfos: ', farmStakingInfos); // TODO:
+    return (farmStakingInfos || []).filter((stakingInfo: MinichefStakingInfo) => {
+      return Boolean(); // TODO: Turn this back on when we have the data
+      // stakingInfo.stakedAmount.greaterThan('0') ||
+      // stakingInfo.earnedAmount.greaterThan('0') ||
+      // stakingInfo.extraPendingRewards.some((pendingRewards) => JSBI.greaterThan(pendingRewards, BIG_INT_ZERO)),
+    });
+  }, [farmStakingInfos]);
 
   const finalVaults = useMemo(() => {
     let vaults: ElixirVault[] | undefined = elixirVaults;
@@ -166,7 +169,7 @@ const ElixirVaults: React.FC<ElixirVaultProps> = (props) => {
 
   const incentivizedRenderer = (info) => {
     const address: string = info.getValue();
-    const isFarmExists = ownMiniChefStakingInfos?.some((stakingInfo) => stakingInfo?.pairAddress === address);
+    const isFarmExists = DEFIEDGE_FARM_INFORMATION?.some((defiEdgeFarm) => defiEdgeFarm?.address === address);
     return isFarmExists ? 'Yes' : 'No';
   };
 
