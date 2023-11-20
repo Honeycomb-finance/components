@@ -94,14 +94,14 @@ const JoinVault: React.FC<JoinVaultProps> = (props) => {
       if (
         !isCurrency0Enough &&
         parsedAmounts[Field.CURRENCY_A] &&
-        !parsedAmounts[Field.CURRENCY_B]?.greaterThan(currencyBalanceA)
+        !parsedAmounts[Field.CURRENCY_A]?.greaterThan(currencyBalanceA)
       ) {
         isCurrency0Enough = true;
       }
 
       if (
         !isCurrency1Enough &&
-        parsedAmounts[Field.CURRENCY_A] &&
+        parsedAmounts[Field.CURRENCY_B] &&
         !parsedAmounts[Field.CURRENCY_B]?.greaterThan(currencyBalanceB)
       ) {
         isCurrency1Enough = true;
