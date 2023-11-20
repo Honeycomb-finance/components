@@ -232,6 +232,50 @@ export const USDC: { [chainId in ChainId]: Token } = {
   [ChainId.SKALE_BELLATRIX_TESTNET]: new Token(ChainId.SKALE_BELLATRIX_TESTNET, ZERO_ADDRESS, 18, '', ''),
 };
 
+export const USDT: { [chainId in ChainId]: Token } = {
+  [ChainId.FUJI]: new Token(ChainId.FUJI, ZERO_ADDRESS, 6, 'USDT', 'TetherToken'),
+  [ChainId.AVALANCHE]: new Token(
+    ChainId.AVALANCHE,
+    '0x9702230a8ea53601f5cd2dc00fdbc13d4df4a8c7',
+    6,
+    'USDT',
+    'TetherToken',
+  ),
+  [ChainId.WAGMI]: new Token(ChainId.WAGMI, ZERO_ADDRESS, 6, 'USDT', 'TetherToken'),
+  [ChainId.COSTON]: new Token(ChainId.COSTON, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.SONGBIRD]: new Token(ChainId.SONGBIRD, ZERO_ADDRESS, 18, 'USDT', 'TetherToken'),
+  [ChainId.FLARE_MAINNET]: new Token(ChainId.FLARE_MAINNET, ZERO_ADDRESS, 18, 'USDT', 'TetherToken'),
+  [ChainId.HEDERA_TESTNET]: new Token(ChainId.HEDERA_TESTNET, ZERO_ADDRESS, 6, '', ''),
+  [ChainId.HEDERA_MAINNET]: new Token(
+    ChainId.HEDERA_MAINNET,
+    '0x0000000000000000000000000000000000101af0',
+    6,
+    'USDT.hts',
+    'TetherToken',
+  ),
+  [ChainId.NEAR_MAINNET]: new Token(ChainId.NEAR_MAINNET, 'usdc.fakes.testnet', 18, 'USDT', 'USDT'),
+  [ChainId.NEAR_TESTNET]: new Token(ChainId.NEAR_TESTNET, 'usdc.fakes.testnet', 18, 'USDT', 'USDT'),
+  [ChainId.COSTON2]: new Token(ChainId.COSTON2, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.EVMOS_TESTNET]: new Token(ChainId.EVMOS_TESTNET, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.EVMOS_MAINNET]: new Token(ChainId.EVMOS_MAINNET, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.ETHEREUM]: new Token(ChainId.ETHEREUM, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.POLYGON]: new Token(ChainId.POLYGON, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.FANTOM]: new Token(ChainId.FANTOM, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.XDAI]: new Token(ChainId.XDAI, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.BSC]: new Token(ChainId.BSC, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.ARBITRUM]: new Token(ChainId.ARBITRUM, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.CELO]: new Token(ChainId.CELO, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.OKXCHAIN]: new Token(ChainId.OKXCHAIN, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.VELAS]: new Token(ChainId.VELAS, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.AURORA]: new Token(ChainId.AURORA, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.CRONOS]: new Token(ChainId.CRONOS, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.FUSE]: new Token(ChainId.FUSE, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.MOONRIVER]: new Token(ChainId.MOONRIVER, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.MOONBEAM]: new Token(ChainId.MOONBEAM, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.OP]: new Token(ChainId.OP, ZERO_ADDRESS, 18, '', ''),
+  [ChainId.SKALE_BELLATRIX_TESTNET]: new Token(ChainId.SKALE_BELLATRIX_TESTNET, ZERO_ADDRESS, 18, '', ''),
+};
+
 export const USDTe: { [chainId in ChainId]: Token } = {
   [ChainId.FUJI]: new Token(ChainId.FUJI, ZERO_ADDRESS, 6, 'USDT.e', 'Tether USD'),
   [ChainId.AVALANCHE]: new Token(
