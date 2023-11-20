@@ -18,6 +18,7 @@ import {
   useUSDCPriceHook,
   useWalletModalToggle,
 } from '@honeycomb-finance/state-hooks';
+import { Token, WAVAX } from '@pangolindex/sdk';
 import mixpanel from 'mixpanel-browser';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { AlertTriangle, ArrowUpCircle, Lock } from 'react-feather';
@@ -43,7 +44,6 @@ import {
   Link,
 } from './styles';
 import { JoinVaultProps } from './types';
-import { Token, WAVAX } from '@pangolindex/sdk';
 
 const JoinVault: React.FC<JoinVaultProps> = (props) => {
   const { t } = useTranslation();
