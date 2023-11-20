@@ -2,12 +2,12 @@
   "mode": "exit",
   "tag": "rc",
   "initialVersions": {
-    "example-app": "0.0.1-rc.3",
+    "example-app": "0.0.1-rc.4",
     "@honeycomb-finance/airdrop": "0.0.1-rc.1",
     "@honeycomb-finance/bridge": "0.1.0-rc.1",
     "@honeycomb-finance/core": "0.1.0-rc.1",
-    "@honeycomb-finance/elixir": "0.1.0-rc.2",
-    "@honeycomb-finance/elixirvaults": "1.0.0-rc.1",
+    "@honeycomb-finance/elixir": "0.1.0-rc.3",
+    "@honeycomb-finance/elixirvaults": "1.0.0-rc.2",
     "@honeycomb-finance/governance": "0.1.0-rc.2",
     "@honeycomb-finance/honeycomb-provider": "0.0.1-rc.1",
     "@honeycomb-finance/pools": "0.1.0-rc.2",
@@ -16,7 +16,7 @@
     "@honeycomb-finance/sar": "0.0.1-rc.1",
     "@honeycomb-finance/shared": "0.1.0-rc.1",
     "@honeycomb-finance/state-hooks": "0.0.1-rc.1",
-    "@honeycomb-finance/swap": "0.0.1-rc.2",
+    "@honeycomb-finance/swap": "0.0.1-rc.3",
     "@honeycomb-finance/token-drawer": "0.0.1-rc.1",
     "tsconfig": "0.0.0",
     "@honeycomb-finance/wallet-connectors": "0.0.1-rc.0",
@@ -28,12 +28,14 @@
     "curvy-actors-refuse",
     "eleven-tools-suffer",
     "good-pumpkins-impress",
+    "heavy-wasps-clap",
     "hot-meals-count",
     "olive-fans-scream",
     "quiet-poems-itch",
     "silly-panthers-leave",
     "slow-cougars-watch",
     "small-hounds-rule",
-    "thirty-rules-nail"
+    "thirty-rules-nail",
+    "tidy-jars-hang"
   ]
 }
