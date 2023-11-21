@@ -1915,10 +1915,10 @@
     typechain "8.x"
     typescript "4.x"
 
-"@defiedge/sdk@^0.0.7-b":
-  version "0.0.7-b"
-  resolved "https://registry.yarnpkg.com/@defiedge/sdk/-/sdk-0.0.7-b.tgz#ec88531e483854e823469d5c8bd708871f4097c2"
-  integrity sha512-mFbOncgdIbH3X1TUWGPFh4VlFdVuFU8h9mM5cv/duXJN2a6pBF0Kw1AVC2UpINRyab94s3wDRbmBGB6UUhpJhA==
+"@defiedge/sdk@0.0.9-b":
+  version "0.0.9-b"
+  resolved "https://registry.yarnpkg.com/@defiedge/sdk/-/sdk-0.0.9-b.tgz#ecea19f828f44a9326bfba60cd944372b45e33b8"
+  integrity sha512-PZsgwo7CDAt0Em/orpf6sZpZVbMY5qEuH7n32avLz42FCaHicHxhDX8VZGPzARvlcsWeFsqJf88mTFLqNOGuKg==
   dependencies:
     "@ethersproject/abstract-signer" "^5.6.2"
     "@ethersproject/address" "^5.6.0"

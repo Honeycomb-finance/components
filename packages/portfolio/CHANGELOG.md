@@ -1,5 +1,14 @@
 # @honeycomb-finance/portfolio
 
+## 0.0.1-rc.2
+
+### Patch Changes
+
+- Updated dependencies [[`8a4157b8`](https://github.com/Honeycomb-finance/components/commit/8a4157b8e0ed22e8e74d90e0a9477c0f8ce5290e)]:
+  - @honeycomb-finance/shared@0.1.0-rc.2
+  - @honeycomb-finance/core@0.1.0-rc.2
+  - @honeycomb-finance/state-hooks@0.0.1-rc.2
+
 ## 0.0.1-rc.1
 
 ### Patch Changes

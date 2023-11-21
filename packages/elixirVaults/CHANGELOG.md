@@ -1,5 +1,26 @@
 # @honeycomb-finance/elixirvaults
 
+## 1.0.0-rc.3
+
+### Minor Changes
+
+- [#30](https://github.com/Honeycomb-finance/components/pull/30) [`87b3531f`](https://github.com/Honeycomb-finance/components/commit/87b3531f4e7463d5408d080dadb9fdfe79bdec0d) Thanks [@bilalcorbacioglu](https://github.com/bilalcorbacioglu)! - it includes elixir vault bug fixes & defiedge sdk version upgrade
+
+### Patch Changes
+
+- Updated dependencies [[`8a4157b8`](https://github.com/Honeycomb-finance/components/commit/8a4157b8e0ed22e8e74d90e0a9477c0f8ce5290e)]:
+  - @honeycomb-finance/shared@0.1.0-rc.2
+  - @honeycomb-finance/core@0.1.0-rc.2
+  - @honeycomb-finance/pools@0.1.0-rc.3
+  - @honeycomb-finance/state-hooks@0.0.1-rc.2
+  - @honeycomb-finance/token-drawer@0.0.1-rc.2
+
+## 1.0.0-rc.2
+
+### Minor Changes
+
+- [#28](https://github.com/Honeycomb-finance/components/pull/28) [`ae29b735`](https://github.com/Honeycomb-finance/components/commit/ae29b735daa615c11aa3ec55865a8f5308b1557e) Thanks [@bilalcorbacioglu](https://github.com/bilalcorbacioglu)! - used strict version of defiedge sdk
+
 ## 1.0.0-rc.1
 
 ### Patch Changes

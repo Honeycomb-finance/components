@@ -1,5 +1,11 @@
 # @honeycomb-finance/shared
 
+## 0.1.0-rc.2
+
+### Patch Changes
+
+- [`8a4157b8`](https://github.com/Honeycomb-finance/components/commit/8a4157b8e0ed22e8e74d90e0a9477c0f8ce5290e) Thanks [@SarjuHansaliya](https://github.com/SarjuHansaliya)! - updating shared package as part of elixirVault bug fixes
+
 ## 0.1.0-rc.1
 
 ### Minor Changes

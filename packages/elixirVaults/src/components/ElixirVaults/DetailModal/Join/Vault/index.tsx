@@ -2,6 +2,8 @@
 import { Box, Button, CurrencyInput, Loader, Stat, Text } from '@honeycomb-finance/core';
 import {
   MixPanelEvents,
+  USDC,
+  USDT,
   getEtherscanLink,
   unwrappedToken,
   useChainId,
@@ -16,6 +18,7 @@ import {
   useUSDCPriceHook,
   useWalletModalToggle,
 } from '@honeycomb-finance/state-hooks';
+import { Token, WAVAX } from '@pangolindex/sdk';
 import mixpanel from 'mixpanel-browser';
 import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { AlertTriangle, ArrowUpCircle, Lock } from 'react-feather';
@@ -91,14 +94,14 @@ const JoinVault: React.FC<JoinVaultProps> = (props) => {
       if (
         !isCurrency0Enough &&
         parsedAmounts[Field.CURRENCY_A] &&
-        !parsedAmounts[Field.CURRENCY_B]?.greaterThan(currencyBalanceA)
+        !parsedAmounts[Field.CURRENCY_A]?.greaterThan(currencyBalanceA)
       ) {
         isCurrency0Enough = true;
       }
 
       if (
         !isCurrency1Enough &&
-        parsedAmounts[Field.CURRENCY_A] &&
+        parsedAmounts[Field.CURRENCY_B] &&
         !parsedAmounts[Field.CURRENCY_B]?.greaterThan(currencyBalanceB)
       ) {
         isCurrency1Enough = true;
@@ -294,6 +297,18 @@ const JoinVault: React.FC<JoinVaultProps> = (props) => {
     return shouldDisableOtherInput(Field.CURRENCY_B);
   }, [selectedVaultDetails?.ratio, formattedAmounts]);
 
+  const NonTWAPTokens = [USDC[chainId], USDT[chainId], WAVAX[chainId]];
+  const isNonTwapPool: boolean = useMemo(() => {
+    if (vault?.poolTokens[0] && vault?.poolTokens[1]) {
+      // Check if all vault.poolTokens are in NonTWAPTokens
+      return vault.poolTokens.every((poolToken) =>
+        NonTWAPTokens.some((nonTWAPToken: Token) => nonTWAPToken.address === poolToken.address),
+      );
+    } else {
+      return false;
+    }
+  }, [selectedVaultDetails?.ratio, vault?.poolTokens]);
+
   useEffect(() => {
     if (vault?.poolTokens[0] && vault?.poolTokens[1]) {
       vault?.poolTokens[0] && onCurrencySelection(Field.CURRENCY_A, vault?.poolTokens[0]);
@@ -348,6 +363,10 @@ const JoinVault: React.FC<JoinVaultProps> = (props) => {
             </Button>
           </ButtonWrapper>
         </BlackWrapper>
+      )}
+
+      {!isNonTwapPool && selectedVaultDetails?.ratio && selectedVaultDetails?.ratio < 0 && (
+        <BlackWrapper>This position is not available to deposit now.</BlackWrapper>
       )}
 
       <div>
