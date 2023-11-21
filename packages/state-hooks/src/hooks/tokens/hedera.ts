@@ -10,7 +10,9 @@ import { useTransactionAdder } from 'src/state/transactions/hooks';
  * @params dependancies on which use query should refetch data
  * @returns all associated tokens
  */
-export function useGetAllHederaAssociatedTokens(dependancies = [] as any[]): UseQueryResult<HederaAssociateTokensData[] | undefined> {
+export function useGetAllHederaAssociatedTokens(
+  dependancies = [] as any[],
+): UseQueryResult<HederaAssociateTokensData[] | undefined> {
   const chainId = useChainId();
 
   const { account } = usePangolinWeb3();
