@@ -1,8 +1,8 @@
 import { useChainId, usePangolinWeb3 } from '@honeycomb-finance/shared';
-import { Hedera, hederaFn } from '@honeycomb-finance/wallet-connectors';
+import { Hedera, HederaAssociateTokensData, hederaFn } from '@honeycomb-finance/wallet-connectors';
 import { Token } from '@pangolindex/sdk';
 import { useMemo, useState } from 'react';
-import { useQuery } from 'react-query';
+import { UseQueryResult, useQuery } from 'react-query';
 import { useTransactionAdder } from 'src/state/transactions/hooks';
 
 /**
@@ -10,7 +10,7 @@ import { useTransactionAdder } from 'src/state/transactions/hooks';
  * @params dependancies on which use query should refetch data
  * @returns all associated tokens
  */
-export function useGetAllHederaAssociatedTokens(dependancies = [] as any[]) {
+export function useGetAllHederaAssociatedTokens(dependancies = [] as any[]): UseQueryResult<HederaAssociateTokensData[] | undefined> {
   const chainId = useChainId();
 
   const { account } = usePangolinWeb3();
