@@ -43,7 +43,7 @@
   "dependencies": {
     "@ethersproject/abi": "5.6.4",
     "@ethersproject/providers": "5.6.8",
-    "@pangolindex/exchange-contracts": "2.1.7",
+    "@pangolindex/exchange-contracts": "2.1.9",
     "@pangolindex/governance": "^1.2.0",
     "@honeycomb-finance/shared": "0.1.0-rc.2",
     "@honeycomb-finance/core": "0.1.0-rc.2",
