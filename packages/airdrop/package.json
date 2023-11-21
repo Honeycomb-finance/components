@@ -45,7 +45,7 @@
     "@honeycomb-finance/state-hooks": "0.0.1-rc.2",
     "@honeycomb-finance/wallet-connectors": "0.0.1-rc.0",
     "@honeycomb-finance/walletmodal": "0.0.1-rc.2",
-    "@pangolindex/exchange-contracts": "2.1.7",
+    "@pangolindex/exchange-contracts": "2.1.9",
     "@web3-react/core": "6.0.9",
     "axios": "0.26.0",
     "ethers": "5.6.4",

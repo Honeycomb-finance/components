@@ -45,7 +45,7 @@
     "@ethersproject/providers": "5.6.8",
     "@ethersproject/units": "5.6.1",
     "@hashgraph/hethers": "1.2.2",
-    "@pangolindex/exchange-contracts": "2.1.7",
+    "@pangolindex/exchange-contracts": "2.1.9",
     "@pangolindex/token-lists": "1.0.2",
     "@honeycomb-finance/wallet-connectors": "0.0.1-rc.0",
     "@web3-react/abstract-connector": "6.0.7",
