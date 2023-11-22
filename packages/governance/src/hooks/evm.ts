@@ -15,7 +15,7 @@ import {
   useTransactionAdder,
 } from '@honeycomb-finance/state-hooks';
 import { ChainId, TokenAmount } from '@pangolindex/sdk';
-import { ethers, utils, BigNumber } from 'ethers';
+import { BigNumber, ethers, utils } from 'ethers';
 import { isAddress } from 'ethers/lib/utils';
 import { useCallback, useEffect, useState } from 'react';
 import { GovernorABI } from 'src/constants';
@@ -225,7 +225,11 @@ export function useDelegateCallback(): (delegatee: string | undefined) => undefi
 }
 
 export function useVoteCallback(): {
-  voteCallback: (proposalId: string | undefined, support: boolean, nftId?: BigNumber) => undefined | Promise<string | undefined>;
+  voteCallback: (
+    proposalId: string | undefined,
+    support: boolean,
+    nftId?: BigNumber,
+  ) => undefined | Promise<string | undefined>;
 } {
   const { account } = usePangolinWeb3();
 
