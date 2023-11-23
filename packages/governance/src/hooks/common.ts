@@ -60,12 +60,12 @@ export function useGetProposalsViaSubgraph(id?: string) {
 
             const calldata = proposal?.calldatas[i];
 
-            const decoded = utils.defaultAbiCoder.decode(types.split(','), calldata);
+            const decoded = types ? utils.defaultAbiCoder.decode(types.split(','), calldata).join(', ') : "";
 
             return {
               target,
               functionSig: name,
-              callData: decoded.join(', '),
+              callData: decoded,
             };
           });
 
@@ -169,12 +169,12 @@ export function useSarNftAllProposalData() {
 
           const calldata = allProposals[i]?.result?.calldatas[i];
 
-          const decoded = utils.defaultAbiCoder.decode(types.split(','), calldata);
+          const decoded = types ? utils.defaultAbiCoder.decode(types.split(','), calldata).join(', ') : "";
 
           return {
             target,
             functionSig: name,
-            callData: decoded.join(', '),
+            callData: decoded,
           };
         });
 
