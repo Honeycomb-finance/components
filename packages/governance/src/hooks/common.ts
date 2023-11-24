@@ -60,7 +60,7 @@ export function useGetProposalsViaSubgraph(id?: string) {
 
             const calldata = proposal?.calldatas[i];
 
-            const decoded = types ? utils.defaultAbiCoder.decode(types.split(','), calldata).join(', ') : "";
+            const decoded = types ? utils.defaultAbiCoder.decode(types.split(','), calldata).join(', ') : '';
 
             return {
               target,
@@ -169,7 +169,7 @@ export function useSarNftAllProposalData() {
 
           const calldata = allProposals[i]?.result?.calldatas[i];
 
-          const decoded = types ? utils.defaultAbiCoder.decode(types.split(','), calldata).join(', ') : "";
+          const decoded = types ? utils.defaultAbiCoder.decode(types.split(','), calldata).join(', ') : '';
 
           return {
             target,
