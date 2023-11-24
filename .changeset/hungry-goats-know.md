@@ -1,5 +1,5 @@
 ---
-'@honeycomb-finance/governance': major
+'@honeycomb-finance/governance': minor
 '@honeycomb-finance/state-hooks': minor
 '@honeycomb-finance/airdrop': minor
 '@honeycomb-finance/shared': minor
