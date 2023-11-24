@@ -15,7 +15,7 @@ import {
   useTransactionAdder,
 } from '@honeycomb-finance/state-hooks';
 import { ChainId, TokenAmount } from '@pangolindex/sdk';
-import { ethers, utils } from 'ethers';
+import { BigNumber, ethers, utils } from 'ethers';
 import { isAddress } from 'ethers/lib/utils';
 import { useCallback, useEffect, useState } from 'react';
 import { GovernorABI } from 'src/constants';
@@ -225,7 +225,11 @@ export function useDelegateCallback(): (delegatee: string | undefined) => undefi
 }
 
 export function useVoteCallback(): {
-  voteCallback: (proposalId: string | undefined, support: boolean) => undefined | Promise<string>;
+  voteCallback: (
+    proposalId: string | undefined,
+    support: boolean,
+    nftId?: BigNumber,
+  ) => undefined | Promise<string | undefined>;
 } {
   const { account } = usePangolinWeb3();
 
@@ -233,9 +237,14 @@ export function useVoteCallback(): {
   const addTransaction = useTransactionAdder();
 
   const voteCallback = useCallback(
-    (proposalId: string | undefined, support: boolean) => {
+    (proposalId: string | undefined, support: boolean, nftId?: BigNumber) => {
       if (!account || !govContract || !proposalId) return;
       const args = [proposalId, support];
+
+      if (nftId) {
+        args.push(nftId.toString());
+      }
+
       return govContract.estimateGas.castVote(...args, {}).then((estimatedGasLimit: any) => {
         return govContract
           .castVote(...args, { value: null, gasLimit: calculateGasMargin(estimatedGasLimit) })

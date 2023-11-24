@@ -1,10 +1,10 @@
-import { NFT_PROPOSAL, getAllProposalData, useChainId } from '@honeycomb-finance/shared';
+import { NFT_PROPOSAL, PNG, getAllProposalData, useChainId } from '@honeycomb-finance/shared';
 import {
   useMultipleContractSingleData,
   useSingleCallResult,
   useSingleContractMultipleData,
 } from '@honeycomb-finance/state-hooks';
-import { CHAINS, GovernanceType, JSBI } from '@pangolindex/sdk';
+import { JSBI } from '@pangolindex/sdk';
 import { ethers, utils } from 'ethers';
 import { useEffect, useMemo, useState } from 'react';
 import { PROPOSAL_STORAGE_INTERFACE } from 'src/constants';
@@ -45,6 +45,7 @@ export const getProposalState = (proposal: NFT_PROPOSAL) => {
 export function useGetProposalsViaSubgraph(id?: string) {
   const chainId = useChainId();
   const [allProposalsData, setAllProposalsData] = useState<Array<ProposalData>>([]);
+  const png = PNG[chainId];
 
   useEffect(() => {
     async function checkForChartData() {
@@ -59,12 +60,12 @@ export function useGetProposalsViaSubgraph(id?: string) {
 
             const calldata = proposal?.calldatas[i];
 
-            const decoded = utils.defaultAbiCoder.decode(types.split(','), calldata);
+            const decoded = types ? utils.defaultAbiCoder.decode(types.split(','), calldata).join(', ') : '';
 
             return {
               target,
               functionSig: name,
-              callData: decoded.join(', '),
+              callData: decoded,
             };
           });
 
@@ -75,14 +76,10 @@ export function useGetProposalsViaSubgraph(id?: string) {
             proposer: proposal?.proposer,
             status: getProposalState({ ...proposal }) ?? 'Undetermined',
             forCount: proposal?.forVotes
-              ? CHAINS[chainId]?.contracts?.governor?.type === GovernanceType.SAR_NFT
-                ? parseFloat(proposal?.forVotes.toString())
-                : parseFloat(ethers.utils.formatUnits(proposal?.forVotes.toString(), 18))
+              ? parseFloat(ethers.utils.formatUnits(proposal?.forVotes.toString(), png.decimals))
               : 0,
             againstCount: proposal?.againstVotes
-              ? CHAINS[chainId]?.contracts?.governor?.type === GovernanceType.SAR_NFT
-                ? parseFloat(proposal?.againstVotes.toString())
-                : parseFloat(ethers.utils.formatUnits(proposal?.againstVotes.toString(), 18))
+              ? parseFloat(ethers.utils.formatUnits(proposal?.againstVotes.toString(), png.decimals))
               : 0,
             startTime: parseInt(proposal?.startTime?.toString()),
             endTime: parseInt(proposal?.endTime?.toString()),
@@ -172,12 +169,12 @@ export function useSarNftAllProposalData() {
 
           const calldata = allProposals[i]?.result?.calldatas[i];
 
-          const decoded = utils.defaultAbiCoder.decode(types.split(','), calldata);
+          const decoded = types ? utils.defaultAbiCoder.decode(types.split(','), calldata).join(', ') : '';
 
           return {
             target,
             functionSig: name,
-            callData: decoded.join(', '),
+            callData: decoded,
           };
         });
 

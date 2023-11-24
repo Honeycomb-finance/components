@@ -1,5 +1,5 @@
 import { PNG, useChainId, useContract } from '@honeycomb-finance/shared';
-import { CHAINS } from '@pangolindex/sdk';
+import { CHAINS, GovernanceType } from '@pangolindex/sdk';
 import { GovernorABI, GovernorAlphaABI, GovernorAssistantABI, PNGABI } from 'src/constants';
 
 export function usePngContract() {
@@ -10,8 +10,9 @@ export function usePngContract() {
 export function useGovernanceContract() {
   const chainId = useChainId();
   const address = chainId ? CHAINS[chainId]?.contracts?.governor?.address : undefined;
+  const type = chainId ? CHAINS[chainId]?.contracts?.governor?.type : GovernanceType.STANDARD;
 
-  return useContract(address, GovernorAlphaABI, true);
+  return useContract(address, type === GovernanceType.STANDARD ? GovernorAlphaABI : GovernorABI, true);
 }
 
 export function useSarNftGovernanceContract() {
