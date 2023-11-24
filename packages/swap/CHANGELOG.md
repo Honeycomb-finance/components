@@ -1,5 +1,16 @@
 # @honeycomb-finance/swap
 
+## 0.0.1-rc.5
+
+### Patch Changes
+
+- Updated dependencies [[`bb06e729`](https://github.com/Honeycomb-finance/components/commit/bb06e7292e9db77284e0dfdd145cde887834d860)]:
+  - @honeycomb-finance/state-hooks@0.1.0-rc.3
+  - @honeycomb-finance/shared@0.1.0-rc.3
+  - @honeycomb-finance/elixir@0.1.0-rc.5
+  - @honeycomb-finance/token-drawer@0.0.1-rc.3
+  - @honeycomb-finance/core@0.1.0-rc.3
+
 ## 0.0.1-rc.4
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@honeycomb-finance/state-hooks",
-  "version": "0.0.1-rc.2",
+  "version": "0.1.0-rc.3",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
@@ -40,7 +40,7 @@
     "@ethersproject/providers": "5.6.8",
     "@ethersproject/strings": "5.6.1",
     "@ethersproject/units": "5.6.1",
-    "@honeycomb-finance/shared": "0.1.0-rc.2",
+    "@honeycomb-finance/shared": "0.1.0-rc.3",
     "@pangolindex/token-lists": "1.0.2",
     "@honeycomb-finance/wallet-connectors": "0.0.1-rc.0",
     "ajv": "6.12.6",

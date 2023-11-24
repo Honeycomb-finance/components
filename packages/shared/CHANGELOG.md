@@ -1,5 +1,11 @@
 # @honeycomb-finance/shared
 
+## 0.1.0-rc.3
+
+### Minor Changes
+
+- [#32](https://github.com/Honeycomb-finance/components/pull/32) [`bb06e729`](https://github.com/Honeycomb-finance/components/commit/bb06e7292e9db77284e0dfdd145cde887834d860) Thanks [@prodesert22](https://github.com/prodesert22)! - Fixed the vote callback for songbird and flare and added support to vote with nftId
+
 ## 0.1.0-rc.2
 
 ### Patch Changes

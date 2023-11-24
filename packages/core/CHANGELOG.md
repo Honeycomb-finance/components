@@ -1,5 +1,12 @@
 # @honeycomb-finance/core
 
+## 0.1.0-rc.3
+
+### Patch Changes
+
+- Updated dependencies [[`bb06e729`](https://github.com/Honeycomb-finance/components/commit/bb06e7292e9db77284e0dfdd145cde887834d860)]:
+  - @honeycomb-finance/shared@0.1.0-rc.3
+
 ## 0.1.0-rc.2
 
 ### Patch Changes

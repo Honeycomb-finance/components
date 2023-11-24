@@ -1,5 +1,19 @@
 # @honeycomb-finance/pools
 
+## 0.1.0-rc.4
+
+### Minor Changes
+
+- [#32](https://github.com/Honeycomb-finance/components/pull/32) [`bb06e729`](https://github.com/Honeycomb-finance/components/commit/bb06e7292e9db77284e0dfdd145cde887834d860) Thanks [@prodesert22](https://github.com/prodesert22)! - Fixed the vote callback for songbird and flare and added support to vote with nftId
+
+### Patch Changes
+
+- Updated dependencies [[`bb06e729`](https://github.com/Honeycomb-finance/components/commit/bb06e7292e9db77284e0dfdd145cde887834d860)]:
+  - @honeycomb-finance/state-hooks@0.1.0-rc.3
+  - @honeycomb-finance/shared@0.1.0-rc.3
+  - @honeycomb-finance/token-drawer@0.0.1-rc.3
+  - @honeycomb-finance/core@0.1.0-rc.3
+
 ## 0.1.0-rc.3
 
 ### Patch Changes
