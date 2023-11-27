@@ -1,5 +1,11 @@
 # @honeycomb-finance/governance
 
+## 0.1.0-rc.5
+
+### Patch Changes
+
+- [#33](https://github.com/Honeycomb-finance/components/pull/33) [`939ce370`](https://github.com/Honeycomb-finance/components/commit/939ce370f1e0291f047ab79de25ec9edfc696810) Thanks [@prodesert22](https://github.com/prodesert22)! - Added useHederaVoteCallback for hedera mainnet in useVoteCallbackHook mapping
+
 ## 0.1.0-rc.4
 
 ### Minor Changes

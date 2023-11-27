@@ -1,5 +1,12 @@
 # example-app
 
+## 0.0.1-rc.7
+
+### Patch Changes
+
+- Updated dependencies [[`939ce370`](https://github.com/Honeycomb-finance/components/commit/939ce370f1e0291f047ab79de25ec9edfc696810)]:
+  - @honeycomb-finance/governance@0.1.0-rc.5
+
 ## 0.0.1-rc.6
 
 ### Patch Changes
