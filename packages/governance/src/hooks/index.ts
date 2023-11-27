@@ -60,7 +60,7 @@ export const useVoteCallbackHook: UseVoteCallbackHookType = {
   [ChainId.SONGBIRD]: useVoteCallback,
   [ChainId.FLARE_MAINNET]: useVoteCallback,
   [ChainId.HEDERA_TESTNET]: useHederaVoteCallback,
-  [ChainId.HEDERA_MAINNET]: useDummyVoteCallback,
+  [ChainId.HEDERA_MAINNET]: useHederaVoteCallback,
   [ChainId.NEAR_MAINNET]: useDummyVoteCallback,
   [ChainId.NEAR_TESTNET]: useDummyVoteCallback,
   [ChainId.COSTON2]: useVoteCallback,
