@@ -11,6 +11,7 @@ import {
 } from '@honeycomb-finance/core';
 import { DoubleSideStakingInfo, MinichefStakingInfo, useMinichefDefiEdgeStakingInfos } from '@honeycomb-finance/pools';
 import {
+  BIG_INT_ZERO,
   DEFIEDGE_FARM_INFORMATION,
   unwrappedToken,
   useChainId,
@@ -71,13 +72,14 @@ const ElixirVaults: React.FC<ElixirVaultProps> = (props) => {
   }, []);
 
   const ownMiniChefStakingInfos = useMemo(() => {
-    console.log('farmStakingInfos: ', farmStakingInfos); // TODO:
-    return (farmStakingInfos || []).filter((stakingInfo: MinichefStakingInfo) => {
-      return Boolean(); // TODO: Turn this back on when we have the data
-      // stakingInfo.stakedAmount.greaterThan('0') ||
-      // stakingInfo.earnedAmount.greaterThan('0') ||
-      // stakingInfo.extraPendingRewards.some((pendingRewards) => JSBI.greaterThan(pendingRewards, BIG_INT_ZERO)),
-    });
+    console.log('farmStakingInfos: ', farmStakingInfos);
+    const filtered = (farmStakingInfos || []).filter((stakingInfo: MinichefStakingInfo) =>
+      stakingInfo.stakedAmount.greaterThan('0') ||
+      stakingInfo.earnedAmount.greaterThan('0') ||
+      stakingInfo.extraPendingRewards.some((pendingRewards) => JSBI.greaterThan(pendingRewards, BIG_INT_ZERO))
+    );
+    console.log(`filtered: `, filtered);
+    return filtered;
   }, [farmStakingInfos]);
 
   const finalVaults = useMemo(() => {
