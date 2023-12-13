@@ -1,5 +1,18 @@
 # @honeycomb-finance/elixir
 
+## 0.1.0-rc.6
+
+### Patch Changes
+
+- [#36](https://github.com/Honeycomb-finance/components/pull/36) [`cb974482`](https://github.com/Honeycomb-finance/components/commit/cb97448229bac26f09d4cd08ac4c1a2313e2027a) Thanks [@SarjuHansaliya](https://github.com/SarjuHansaliya)! - upgrade pangolin sdk to v5.3.8-rc.1
+
+- Updated dependencies [[`cb974482`](https://github.com/Honeycomb-finance/components/commit/cb97448229bac26f09d4cd08ac4c1a2313e2027a)]:
+  - @honeycomb-finance/elixirvaults@1.0.0-rc.5
+  - @honeycomb-finance/token-drawer@0.0.1-rc.4
+  - @honeycomb-finance/state-hooks@0.1.0-rc.4
+  - @honeycomb-finance/shared@0.1.0-rc.4
+  - @honeycomb-finance/core@0.1.0-rc.4
+
 ## 0.1.0-rc.5
 
 ### Patch Changes

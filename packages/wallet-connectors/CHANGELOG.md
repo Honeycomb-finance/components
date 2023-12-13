@@ -1,5 +1,11 @@
 # @honeycomb-finance/wallet-connectors
 
+## 0.0.1-rc.1
+
+### Patch Changes
+
+- [#36](https://github.com/Honeycomb-finance/components/pull/36) [`cb974482`](https://github.com/Honeycomb-finance/components/commit/cb97448229bac26f09d4cd08ac4c1a2313e2027a) Thanks [@SarjuHansaliya](https://github.com/SarjuHansaliya)! - upgrade pangolin sdk to v5.3.8-rc.1
+
 ## 0.0.1-rc.0
 
 ### Patch Changes
