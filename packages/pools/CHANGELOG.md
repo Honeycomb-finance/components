@@ -1,5 +1,11 @@
 # @honeycomb-finance/pools
 
+## 0.1.0-rc.6
+
+### Patch Changes
+
+- [#37](https://github.com/Honeycomb-finance/components/pull/37) [`561a282d`](https://github.com/Honeycomb-finance/components/commit/561a282d6e3d71efe0538e3dca87dc7b976462d8) Thanks [@SarjuHansaliya](https://github.com/SarjuHansaliya)! - migrate code from pangolindex/component repo
+
 ## 0.1.0-rc.5
 
 ### Patch Changes

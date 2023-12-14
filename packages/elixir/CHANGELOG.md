@@ -1,5 +1,12 @@
 # @honeycomb-finance/elixir
 
+## 0.1.0-rc.7
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @honeycomb-finance/elixirvaults@1.0.0-rc.6
+
 ## 0.1.0-rc.6
 
 ### Patch Changes

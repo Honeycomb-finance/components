@@ -1,5 +1,12 @@
 # @honeycomb-finance/elixirvaults
 
+## 1.0.0-rc.6
+
+### Patch Changes
+
+- Updated dependencies [[`561a282d`](https://github.com/Honeycomb-finance/components/commit/561a282d6e3d71efe0538e3dca87dc7b976462d8)]:
+  - @honeycomb-finance/pools@0.1.0-rc.6
+
 ## 1.0.0-rc.5
 
 ### Patch Changes
