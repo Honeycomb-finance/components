@@ -1,5 +1,18 @@
 # @honeycomb-finance/elixirvaults
 
+## 1.0.0-rc.7
+
+### Patch Changes
+
+- [`23bbca4f`](https://github.com/Honeycomb-finance/components/commit/23bbca4fbf7ea40c39b5994cf3b5dc173bd17a9b) Thanks [@SarjuHansaliya](https://github.com/SarjuHansaliya)! - releasing first major version
+
+- Updated dependencies [[`23bbca4f`](https://github.com/Honeycomb-finance/components/commit/23bbca4fbf7ea40c39b5994cf3b5dc173bd17a9b)]:
+  - @honeycomb-finance/token-drawer@1.0.0-rc.5
+  - @honeycomb-finance/state-hooks@1.0.0-rc.5
+  - @honeycomb-finance/shared@1.0.0-rc.5
+  - @honeycomb-finance/pools@1.0.0-rc.7
+  - @honeycomb-finance/core@1.0.0-rc.5
+
 ## 1.0.0-rc.6
 
 ### Patch Changes

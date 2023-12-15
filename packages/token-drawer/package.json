@@ -1,6 +1,6 @@
 {
   "name": "@honeycomb-finance/token-drawer",
-  "version": "0.0.1-rc.4",
+  "version": "1.0.0-rc.5",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
@@ -40,10 +40,10 @@
     "typescript": "4.5.2"
   },
   "dependencies": {
-    "@honeycomb-finance/core": "0.1.0-rc.4",
-    "@honeycomb-finance/shared": "0.1.0-rc.4",
-    "@honeycomb-finance/state-hooks": "0.1.0-rc.4",
-    "@honeycomb-finance/wallet-connectors": "0.0.1-rc.1",
+    "@honeycomb-finance/core": "1.0.0-rc.5",
+    "@honeycomb-finance/shared": "1.0.0-rc.5",
+    "@honeycomb-finance/state-hooks": "1.0.0-rc.5",
+    "@honeycomb-finance/wallet-connectors": "1.0.0-rc.2",
     "deep-equal": "2.0.5",
     "polished": "4.1.3",
     "react-custom-scrollbars": "4.2.1",

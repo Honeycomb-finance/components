@@ -1,5 +1,16 @@
 # @honeycomb-finance/core
 
+## 1.0.0-rc.5
+
+### Major Changes
+
+- [`23bbca4f`](https://github.com/Honeycomb-finance/components/commit/23bbca4fbf7ea40c39b5994cf3b5dc173bd17a9b) Thanks [@SarjuHansaliya](https://github.com/SarjuHansaliya)! - releasing first major version
+
+### Patch Changes
+
+- Updated dependencies [[`23bbca4f`](https://github.com/Honeycomb-finance/components/commit/23bbca4fbf7ea40c39b5994cf3b5dc173bd17a9b)]:
+  - @honeycomb-finance/shared@1.0.0-rc.5
+
 ## 0.1.0-rc.4
 
 ### Patch Changes
