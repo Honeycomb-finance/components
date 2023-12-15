@@ -1,28 +1,32 @@
-<!--
-  Thanks for submitting a pull request!
-  Before submitting a pull request, please make sure the following is done:
-
-  1. Run `yarn` in the repository root.
-  2. Run `yarn lint` make sure to fix if any linting issues
-  3. Run `yarn tsc` make sure to fix any typescript issues
-  4. if you have added new components make sure to add storybook for those components
--->
-
 ## Summary
 
-<!--
- Explain summary of the change
--->
+- **What** does this PR do?
+  - (Replace this text)
+- **Why** is this change needed?
+  - (Replace this text, include issue link if any)
 
-## Tasks
+---
 
-<!--
- Please attach task links here
--->
+## Details
 
-## Screenshots/Videos
+Please provide enough information so that others can review your pull request.
 
-<!--
-  Please attach screenshots / videos if the pull request changes the user interface
--->
+## Type of Change
 
+- [ ] Bug Fix (a non-breaking change that solves an issue)
+- [ ] New Feature (a non-breaking change that adds functionality)
+- [ ] Breaking Change (fix or feature that would change existing functionality)
+- [ ] Refactoring (improves code quality but has no user-facing effect)
+- [ ] Documentation Update (if none of the other choices apply)
+
+## Related Issue(s)
+
+- Give link to the issues
+
+## Checklist
+
+- [ ] I have read the **[CONTRIBUTING](CONTRIBUTING.md)** document.
+- [ ] I have included Changeset
+- [ ] I have included screenshot/video if required
+- [ ] I have tested my changes.
+- [ ] I have made corresponding changes to the documentation if needed.
