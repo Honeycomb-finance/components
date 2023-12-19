@@ -1,5 +1,24 @@
 # example-app
 
+## 0.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`9c28fe21`](https://github.com/Honeycomb-finance/components/commit/9c28fe21fabdef05a9db4d40e6259828c8cf6216)]:
+  - @honeycomb-finance/airdrop@1.0.1
+  - @honeycomb-finance/bridge@1.0.1
+  - @honeycomb-finance/core@1.0.1
+  - @honeycomb-finance/elixir@1.0.1
+  - @honeycomb-finance/governance@1.0.1
+  - @honeycomb-finance/honeycomb-provider@1.0.1
+  - @honeycomb-finance/pools@1.0.1
+  - @honeycomb-finance/portfolio@1.0.1
+  - @honeycomb-finance/sar@1.0.1
+  - @honeycomb-finance/shared@1.0.1
+  - @honeycomb-finance/swap@1.0.1
+  - @honeycomb-finance/wallet-connectors@1.0.1
+  - @honeycomb-finance/walletmodal@1.0.1
+
 ## 0.0.1
 
 ### Patch Changes
