@@ -1,5 +1,11 @@
 # @honeycomb-finance/wallet-connectors
 
+## 1.0.1
+
+### Patch Changes
+
+- [#39](https://github.com/Honeycomb-finance/components/pull/39) [`9c28fe21`](https://github.com/Honeycomb-finance/components/commit/9c28fe21fabdef05a9db4d40e6259828c8cf6216) Thanks [@SarjuHansaliya](https://github.com/SarjuHansaliya)! - update sdk to v5.3.9
+
 ## 1.0.0
 
 ### Major Changes
