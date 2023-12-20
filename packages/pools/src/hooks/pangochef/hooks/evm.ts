@@ -32,6 +32,7 @@ import {
 } from '@honeycomb-finance/state-hooks';
 import { CHAINS, ChainId, Fraction, JSBI, Pair, Token, TokenAmount, WAVAX } from '@pangolindex/sdk';
 import { BigNumber } from 'ethers';
+import isEmpty from 'lodash/isEmpty';
 import { useMemo } from 'react';
 import { PANGOLIN_PAIR_INTERFACE, REWARDER_VIA_MULTIPLIER_INTERFACE } from 'src/constants/abis';
 import { useGetExtraPendingRewards, useMinichefPools } from 'src/hooks/minichef/hooks/common';
@@ -601,7 +602,7 @@ export function useEVMPangoChefWithdrawCallback(withdrawData: WithdrawData): {
     return {
       callback: async function onWithdraw(): Promise<string> {
         try {
-          if (!contract || (version === 2 && !poolMap)) return '';
+          if (!contract || (version === 2 && isEmpty(poolMap))) return '';
 
           const method = version === 1 ? 'exit' : version === 2 ? 'withdrawAndHarvest' : 'withdraw';
           const args =
