@@ -1,5 +1,12 @@
 # @honeycomb-finance/pools
 
+## 1.0.2
+
+### Patch Changes
+
+- [#41](https://github.com/Honeycomb-finance/components/pull/41) [`1b6cd800`](https://github.com/Honeycomb-finance/components/commit/1b6cd8001ee348c565fc51c86a08c175818d8d9e) Thanks [@SarjuHansaliya](https://github.com/SarjuHansaliya)! - - Withdraw & Claim has bug with decimals in stakeAmount due to which it was sending incorrect amount to contract.
+  - There were `undefined` related issue if user does action to fast for "claim" or "withdraw & claim"
+
 ## 1.0.1
 
 ### Patch Changes
