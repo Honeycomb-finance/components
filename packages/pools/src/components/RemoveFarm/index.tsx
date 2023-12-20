@@ -11,9 +11,10 @@ import {
 import { useGetHederaTokenNotAssociated, useHederaTokenAssociated } from '@honeycomb-finance/state-hooks';
 import { Hedera } from '@honeycomb-finance/wallet-connectors';
 import { CHAINS, ChefType, Token } from '@pangolindex/sdk';
+import isEmpty from 'lodash/isEmpty';
 import numeral from 'numeral';
 import React, { useEffect, useMemo, useState } from 'react';
-import { useExtraPendingRewards, useGetRewardTokens } from 'src/hooks/minichef/hooks/common';
+import { useExtraPendingRewards, useGetRewardTokens, useMinichefPools } from 'src/hooks/minichef/hooks/common';
 import { DoubleSideStakingInfo, MinichefStakingInfo } from 'src/hooks/minichef/types';
 import { usePangoChefWithdrawCallbackHook } from 'src/hooks/pangochef';
 import { useHederaPGLToken } from 'src/hooks/wallet/hooks/hedera';
@@ -51,6 +52,7 @@ const RemoveFarm = ({ stakingInfo, version, onClose, onLoading, onComplete, redi
   const { rewardTokensAmount } = useExtraPendingRewards(stakingInfo);
   const rewardTokens = useGetRewardTokens(stakingInfo);
   const isSuperFarm = (rewardTokensAmount || [])?.length > 0;
+  const poolMap = useMinichefPools();
 
   const mixpanel = useMixpanel();
 
@@ -244,6 +246,8 @@ const RemoveFarm = ({ stakingInfo, version, onClose, onLoading, onComplete, redi
                   onClick={
                     chefType === ChefType.PANGO_CHEF && !confirmRemove ? () => setConfirmRemove(true) : onWithdraw
                   }
+                  // for version 2 we need to wait for poolMap to be ready, so we disable the button
+                  isDisabled={version === 2 && isEmpty(poolMap)}
                 >
                   {error ?? t('earn.withdrawAndClaim')}
                 </Button>

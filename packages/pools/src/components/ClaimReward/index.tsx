@@ -49,12 +49,14 @@ const ClaimReward = ({ stakingInfo, version, onClose }: ClaimProps) => {
   }
 
   const png = PNG[chainId];
+  const stakedTokenAddress = stakingInfo?.stakedAmount?.token?.address;
+  const pid = poolMap?.[stakedTokenAddress];
 
   async function onClaimReward() {
     if (stakingContract && poolMap && stakingInfo?.stakedAmount) {
       setAttempting(true);
       const method = version < 2 ? 'getReward' : 'harvest';
-      const args = version < 2 ? [] : [poolMap[stakingInfo.stakedAmount.token.address], account];
+      const args = version < 2 ? [] : [pid, account];
 
       try {
         const response: TransactionResponse = await stakingContract[method](...args);
@@ -139,7 +141,7 @@ const ClaimReward = ({ stakingInfo, version, onClose }: ClaimProps) => {
           </Box>
 
           <Box my={'10px'}>
-            <Button variant="primary" onClick={onClaimReward}>
+            <Button variant="primary" onClick={onClaimReward} isDisabled={typeof pid === 'undefined'}>
               {_error ?? t('earn.claimReward', { symbol: 'PNG' })}
             </Button>
           </Box>
