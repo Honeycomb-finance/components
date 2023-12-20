@@ -597,10 +597,10 @@ export const useGetMinichefStakingInfosViaSubgraph = (): MinichefStakingInfo[] =
         .div(ONE_TOKEN.toString());
       const totalStakedAmount = new TokenAmount(lpToken, minichefTvl.toString() || JSBI.BigInt(0));
       const totalStakedInUsd = new TokenAmount(lpToken, finalStakedValueInUSD.toString() || JSBI.BigInt(0));
-
+      
       const stakedAmount = new TokenAmount(
         lpToken,
-        parseUnits(farm?.farmingPositions?.[0]?.stakedTokenBalance?.toString() ?? '0').toString(),
+        farm?.farmingPositions?.[0]?.stakedTokenBalance?.toString() ?? '0',
       );
       const earnedAmount = new TokenAmount(
         png,
