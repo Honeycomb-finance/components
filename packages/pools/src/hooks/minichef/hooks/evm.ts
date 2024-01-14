@@ -582,22 +582,28 @@ export const useGetMinichefStakingInfosViaSubgraph = (): MinichefStakingInfo[] =
       const isPeriodFinished =
         periodFinishMs === 0 ? false : periodFinishMs < Date.now() || poolAllocPointAmount.equalTo('0');
 
-      const minichefTvl = parseUnits(farm?.balance?.toString());
-      const totalSupplyReserve0 = parseUnits(farm?.pair?.reserve0.toString());
+      const minichefTvl = parseUnits(farm?.balance?.toString()); // LP amount that are deposited into to MiniChef
+      const totalSupplyReserve0 = parseUnits(farm?.pair?.reserve0.toString()); // in wei unit, PNG amount in that LP [pool, not farm]
       const totalSupply = parseUnits(
         farm?.pair?.totalSupply.toString() === '0' ? '1' : farm?.pair?.totalSupply.toString(),
-      );
-      const token0derivedUSD = parseUnits(Number(farm?.pair?.token0?.derivedUSD)?.toFixed(10));
-      const pairTokenValueInUSD = token0derivedUSD.mul(parseUnits('2'));
+      ); // in wei unit, total supply of LP
+      const token0derivedUSD = parseUnits(Number(farm?.pair?.token0?.derivedUSD)?.toFixed(10)); // convert it from eth unit to wei unit
+
+      const pairTokenValueInUSD = token0derivedUSD.mul(parseUnits('2')); // multiply by 2 * 10 ** 18, so pair token value in USD in wei*wei
       const calculatedStakedUsdValue = minichefTvl.mul(totalSupplyReserve0).div(totalSupply);
       // we have 2 10^18, so we need to divide ONE_TOKEN 2 times
       const finalStakedValueInUSD = pairTokenValueInUSD
         .mul(calculatedStakedUsdValue)
         .div(ONE_TOKEN.toString())
-        .div(ONE_TOKEN.toString());
-      const totalStakedAmount = new TokenAmount(lpToken, minichefTvl.toString() || JSBI.BigInt(0));
+        .div(ONE_TOKEN.toString()); // total staked amount in a farm in USD value
+
+      // totalStakedAmount = Amount of LP that are deposited into a MiniChef farm in wei
+      const totalStakedAmount = new TokenAmount(lpToken, farm?.balance?.toString() || JSBI.BigInt(0));
+
+      // totalStakedInUsd = USD equivalent of all staked LPs in a MiniChef farm
       const totalStakedInUsd = new TokenAmount(lpToken, finalStakedValueInUSD.toString() || JSBI.BigInt(0));
 
+      // stakedAmount = user's LP balance in wei
       const stakedAmount = new TokenAmount(lpToken, farm?.farmingPositions?.[0]?.stakedTokenBalance?.toString() ?? '0');
       const earnedAmount = new TokenAmount(
         png,
