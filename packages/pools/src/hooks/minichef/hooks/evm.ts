@@ -5,6 +5,7 @@ import {
   BIG_INT_ZERO,
   DAIe,
   ERC20_INTERFACE,
+  DEFIEDGE_INTERFACE,
   GET_MINICHEF,
   MINICHEF_ADDRESS,
   ONE_TOKEN,
@@ -18,12 +19,14 @@ import {
   getSubgraphClient,
   useChainId,
   usePangolinWeb3,
+  DEFIEDGE_FARM_INFORMATION,
 } from '@honeycomb-finance/shared';
 import {
   NEVER_RELOAD,
   useMultipleContractSingleData,
   usePair,
   usePairsContract,
+  useDefiEdgeUsePairsContract,
   useShouldUseSubgraph,
   useSingleCallResult,
   useSingleContractMultipleData,
@@ -46,7 +49,7 @@ import {
   getExtraTokensWeeklyRewardRate,
   tokenComparator,
 } from '../utils';
-import { useGetExtraPendingRewards, useMinichefPools } from './common';
+import { useDefiEdgeMinichefPools, useGetExtraPendingRewards, useMinichefPools } from './common';
 
 export function useMichefFarmsAprs(pids: string[]) {
   const chainId = useChainId();
@@ -74,6 +77,379 @@ const dummyApr: AprResult = {
   combinedApr: 0,
   stakingApr: 0,
   swapFeeApr: 0,
+};
+
+const getDefiEdgeTokens = (lpTokens, type) => {
+  const token0Array: string[] = [];
+  const token1Array: string[] = [];
+
+  lpTokens?.forEach((lpTokenAddress) => {
+    DEFIEDGE_FARM_INFORMATION.forEach((farmInfo: any) => {
+      if (farmInfo.address.toLowerCase() === lpTokenAddress?.toLowerCase()) {
+        token0Array.push(farmInfo.token0Address);
+        token1Array.push(farmInfo.token1Address);
+      }
+    });
+  });
+  if (type === 'token0') {
+    return token0Array;
+  } else {
+    return token1Array;
+  }
+};
+
+export const useMinichefDefiEdgeStakingInfos = (version = 2, pairToFilterBy?: Pair | null): MinichefStakingInfo[] => {
+  const { account } = usePangolinWeb3();
+  const chainId = useChainId();
+
+  const minichefContract = useMiniChefContract();
+  const poolMap = useDefiEdgeMinichefPools();
+  const lpTokens = Object.keys(poolMap);
+
+  const pids = Object.values(poolMap).map((pid) => pid.toString());
+
+  const { data: farmsAprs } = useMichefFarmsAprs(pids);
+
+  // if chain is not avalanche skip the first pool because it's dummyERC20
+  if (chainId !== ChainId.AVALANCHE) {
+    lpTokens.shift();
+  }
+  const tokens0 = lpTokens && useTokensContract(getDefiEdgeTokens(lpTokens, 'token0'));
+  const tokens1 = lpTokens && useTokensContract(getDefiEdgeTokens(lpTokens, 'token1'));
+  const info = useMemo(() => {
+    const filterPair = (item: DoubleSideStaking) => {
+      if (pairToFilterBy === undefined) {
+        return true;
+      }
+      if (pairToFilterBy === null) {
+        return false;
+      }
+      return pairToFilterBy.involvesToken(item.tokens[0]) && pairToFilterBy.involvesToken(item.tokens[1]);
+    };
+
+    const _infoTokens: DoubleSideStaking[] = [];
+    if (tokens0 && tokens1 && tokens0?.length === tokens1?.length) {
+      tokens0.forEach((token0, index) => {
+        const token1 = tokens1[index];
+        if (token0 && token1) {
+          _infoTokens.push({
+            tokens: [token0, token1],
+            stakingRewardAddress: minichefContract?.address ?? '',
+            version: version,
+          });
+        }
+      });
+      return _infoTokens.filter(filterPair);
+    }
+    return _infoTokens;
+  }, [chainId, minichefContract, tokens0, tokens1, pairToFilterBy, version]);
+
+  const _tokens = useMemo(() => (info ? info.map(({ tokens }) => tokens) : []), [info]);
+  // TODO: Fix below function issues. Check inside of the function.
+  const pairs = useDefiEdgeUsePairsContract(_tokens);
+  console.log('pairs: ', pairs);
+  //TODO: The pairs value doesn't return as a correct result here. So following flow doesn't work.
+
+  const pairAddresses = useMemo(() => {
+    return pairs.map(([, pair]) => pair?.liquidityToken.address);
+  }, [pairs]);
+
+  const pairTotalSupplies = useMultipleContractSingleData(
+    DEFIEDGE_FARM_INFORMATION?.map((x) => x.address),
+    DEFIEDGE_INTERFACE,
+    'totalSupply',
+  );
+
+  const balances = useMultipleContractSingleData(
+    DEFIEDGE_FARM_INFORMATION?.map((x) => x.address),
+    DEFIEDGE_INTERFACE,
+    'balanceOf',
+    [MINICHEF_ADDRESS[chainId]],
+  );
+
+  const [avaxPngPairState, avaxPngPair] = usePair(WAVAX[chainId], PNG[chainId]);
+
+  const poolIdArray = useMemo(() => {
+    if (!pairAddresses || !poolMap) return [];
+    // TODO: You can see the difference
+    console.log('pairAddresses: ', pairAddresses, ' poolMap: ', poolMap);
+    const NOT_FOUND = -1;
+    // TODO: The below match doesn't work.
+    // Or handle the below issues to carry on.
+    const results = pairAddresses.map((address) => poolMap[address ?? ''] ?? NOT_FOUND);
+    // TODO: I decided to remove the above and carry on without liquidityToken.address
+    // but it doesn't work with the following process.
+    // const results = Object.values(poolMap);
+    if (results.some((result) => result === NOT_FOUND)) return [];
+    return results;
+  }, [poolMap, pairAddresses]);
+
+  const poolsIdInput = useMemo(() => {
+    if (!poolIdArray) return [];
+    return poolIdArray.map((pid) => [pid]);
+  }, [poolIdArray]);
+
+  const poolInfos = useSingleContractMultipleData(minichefContract, 'poolInfo', poolsIdInput ?? []);
+  const rewarders = useSingleContractMultipleData(minichefContract, 'rewarder', poolsIdInput ?? []);
+
+  const userInfoInput = useMemo(() => {
+    if (!poolIdArray || !account) return [];
+    return poolIdArray.map((pid) => [pid, account]);
+  }, [poolIdArray, account]);
+
+  const userInfos = useSingleContractMultipleData(minichefContract, 'userInfo', userInfoInput ?? []);
+
+  const pendingRewards = useSingleContractMultipleData(minichefContract, 'pendingReward', userInfoInput ?? []);
+
+  const rewardsAddresses = useMemo(() => {
+    if ((rewarders || []).length === 0) return [];
+    if (rewarders.some((item) => item.loading)) return [];
+    return rewarders.map((reward) => reward?.result?.[0]);
+  }, [rewarders]);
+
+  const rewardTokensMultipliers = useMultipleContractSingleData(
+    rewardsAddresses,
+    REWARDER_VIA_MULTIPLIER_INTERFACE,
+    'getRewardMultipliers',
+    [],
+  );
+
+  const rewardPerSecond = useSingleCallResult(minichefContract, 'rewardPerSecond', []).result;
+  const totalAllocPoint = useSingleCallResult(minichefContract, 'totalAllocPoint', []).result;
+  const rewardsExpiration = useSingleCallResult(minichefContract, 'rewardsExpiration', []).result;
+  const usdPriceTmp = useUSDCPrice(WAVAX[chainId]);
+  const usdPrice = CHAINS[chainId]?.mainnet ? usdPriceTmp : undefined;
+
+  const extraPendingTokensRewardsState = useGetExtraPendingRewards(rewardsAddresses, pendingRewards);
+
+  return useMemo(() => {
+    if (!chainId || !PNG[chainId]) return [];
+
+    return pairAddresses.reduce<any[]>((memo, _pairAddress, index) => {
+      const pairTotalSupplyState = pairTotalSupplies[index];
+      const balanceState = balances[index];
+      const poolInfo = poolInfos[index];
+      const userPoolInfo = userInfos[index];
+      const [pairState, pair] = pairs[index];
+      const pendingRewardInfo = pendingRewards[index];
+      const rewardTokensMultiplier = rewardTokensMultipliers[index];
+      const rewardsAddress = rewardsAddresses[index];
+      const extraPendingTokensRewardState = extraPendingTokensRewardsState[index];
+      const extraPendingTokensRewards = extraPendingTokensRewardState?.result as
+        | { amounts: BigNumber[]; tokens: string[] }
+        | undefined;
+
+      if (
+        pairTotalSupplyState?.loading === false &&
+        poolInfo?.loading === false &&
+        balanceState?.loading === false &&
+        pair &&
+        avaxPngPair &&
+        pairState !== PairState.LOADING &&
+        avaxPngPairState !== PairState.LOADING &&
+        rewardPerSecond &&
+        totalAllocPoint &&
+        rewardsExpiration?.[0] &&
+        extraPendingTokensRewardState?.loading === false
+      ) {
+        if (
+          balanceState?.error ||
+          pairTotalSupplyState.error ||
+          pairState === PairState.INVALID ||
+          pairState === PairState.NOT_EXISTS ||
+          avaxPngPairState === PairState.INVALID ||
+          avaxPngPairState === PairState.NOT_EXISTS
+        ) {
+          console.error('Failed to load staking rewards info');
+          return memo;
+        }
+        const pid = poolMap[pair.liquidityToken.address].toString();
+        // get the LP token
+        const token0 = pair?.token0;
+        const token1 = pair?.token1;
+
+        const tokens = [token0, token1].sort(tokenComparator) as [Token, Token];
+
+        const dummyPair = new Pair(new TokenAmount(tokens[0], '0'), new TokenAmount(tokens[1], '0'), chainId);
+        const lpToken = dummyPair.liquidityToken;
+
+        const poolAllocPointAmount = new TokenAmount(lpToken, JSBI.BigInt(poolInfo?.result?.['allocPoint']));
+        const totalAllocPointAmount = new TokenAmount(lpToken, JSBI.BigInt(totalAllocPoint?.[0]));
+        const rewardRatePerSecAmount = new TokenAmount(PNG[chainId], JSBI.BigInt(rewardPerSecond?.[0]));
+        const poolRewardRate = new TokenAmount(
+          PNG[chainId],
+          JSBI.divide(JSBI.multiply(poolAllocPointAmount.raw, rewardRatePerSecAmount.raw), totalAllocPointAmount.raw),
+        );
+
+        const totalRewardRatePerWeek = new TokenAmount(
+          PNG[chainId],
+          JSBI.multiply(poolRewardRate.raw, BIG_INT_SECONDS_IN_WEEK),
+        );
+
+        const periodFinishMs = rewardsExpiration?.[0]?.mul(1000)?.toNumber();
+        // periodFinish will be 0 immediately after a reward contract is initialized
+        const isPeriodFinished =
+          periodFinishMs === 0 ? false : periodFinishMs < Date.now() || poolAllocPointAmount.equalTo('0');
+
+        const totalSupplyStaked = JSBI.BigInt(balanceState?.result?.[0]);
+        const totalSupplyAvailable = JSBI.BigInt(pairTotalSupplyState?.result?.[0]);
+        const totalStakedAmount = new TokenAmount(lpToken, JSBI.BigInt(balanceState?.result?.[0]));
+        const stakedAmount = new TokenAmount(lpToken, JSBI.BigInt(userPoolInfo?.result?.['amount'] ?? 0));
+        const earnedAmount = new TokenAmount(PNG[chainId], JSBI.BigInt(pendingRewardInfo?.result?.['pending'] ?? 0));
+        const multiplier = JSBI.BigInt(poolInfo?.result?.['allocPoint']);
+
+        let totalStakedInUsd = CHAINS[(chainId as ChainId) || ChainId].mainnet
+          ? new TokenAmount(DAIe[chainId], BIG_INT_ZERO)
+          : undefined;
+        const totalStakedInWavax = new TokenAmount(WAVAX[chainId], BIG_INT_ZERO);
+
+        if (JSBI.equal(totalSupplyAvailable, BIG_INT_ZERO)) {
+          // Default to 0 values above avoiding division by zero errors
+        } else if (pair.involvesToken(DAIe[chainId])) {
+          const pairValueInDAI = JSBI.multiply(pair.reserveOfToken(DAIe[chainId]).raw, BIG_INT_TWO);
+          const stakedValueInDAI = JSBI.divide(JSBI.multiply(pairValueInDAI, totalSupplyStaked), totalSupplyAvailable);
+          totalStakedInUsd = CHAINS[(chainId as ChainId) || ChainId].mainnet
+            ? new TokenAmount(DAIe[chainId], stakedValueInDAI)
+            : undefined;
+        } else if (pair.involvesToken(USDCe[chainId])) {
+          const pairValueInUSDC = JSBI.multiply(pair.reserveOfToken(USDCe[chainId]).raw, BIG_INT_TWO);
+          const stakedValueInUSDC = JSBI.divide(
+            JSBI.multiply(pairValueInUSDC, totalSupplyStaked),
+            totalSupplyAvailable,
+          );
+          totalStakedInUsd = CHAINS[(chainId as ChainId) || ChainId].mainnet
+            ? new TokenAmount(USDCe[chainId], stakedValueInUSDC)
+            : undefined;
+        } else if (pair.involvesToken(USDC[chainId])) {
+          const pairValueInUSDC = JSBI.multiply(pair.reserveOfToken(USDC[chainId]).raw, BIG_INT_TWO);
+          const stakedValueInUSDC = JSBI.divide(
+            JSBI.multiply(pairValueInUSDC, totalSupplyStaked),
+            totalSupplyAvailable,
+          );
+          totalStakedInUsd = CHAINS[(chainId as ChainId) || ChainId].mainnet
+            ? new TokenAmount(USDC[chainId], stakedValueInUSDC)
+            : undefined;
+        } else if (pair.involvesToken(USDTe[chainId])) {
+          const pairValueInUSDT = JSBI.multiply(pair.reserveOfToken(USDTe[chainId]).raw, BIG_INT_TWO);
+          const stakedValueInUSDT = JSBI.divide(
+            JSBI.multiply(pairValueInUSDT, totalSupplyStaked),
+            totalSupplyAvailable,
+          );
+          totalStakedInUsd = CHAINS[(chainId as ChainId) || ChainId].mainnet
+            ? new TokenAmount(USDTe[chainId], stakedValueInUSDT)
+            : undefined;
+        } else if (pair.involvesToken(WAVAX[chainId])) {
+          const _totalStakedInWavax = calculateTotalStakedAmountInAvax(
+            totalSupplyStaked,
+            totalSupplyAvailable,
+            pair.reserveOfToken(WAVAX[chainId]).raw,
+            chainId,
+          );
+          totalStakedInUsd = CHAINS[(chainId as ChainId) || ChainId].mainnet
+            ? _totalStakedInWavax && (usdPrice?.quote(_totalStakedInWavax, chainId) as TokenAmount)
+            : undefined;
+        } else if (pair.involvesToken(PNG[chainId])) {
+          const _totalStakedInWavax = calculateTotalStakedAmountInAvaxFromPng(
+            totalSupplyStaked,
+            totalSupplyAvailable,
+            avaxPngPair.reserveOfToken(PNG[chainId]).raw,
+            avaxPngPair.reserveOfToken(WAVAX[chainId]).raw,
+            pair.reserveOfToken(PNG[chainId]).raw,
+            chainId,
+          );
+          totalStakedInUsd = CHAINS[(chainId as ChainId) || ChainId].mainnet
+            ? _totalStakedInWavax && (usdPrice?.quote(_totalStakedInWavax, chainId) as TokenAmount)
+            : undefined;
+        } else {
+          // Contains no stablecoin, WAVAX, nor PNG
+          console.error(`Could not identify total staked value for pair ${pair.liquidityToken.address}`);
+        }
+
+        const getHypotheticalWeeklyRewardRate = (
+          _stakedAmount: TokenAmount,
+          _totalStakedAmount: TokenAmount,
+          _totalRewardRatePerSecond: TokenAmount,
+        ): TokenAmount => {
+          return new TokenAmount(
+            PNG[chainId],
+            JSBI.greaterThan(_totalStakedAmount.raw, JSBI.BigInt(0))
+              ? JSBI.divide(
+                  JSBI.multiply(
+                    JSBI.multiply(_totalRewardRatePerSecond.raw, _stakedAmount.raw),
+                    BIG_INT_SECONDS_IN_WEEK,
+                  ),
+                  _totalStakedAmount.raw,
+                )
+              : JSBI.BigInt(0),
+          );
+        };
+
+        const userRewardRatePerWeek = getHypotheticalWeeklyRewardRate(stakedAmount, totalStakedAmount, poolRewardRate);
+
+        const farmApr = farmsAprs?.[pid] ?? dummyApr;
+
+        const { rewardTokensAddress, extraPendingRewards } = (extraPendingTokensRewards?.amounts ?? []).reduce(
+          (memo, rewardAmount: BigNumber, index) => {
+            memo.rewardTokensAddress.push(extraPendingTokensRewards?.tokens?.[index] ?? '');
+            memo.extraPendingRewards.push(JSBI.BigInt(rewardAmount.toString()));
+            return memo;
+          },
+          {
+            rewardTokensAddress: [] as string[],
+            extraPendingRewards: [] as JSBI[],
+          },
+        );
+
+        memo.push({
+          pid,
+          stakingRewardAddress: MINICHEF_ADDRESS[chainId] ?? '',
+          tokens,
+          earnedAmount,
+          rewardRatePerWeek: userRewardRatePerWeek,
+          totalRewardRatePerSecond: poolRewardRate,
+          totalRewardRatePerWeek: totalRewardRatePerWeek,
+          stakedAmount,
+          totalStakedAmount,
+          totalStakedInWavax,
+          totalStakedInUsd: totalStakedInUsd ?? new TokenAmount(USDC[chainId], '0'),
+          multiplier,
+          periodFinish: periodFinishMs > 0 ? new Date(periodFinishMs) : undefined,
+          isPeriodFinished,
+          getHypotheticalWeeklyRewardRate,
+          getExtraTokensWeeklyRewardRate,
+          rewardTokensAddress: rewardTokensAddress,
+          rewardTokensMultiplier: [BigNumber.from(1), ...(rewardTokensMultiplier?.result?.[0] || [])],
+          rewardsAddress,
+          swapFeeApr: farmApr.swapFeeApr,
+          stakingApr: farmApr.stakingApr,
+          combinedApr: farmApr.combinedApr,
+          extraPendingRewards,
+        });
+      }
+
+      return memo;
+    }, [] as MinichefStakingInfo[]);
+  }, [
+    chainId,
+    PNG[chainId],
+    pairTotalSupplies,
+    poolInfos,
+    userInfos,
+    pairs,
+    avaxPngPair,
+    avaxPngPairState,
+    rewardPerSecond,
+    totalAllocPoint,
+    pendingRewards,
+    rewardsExpiration,
+    balances,
+    usdPrice,
+    pairAddresses,
+    extraPendingTokensRewardsState,
+    rewardsAddresses,
+    rewardTokensMultipliers,
+    poolMap,
+  ]);
 };
 
 export const useMinichefStakingInfos = (version = 2, pairToFilterBy?: Pair | null): MinichefStakingInfo[] => {
