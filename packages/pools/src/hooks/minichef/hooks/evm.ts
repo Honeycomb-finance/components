@@ -183,6 +183,7 @@ export const useMinichefDefiEdgeStakingInfos = (version = 2, pairToFilterBy?: Pa
     if (results.some((result) => result === NOT_FOUND)) return [];
     return results;
   }, [poolMap, pairAddresses]);
+  console.log(`poolIdArray: `, poolIdArray);
 
   const poolsIdInput = useMemo(() => {
     if (!poolIdArray) return [];
@@ -270,8 +271,7 @@ export const useMinichefDefiEdgeStakingInfos = (version = 2, pairToFilterBy?: Pa
 
         const tokens = [token0, token1].sort(tokenComparator) as [Token, Token];
 
-        const dummyPair = new Pair(new TokenAmount(tokens[0], '0'), new TokenAmount(tokens[1], '0'), chainId);
-        const lpToken = dummyPair.liquidityToken;
+        const lpToken = pair.liquidityToken;
 
         const poolAllocPointAmount = new TokenAmount(lpToken, JSBI.BigInt(poolInfo?.result?.['allocPoint']));
         const totalAllocPointAmount = new TokenAmount(lpToken, JSBI.BigInt(totalAllocPoint?.[0]));

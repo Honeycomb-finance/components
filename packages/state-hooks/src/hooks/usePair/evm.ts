@@ -2,9 +2,9 @@ import { parseUnits } from '@ethersproject/units';
 import { DEFIEDGE_INTERFACE } from '@honeycomb-finance/shared';
 import { DEFIEDGE_FARM_INFORMATION } from '@honeycomb-finance/shared';
 import { PAIR_INTERFACE, PairState, useChainId, useSubgraphPairs, wrappedCurrency } from '@honeycomb-finance/shared';
-import { ChainId, Currency, Pair, TokenAmount } from '@pangolindex/sdk';
+import { ChainId, Currency, Pair, Token, TokenAmount } from '@pangolindex/sdk';
 import { useMemo } from 'react';
-import { useMultipleContractSingleData, useShouldUseSubgraph, useSingleCallResult } from 'src/state';
+import { useMultipleContractSingleData, useShouldUseSubgraph } from 'src/state';
 
 export function usePairsContract(
   currencies: [Currency | undefined, Currency | undefined][],
@@ -84,14 +84,15 @@ export function useDefiEdgeUsePairsContract(
       if (!tokenA || !tokenB || tokenA.equals(tokenB)) return [PairState.INVALID, null];
       if (!reserve0 || !reserve1) return [PairState.NOT_EXISTS, null];
       const [token0, token1] = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA];
-      return [
-        PairState.EXISTS,
-        new Pair( // TODO: We can't set the liquidityToken here,
-          new TokenAmount(token0, reserve0.toString()),
-          new TokenAmount(token1, reserve1.toString()),
-          chainId ? chainId : ChainId.AVALANCHE,
-        ),
-      ];
+      const pair = new Pair(
+        new TokenAmount(token0, reserve0.toString()),
+        new TokenAmount(token1, reserve1.toString()),
+        chainId ? chainId : ChainId.AVALANCHE,
+      );
+      // eslint-disable-next-line  @typescript-eslint/ban-ts-comment
+      // @ts-ignore intentionally overwrite "readonly" variable
+      pair.liquidityToken = new Token(chainId, pairAddresses[i], 18, 'DES', 'Defi Edge Share');
+      return [PairState.EXISTS, pair];
     });
   }, [reserve0list, reserve1list, tokens, chainId]);
 }
