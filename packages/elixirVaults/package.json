@@ -1,6 +1,6 @@
 {
   "name": "@honeycomb-finance/elixirvaults",
-  "version": "1.0.2",
+  "version": "1.0.3-rc.0",
   "main": "lib/index.cjs.js",
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
@@ -58,7 +58,7 @@
     "@honeycomb-finance/token-drawer": "1.0.1",
     "@honeycomb-finance/shared": "1.0.1",
     "@honeycomb-finance/state-hooks": "1.0.1",
-    "@honeycomb-finance/pools": "1.0.2",
+    "@honeycomb-finance/pools": "1.0.3-rc.0",
     "@web3-react/core": "6.0.9",
     "@defiedge/sdk": "0.0.9-b",
     "sanitize-html": "2.11.0",

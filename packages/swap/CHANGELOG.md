@@ -1,5 +1,12 @@
 # @honeycomb-finance/swap
 
+## 1.0.3-rc.0
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @honeycomb-finance/elixir@1.0.3-rc.0
+
 ## 1.0.2
 
 ### Patch Changes
