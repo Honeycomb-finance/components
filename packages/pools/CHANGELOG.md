@@ -1,5 +1,11 @@
 # @honeycomb-finance/pools
 
+## 1.0.3
+
+### Patch Changes
+
+- [#44](https://github.com/Honeycomb-finance/components/pull/44) [`57f02107`](https://github.com/Honeycomb-finance/components/commit/57f021070d9ef05a4efa408784b9057281009419) Thanks [@0xsergen](https://github.com/0xsergen)! - fix: tvl in avalanche chain
+
 ## 1.0.3-rc.0
 
 ### Patch Changes
