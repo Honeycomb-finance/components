@@ -1,5 +1,14 @@
 # example-app
 
+## 0.0.4-rc.0
+
+### Patch Changes
+
+- Updated dependencies [[`57f02107`](https://github.com/Honeycomb-finance/components/commit/57f021070d9ef05a4efa408784b9057281009419)]:
+  - @honeycomb-finance/pools@1.0.3-rc.0
+  - @honeycomb-finance/elixir@1.0.3-rc.0
+  - @honeycomb-finance/swap@1.0.3-rc.0
+
 ## 0.0.3
 
 ### Patch Changes
