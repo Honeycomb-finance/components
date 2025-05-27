@@ -7,7 +7,7 @@ import {
   useMinichefPools,
 } from './common';
 import { useDummyMinichefHook } from './dummy';
-import { useGetMinichefStakingInfosViaSubgraph, useMinichefStakingInfos } from './evm';
+import { useGetMinichefStakingInfosViaSubgraph, useMinichefStakingInfos, useMinichefDefiEdgeStakingInfos } from './evm';
 
 export type UseMinichefStakingInfosHookType = {
   [chainId in ChainId]:
@@ -50,6 +50,7 @@ export const useMinichefStakingInfosHook: UseMinichefStakingInfosHookType = {
 
 export {
   useMinichefStakingInfos,
+  useMinichefDefiEdgeStakingInfos,
   useGetMinichefStakingInfosViaSubgraph,
   useDerivedStakeInfo,
   useMinichefPools,

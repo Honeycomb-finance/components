@@ -109,3 +109,11 @@ export const FARM_TYPE: { [x: number]: string | undefined } = {
   2: ChefType.MINI_CHEF_V2,
   3: ChefType.PANGO_CHEF,
 };
+
+export const DEFIEDGE_FARM_INFORMATION = [
+  {
+    address: '0xd947375f78df5b8feea6814ecd999ee64507a057',
+    token0Address: '0x60781C2586D68229fde47564546784ab3fACA982',
+    token1Address: '0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e',
+  },
+];

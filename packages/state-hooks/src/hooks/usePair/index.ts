@@ -1,7 +1,7 @@
 import { PairState, useChainId } from '@honeycomb-finance/shared';
 import { ChainId, Currency, Pair } from '@pangolindex/sdk';
 import { useMemo } from 'react';
-import { usePairs, usePairsContract, usePairsViaSubgraph } from './evm';
+import { usePairs, usePairsContract, useDefiEdgeUsePairsContract, usePairsViaSubgraph } from './evm';
 import { useGetNearAllPool, useGetNearPoolId, useNearPairs } from './near';
 
 export type UsePairsHookType = {
@@ -50,4 +50,12 @@ export function usePair(tokenA?: Currency, tokenB?: Currency): [PairState, Pair 
   return usePairs_(tokens)[0];
 }
 
-export { usePairs, usePairsContract, usePairsViaSubgraph, useNearPairs, useGetNearAllPool, useGetNearPoolId };
+export {
+  usePairs,
+  usePairsContract,
+  useDefiEdgeUsePairsContract,
+  usePairsViaSubgraph,
+  useNearPairs,
+  useGetNearAllPool,
+  useGetNearPoolId,
+};
