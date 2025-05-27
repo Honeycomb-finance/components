@@ -199,12 +199,22 @@ export function useElixirAddLiquidity() {
       tokenId,
     } = data;
 
+    /*console.log(position?.amount0.raw.toString())
+    console.log(position?.amount1.raw.toString())
+    console.log(position?.mintAmounts.amount0.toString())
+    console.log(position?.mintAmounts.amount1.toString())
+    console.log(deadline)*/
+
+    //console.log(position);
+
     const { CURRENCY_A: currencyA, CURRENCY_B: currencyB } = currencies;
 
     try {
       if (position && account && deadline) {
         const useNative =
           currencyA === CAVAX[chainId] ? currencyA : currencyB === CAVAX[chainId] ? currencyB : undefined;
+
+          console.log(position)
 
         const { calldata, value } =
           hasExistingPosition && tokenId
@@ -229,6 +239,8 @@ export function useElixirAddLiquidity() {
         };
 
         const estimatedGasLimit = await library.getSigner().estimateGas(txn);
+
+        //const estimatedGasLimit = BigNumber.from(1000000);
 
         const newTxn = {
           ...txn,

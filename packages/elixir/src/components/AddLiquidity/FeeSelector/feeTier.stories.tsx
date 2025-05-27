@@ -68,7 +68,7 @@ const TemplateFeeTier: ComponentStory<typeof FeeSelector> = (args: any) => {
 
 export const Default = TemplateFeeTier.bind({});
 Default.args = {
-  feeAmount: 3000,
+  feeAmount: 2500,
   handleFeePoolSelect: () => {},
   currency0,
   currency1,

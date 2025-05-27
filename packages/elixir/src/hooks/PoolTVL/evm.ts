@@ -13,6 +13,13 @@ export function usePoolTVL(token0: Token | undefined, token1: Token | undefined)
 
   const { asToken0, asToken1, _meta } = data ?? {};
 
+  console.log(data)
+
+  console.log("latestblock:" + !latestBlock)
+  console.log("_meta:" + !_meta)
+  console.log("asToken0:" + !asToken0)
+  console.log("asToken1:" + !asToken1)
+
   return useMemo(() => {
     if (!latestBlock || !_meta || !asToken0 || !asToken1) {
       return {
@@ -34,13 +41,14 @@ export function usePoolTVL(token0: Token | undefined, token1: Token | undefined)
     // sum tvl for token0 and token1 by fee tier
     const tvlByFeeTier = all.reduce<{ [feeAmount: number]: [number | undefined, number | undefined] }>(
       (acc, value) => {
-        acc[value.feeTier][0] = (acc[value.feeTier][0] ?? 0) + Number(value.totalValueLockedToken0);
-        acc[value.feeTier][1] = (acc[value.feeTier][1] ?? 0) + Number(value.totalValueLockedToken1);
+        acc[value.initialFee][0] = (acc[value.initialFee][0] ?? 0) + Number(value.totalValueLockedToken0);
+        acc[value.initialFee][1] = (acc[value.initialFee][1] ?? 0) + Number(value.totalValueLockedToken1);
         return acc;
       },
       {
         [FeeAmount.LOWEST]: [undefined, undefined],
         [FeeAmount.LOW]: [undefined, undefined],
+        [FeeAmount.NORMAL]: [undefined, undefined],
         [FeeAmount.MEDIUM]: [undefined, undefined],
         [FeeAmount.HIGH]: [undefined, undefined],
       } as Record<FeeAmount, [number | undefined, number | undefined]>,
@@ -68,6 +76,12 @@ export function usePoolTVL(token0: Token | undefined, token1: Token | undefined)
         sumToken1Tvl,
       ),
       [FeeAmount.LOW]: mean(tvlByFeeTier[FeeAmount.LOW][0], sumToken0Tvl, tvlByFeeTier[FeeAmount.LOW][1], sumToken1Tvl),
+      [FeeAmount.NORMAL]: mean(
+        tvlByFeeTier[FeeAmount.NORMAL][0],
+        sumToken0Tvl,
+        tvlByFeeTier[FeeAmount.NORMAL][1],
+        sumToken1Tvl,
+      ),
       [FeeAmount.MEDIUM]: mean(
         tvlByFeeTier[FeeAmount.MEDIUM][0],
         sumToken0Tvl,

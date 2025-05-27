@@ -10,12 +10,16 @@ export const FEE_AMOUNT_DETAIL: Record<FeeAmount, { label: string; description: 
     label: '0.05',
     description: 'Best for stable pairs.',
   },
+  [FeeAmount.NORMAL]: {
+    label: '0.1',
+    description: 'Best for stable pairs.',
+  },
   [FeeAmount.MEDIUM]: {
-    label: '0.3',
+    label: '0.25',
     description: 'Best for most pairs.',
   },
   [FeeAmount.HIGH]: {
-    label: '1',
+    label: '0.8',
     description: 'Best for exotic pairs.',
   },
 };

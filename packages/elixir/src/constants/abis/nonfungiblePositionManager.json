@@ -702,7 +702,7 @@
                     "type": "bytes"
                 }
             ],
-            "name": "pangolinV2MintCallback",
+            "name": "pangolinv3MintCallback",
             "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function"

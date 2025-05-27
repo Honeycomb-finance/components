@@ -50,6 +50,7 @@ export function useMintActionHandlers(noLiquidity: boolean | undefined): {
   onRightRangeInput: (typedValue: string) => void;
   onStartPriceInput: (typedValue: string) => void;
   onSetFeeAmount: (value: FeeAmount) => void;
+  onSetinitialFee: (value: FeeAmount) => void;
   onCurrencySelection: (field: Field, currency: Currency) => void;
   onResetMintState: () => void;
   onSwitchCurrencies: () => void;
@@ -63,6 +64,7 @@ export function useMintActionHandlers(noLiquidity: boolean | undefined): {
     setTypeStartPriceInput,
     selectCurrency,
     setFeeAmount,
+    setinitialFee,
     resetMintState,
     switchCurrencies,
     resetMintStateOnToggle,
@@ -129,6 +131,13 @@ export function useMintActionHandlers(noLiquidity: boolean | undefined): {
     [setFeeAmount],
   );
 
+  const onSetinitialFee = useCallback(
+    (value: FeeAmount) => {
+      setinitialFee({ value });
+    },
+    [setFeeAmount],
+  );
+
   const onSwitchCurrencies = useCallback(() => {
     switchCurrencies();
   }, [switchCurrencies]);
@@ -145,6 +154,7 @@ export function useMintActionHandlers(noLiquidity: boolean | undefined): {
     onStartPriceInput,
     onCurrencySelection,
     onSetFeeAmount,
+    onSetinitialFee,
     onResetMintState,
     onSwitchCurrencies,
     onResettMintStateOnToggle,
@@ -334,7 +344,7 @@ export function useDerivedMintInfo(existingPosition?: Position): DerivedMintInfo
     if (tokenA && tokenB && feeAmount && price && !invalidPrice) {
       const currentTick = priceToClosestTick(price);
       const currentSqrt = TickMath.getSqrtRatioAtTick(currentTick);
-      return new ElixirPool(tokenA, tokenB, feeAmount, currentSqrt, JSBI.BigInt(0), currentTick, []);
+      return new ElixirPool(tokenA, tokenB, feeAmount, 2500, currentSqrt, JSBI.BigInt(0), currentTick, []);
     } else {
       return undefined;
     }

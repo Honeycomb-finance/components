@@ -64,7 +64,7 @@ const PositionCard: React.FC<PositionCardProps> = (props) => {
                 </Text>
                 <BlackBox>
                   <BlackBoxContent color="color11" fontSize={18} fontWeight={500}>
-                    {feeAmount / 10 ** 4}%
+                    {pool ? pool?.fee / 10 ** 4 : 0}%
                   </BlackBoxContent>
                 </BlackBox>
                 <BlackBox data-tip data-for={`positionStatus-${tokenId}`}>
@@ -125,7 +125,7 @@ const PositionCard: React.FC<PositionCardProps> = (props) => {
               <Box pt={'10px'} display={'flex'} flexDirection={'row'}>
                 <OptionsWrapper>
                   <OptionButton>
-                    <Text>%{feeAmount / 10 ** 4}</Text>
+                    <Text>%{pool ? pool?.fee / 10 ** 4 : 0}</Text>
                   </OptionButton>
                   <BlackBox>
                     <Text p={'2px 6px'} textAlign={'center'} color={'color11'}>

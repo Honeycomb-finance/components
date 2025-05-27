@@ -8,6 +8,7 @@ import {
   isTokenOnList,
   maxAmountSpend,
   unwrappedToken,
+  useActiveWeb3React,
   useChainId,
   useENS,
   useMixpanel,
@@ -116,7 +117,9 @@ const MarketOrder: React.FC<Props> = ({
     setDismissTokenWarning(true);
   }, []);
 
-  const { account } = usePangolinWeb3();
+  console.log(123123123)
+  const { account } = useActiveWeb3React();
+  console.log(account)
   const chainId = useChainId();
   const useToken = useTokenHook[chainId];
   const theme = useContext(ThemeContext);

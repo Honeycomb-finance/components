@@ -32,6 +32,7 @@ const FeeSelector: React.FC<FeeSelectorProps> = (props) => {
   const pools = usePools([
     [currency0, currency1, FeeAmount.LOWEST],
     [currency0, currency1, FeeAmount.LOW],
+    [currency0, currency1, FeeAmount.NORMAL],
     [currency0, currency1, FeeAmount.MEDIUM],
     [currency0, currency1, FeeAmount.HIGH],
   ]);
@@ -42,7 +43,7 @@ const FeeSelector: React.FC<FeeSelectorProps> = (props) => {
         (acc, [curPoolState, curPool]) => {
           acc = {
             ...acc,
-            ...{ [curPool?.fee as FeeAmount]: curPoolState },
+            ...{ [curPool?.initialFee as FeeAmount]: curPoolState },
           };
           return acc;
         },
@@ -50,6 +51,7 @@ const FeeSelector: React.FC<FeeSelectorProps> = (props) => {
           // default all states to NOT_EXISTS
           [FeeAmount.LOWEST]: PoolState.NOT_EXISTS,
           [FeeAmount.LOW]: PoolState.NOT_EXISTS,
+          [FeeAmount.NORMAL]: PoolState.NOT_EXISTS,
           [FeeAmount.MEDIUM]: PoolState.NOT_EXISTS,
           [FeeAmount.HIGH]: PoolState.NOT_EXISTS,
         },
@@ -126,7 +128,8 @@ const FeeSelector: React.FC<FeeSelectorProps> = (props) => {
                 </>
               )}
             </SelectFeeTierWrapper>
-
+            {feeAmount && (
+              <>
             <Button
               variant="plain"
               backgroundColor="color2"
@@ -137,12 +140,14 @@ const FeeSelector: React.FC<FeeSelectorProps> = (props) => {
             >
               {showOptions ? `${t('common.hide')}` : `${t('common.edit')}`}
             </Button>
+            </>
+            )}
           </RowBetween>
         </FocusedOutlineCard>
 
         {showOptions && (
           <FeeTiers>
-            {[FeeAmount.LOW, FeeAmount.MEDIUM, FeeAmount.HIGH].map((_feeAmount) => {
+            {[FeeAmount.LOWEST, FeeAmount.LOW, FeeAmount.MEDIUM, FeeAmount.HIGH].map((_feeAmount) => {
               return (
                 <FeeOption
                   feeAmount={_feeAmount}

@@ -9,6 +9,7 @@ export interface PositionDetails {
   token0: TokenReturnType;
   token1: TokenReturnType;
   fee: FeeAmount;
+  //initialFee: FeeAmount;
   tickLower: number;
   tickUpper: number;
   liquidity: BigNumber;

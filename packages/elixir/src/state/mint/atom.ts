@@ -17,6 +17,7 @@ export interface MintState {
   readonly independentField: Field;
   readonly typedValue: string;
   readonly feeAmount: FeeAmount | undefined;
+  readonly initialFee: FeeAmount | undefined;
   readonly startPriceTypedValue: string; // for the case when there's no liquidity
   readonly leftRangeTypedValue: string | FullRange;
   readonly rightRangeTypedValue: string | FullRange;
@@ -32,6 +33,7 @@ export const initialState: MintState = {
   independentField: Field.CURRENCY_A,
   typedValue: '',
   feeAmount: undefined,
+  initialFee: undefined,
   startPriceTypedValue: '',
   leftRangeTypedValue: '',
   rightRangeTypedValue: '',
@@ -100,6 +102,16 @@ export const useMintStateAtom = () => {
     [setMintState],
   );
 
+  const setinitialFee = useCallback(
+    ({ value }: { value: FeeAmount }) => {
+      setMintState((state) => ({
+        ...state,
+        initialFee: value,
+      }));
+    },
+    [setMintState],
+  );
+
   const setTypeInput = useCallback(
     ({ field, typedValue }: { field: Field; typedValue: string }) => {
       setMintState((state) => ({
@@ -153,6 +165,7 @@ export const useMintStateAtom = () => {
       ...state,
       typedValue: '',
       feeAmount: undefined,
+      initialFee: undefined,
       startPriceTypedValue: '',
       leftRangeTypedValue: '',
       rightRangeTypedValue: '',
@@ -169,6 +182,7 @@ export const useMintStateAtom = () => {
     setTypeInput,
     selectCurrency,
     setFeeAmount,
+    setinitialFee,
     switchCurrencies,
     resetMintStateOnToggle,
   };

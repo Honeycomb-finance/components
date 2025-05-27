@@ -79,6 +79,7 @@ class PoolCache {
     tokenA: Token,
     tokenB: Token,
     fee: FeeAmount,
+    initialFee: FeeAmount,
     sqrtPriceX96: BigintIsh,
     liquidity: BigintIsh,
     tick: number,
@@ -109,7 +110,7 @@ class PoolCache {
         );
     }
 
-    const pool = new ElixirPool(tokenA, tokenB, fee, sqrtPriceX96, liquidity, tick, finalTicks);
+    const pool = new ElixirPool(tokenA, tokenB, fee, initialFee, sqrtPriceX96, liquidity, tick, finalTicks);
     this.pools.unshift(pool);
     return pool;
   }
@@ -147,6 +148,7 @@ export function usePoolsViaContract(
 
   const slot0s = useMultipleContractSingleData(poolAddresses, ELIXIR_POOL_STATE_INTERFACE, 'slot0');
   const liquidities = useMultipleContractSingleData(poolAddresses, ELIXIR_POOL_STATE_INTERFACE, 'liquidity');
+  const initialFees = useMultipleContractSingleData(poolAddresses, ELIXIR_POOL_STATE_INTERFACE, 'initialFee');
 
   return useMemo(() => {
     return poolKeys.map((_key, index) => {
@@ -160,13 +162,16 @@ export function usePoolsViaContract(
       if (!liquidities[index]) return [PoolState.INVALID, null];
       const { result: liquidity, loading: liquidityLoading, valid: liquidityValid } = liquidities[index];
 
+      if (!initialFees[index]) return [PoolState.INVALID, null];
+      const { result: initialFee, loading: initialFeeLoading, valid: initialFee0Valid } = initialFees[index];
+
       if (!tokens || !slot0Valid || !liquidityValid) return [PoolState.INVALID, null];
       if (slot0Loading || liquidityLoading) return [PoolState.LOADING, null];
       if (!slot0 || !liquidity) return [PoolState.NOT_EXISTS, null];
       if (!slot0.sqrtPriceX96 || slot0.sqrtPriceX96.eq(0)) return [PoolState.NOT_EXISTS, null];
 
       try {
-        const pool = PoolCache.getPool(token0, token1, fee, slot0.sqrtPriceX96, liquidity[0], slot0.tick);
+        const pool = PoolCache.getPool(token0, token1, fee, 1000, slot0.sqrtPriceX96, liquidity[0], slot0.tick);
         return [PoolState.EXISTS, pool];
       } catch (error) {
         console.error('Error when constructing the pool', error);
@@ -231,7 +236,8 @@ export function usePoolsViaSubgraph(
         const pool = PoolCache.getPool(
           token0,
           token1,
-          fee,
+          Number(poolData?.feeTier),
+          Number(poolData?.initialFee),
           sqrtPrice,
           liquidity,
           Number(poolData.tick),
@@ -279,6 +285,7 @@ export function useAllPoolsViaSubgraph(): { isLoading: boolean; allPools: [PoolS
           token0,
           token1,
           Number(poolData?.feeTier),
+          Number(poolData?.initialFee),
           sqrtPrice,
           liquidity,
           Number(poolData.tick),

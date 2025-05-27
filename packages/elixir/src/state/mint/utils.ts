@@ -7,7 +7,7 @@ import {
   encodeSqrtRatioX96,
   nearestUsableTick,
   priceToClosestTick,
-  tickToPrice,
+  tickToPrice
 } from '@pangolindex/sdk';
 import JSBI from 'jsbi';
 

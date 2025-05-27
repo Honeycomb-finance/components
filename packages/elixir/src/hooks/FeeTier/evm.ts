@@ -18,6 +18,7 @@ export function useFeeTierDistribution(
   // fetch all pool states to determine pool state
   const [poolStateVeryLow] = usePool(currencyA, currencyB, FeeAmount.LOWEST);
   const [poolStateLow] = usePool(currencyA, currencyB, FeeAmount.LOW);
+  const [poolStateNormal] = usePool(currencyA, currencyB, FeeAmount.NORMAL);
   const [poolStateMedium] = usePool(currencyA, currencyB, FeeAmount.MEDIUM);
   const [poolStateHigh] = usePool(currencyA, currencyB, FeeAmount.HIGH);
 
@@ -41,12 +42,15 @@ export function useFeeTierDistribution(
       distributions &&
       poolStateVeryLow !== PoolState.LOADING &&
       poolStateLow !== PoolState.LOADING &&
+      poolStateNormal !== PoolState.LOADING &&
       poolStateMedium !== PoolState.LOADING &&
       poolStateHigh !== PoolState.LOADING
         ? {
             [FeeAmount.LOWEST]:
               poolStateVeryLow === PoolState.EXISTS ? (distributions[FeeAmount.LOWEST] ?? 0) * 100 : undefined,
             [FeeAmount.LOW]: poolStateLow === PoolState.EXISTS ? (distributions[FeeAmount.LOW] ?? 0) * 100 : undefined,
+            [FeeAmount.NORMAL]:
+            poolStateNormal === PoolState.EXISTS ? (distributions[FeeAmount.NORMAL] ?? 0) * 100 : undefined,
             [FeeAmount.MEDIUM]:
               poolStateMedium === PoolState.EXISTS ? (distributions[FeeAmount.MEDIUM] ?? 0) * 100 : undefined,
             [FeeAmount.HIGH]:

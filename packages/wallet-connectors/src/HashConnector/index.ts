@@ -192,7 +192,7 @@ export class HashConnector extends AbstractConnector {
   }
 
   public async getProvider() {
-    let url = `https://hedera-mainnet-rpc.pangolin.network/`;
+    let url = `https://mainnet.hashio.io/api/`;
     if (this.chainId === ChainId.HEDERA_TESTNET) {
       url = `https://hedera-testnet-rpc.pangolin.network/`;
     }

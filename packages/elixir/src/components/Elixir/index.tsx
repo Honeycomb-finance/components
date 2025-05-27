@@ -1,6 +1,6 @@
 import { Box, Button, Loader, Text, Visible } from '@honeycomb-finance/core';
 import { ElixirVaults } from '@honeycomb-finance/elixirvaults';
-import { BIG_INT_ZERO, useChainId, useDebounce, useTranslation } from '@honeycomb-finance/shared';
+import { BIG_INT_ZERO, useChainId, useContract, useDebounce, useTranslation } from '@honeycomb-finance/shared';
 import React, { useCallback, useMemo, useState } from 'react';
 import AddLiquidity from 'src/components/AddLiquidity';
 import DetailModal from 'src/components/DetailModal';
@@ -14,6 +14,13 @@ import { useMintActionHandlers } from 'src/state/mint/hooks';
 import { useGetUserPositionsHook } from 'src/state/wallet/hooks';
 import { PositionDetails } from 'src/state/wallet/types';
 import { Cards, Content, GridContainer, Link, MobileHeader, PageWrapper } from './styles';
+import { AVALANCHE_MAINNET, CHAINS, computePoolAddress, FACTORY_ADDRESS, POOL_INIT_CODE_HASH_MAPPING, Token } from '@pangolindex/sdk';
+import { getCreate2Address } from '@ethersproject/address'
+import { keccak256 } from '@ethersproject/solidity'
+import { defaultAbiCoder } from '@ethersproject/abi'
+import { useMultipleContractSingleData, useSingleCallResult, useSingleContractMultipleData } from '@honeycomb-finance/state-hooks';
+import { usePangolinV3PoolContract } from 'src/utils/contracts';
+import { usePool } from 'src/hooks/common';
 
 const Elixir = () => {
   const { t } = useTranslation();

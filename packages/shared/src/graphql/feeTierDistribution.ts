@@ -5,6 +5,7 @@ import { SubgraphEnum, useSubgraphClient } from './client';
 
 type TokenData = {
   feeTier: string;
+  initialFee: string;
   totalValueLockedToken0: string;
   totalValueLockedToken1: string;
 };
@@ -33,6 +34,7 @@ export const GET_FEE_TIER_DISTRIBUTION = gql`
       where: { token0: $token0, token1: $token1 }
     ) {
       feeTier
+      initialFee
       totalValueLockedToken0
       totalValueLockedToken1
     }
@@ -42,6 +44,7 @@ export const GET_FEE_TIER_DISTRIBUTION = gql`
       where: { token0: $token1, token1: $token0 }
     ) {
       feeTier
+      initialFee
       totalValueLockedToken0
       totalValueLockedToken1
     }

@@ -26,6 +26,7 @@ export type ElixirPoolType = {
     name: string;
   };
   feeTier: string;
+  initialFee: string;
   sqrtPrice: string;
   liquidity: string;
   tick: string;
@@ -49,6 +50,7 @@ export const GET_ELIXIR_POOLS = gql`
         name
       }
       feeTier
+      initialFee
       sqrtPrice
       liquidity
       tick
@@ -73,7 +75,7 @@ export const useElixirPools = (poolAddresses?: (string | undefined)[]) => {
   poolsToFind =
     poolAddresses && (poolAddresses?.map((item) => item?.toLowerCase())?.filter((item) => !!item) as string[]);
 
-  const chainId = useChainId();
+  const chainId = useChainId();//esbeeeee
   const gqlClient = useSubgraphClient(SubgraphEnum.Elixir);
   const validateAddress = validateAddressMapping[chainId];
 
@@ -82,10 +84,10 @@ export const useElixirPools = (poolAddresses?: (string | undefined)[]) => {
     if (!gqlClient) {
       return null;
     }
-    const data = await gqlClient.request(GET_ELIXIR_POOLS, {
+    const data = await gqlClient.request(GET_ELIXIR_POOLS/*, {
       where: poolsToFind ? { id_in: poolsToFind } : {},
       first: poolsToFind ? undefined : 10,
-    });
+    }*/);
 
     return (
       (data?.pools as ElixirPoolType[])

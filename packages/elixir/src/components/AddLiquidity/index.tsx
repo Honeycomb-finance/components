@@ -63,7 +63,7 @@ const AddLiquidity: React.FC<AddLiquidityProps> = (props) => {
   const [drawerType, setDrawerType] = useState<Field>(Field.CURRENCY_A);
 
   // mint state
-  const { independentField, typedValue, feeAmount, startPriceTypedValue } = useMintState();
+  const { independentField, typedValue, feeAmount, initialFee, startPriceTypedValue } = useMintState();
 
   // TODO check tokenId
   // const tokenId = '';
@@ -93,6 +93,8 @@ const AddLiquidity: React.FC<AddLiquidityProps> = (props) => {
     position,
   } = useDerivedMintInfo(existingPosition);
 
+  console.log(noLiquidity)
+
   const {
     onFieldAInput,
     onFieldBInput,
@@ -100,6 +102,7 @@ const AddLiquidity: React.FC<AddLiquidityProps> = (props) => {
     onRightRangeInput,
     onCurrencySelection,
     onSetFeeAmount,
+    onSetinitialFee,
     onStartPriceInput,
     onResetMintState,
     onSwitchCurrencies,
@@ -157,6 +160,7 @@ const AddLiquidity: React.FC<AddLiquidityProps> = (props) => {
   const handleFeePoolSelect = useCallback(
     (newFeeAmount: FeeAmount) => {
       onSetFeeAmount(newFeeAmount);
+      onSetinitialFee(newFeeAmount);
       onLeftRangeInput('');
       onRightRangeInput('');
     },

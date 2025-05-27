@@ -92,6 +92,7 @@ const SwapWidget: React.FC<SwapWidgetProps> = ({
       {isEvmChain(chainId) && CHAINS[chainId]?.supported_by_gelato ? (
         <Provider store={galetoStore}>
           <GelatoProvider
+            subgraphUrl={'https://api.studio.thegraph.com/query/59684/limit-orders/version/latest'}
             library={ethersLibrary}
             chainId={chainId}
             account={account ?? undefined}

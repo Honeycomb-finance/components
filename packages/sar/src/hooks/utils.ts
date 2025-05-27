@@ -447,7 +447,7 @@ export function createURI(
   const balanceLevel = getExponent(balance.toNumber(), 404);
   const durationLevel = getExponent(BigNumber.from(blockTimestamp).sub(entryTime).toNumber(), 9600); // 2 hours and 40 minutes
 
-  const imageUrl = `https://static.pangolin.exchange/panguardian/${balanceLevel}${durationLevel}.png`;
+  const imageUrl = `https://canary.exchange/panguardian/${balanceLevel}${durationLevel}.png`;
 
   const imageStr = `<svg width="663" height="1080" viewbox="0 0 663 1080" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> 
 <style type="text/css"> @font-face { font-family: "Poppins"; src: url(https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecg.woff2) 

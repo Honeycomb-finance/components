@@ -11,8 +11,9 @@ export enum Bound {
 export enum FeeAmount {
   LOWEST = 100,
   LOW = 500,
-  MEDIUM = 3000,
-  HIGH = 10000,
+  NORMAL = 1000,
+  MEDIUM = 2500,
+  HIGH = 8000,
 }
 
 export interface ChartEntry {
@@ -93,6 +94,12 @@ export const ZOOM_LEVELS: Record<FeeAmount, ZoomLevels> = {
     initialMax: 1.001,
     min: 0.00001,
     max: 1.5,
+  },
+  [FeeAmount.NORMAL]: {
+    initialMin: 0.5,
+    initialMax: 2,
+    min: 0.00001,
+    max: 20,
   },
   [FeeAmount.MEDIUM]: {
     initialMin: 0.5,

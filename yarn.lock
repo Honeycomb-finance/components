@@ -3863,6 +3863,50 @@
     "@hethers/signing-key" "1.2.0"
     "@hethers/transactions" "1.2.1"
 
+"@honeycomb-finance/sar@1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@honeycomb-finance/sar/-/sar-1.0.4.tgz#d137beeeca5844571b23b63c929f77dbb73b8f9a"
+  integrity sha512-/UJavyAdJNOsuBYe1Y9r/Y+TfaivefMojqObIUihgtwyCt8DS9g+s6Nn9EN5KV+2Tv7shB95oKVlTbPmCmlSrQ==
+  dependencies:
+    "@ethersproject/bignumber" "5.6.2"
+    "@ethersproject/providers" "5.6.8"
+    "@ethersproject/units" "5.6.1"
+    "@honeycomb-finance/core" "1.0.2"
+    "@honeycomb-finance/shared" "1.0.3"
+    "@honeycomb-finance/state-hooks" "1.0.3"
+    "@honeycomb-finance/wallet-connectors" "1.0.4"
+    "@web3-react/core" "6.0.9"
+    ethers "5.6.4"
+    numeral "2.0.6"
+    react-feather "2.0.9"
+    react-query "3.39.3"
+    react-use "15.3.8"
+    styled-components "5.3.3"
+
+"@honeycomb-finance/swap@1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@honeycomb-finance/swap/-/swap-1.0.6.tgz#528539dc1ffa9cb6e71b15dbb5caddfebe8d6834"
+  integrity sha512-mxrPRcJRkp9MuD96xxw76QWQciQJqB+5yeZaBrS/tjmgXJO1mTCGaFv6Ocr7RHBnD0vCuh/Xh/Zd9x9pmasqsw==
+  dependencies:
+    "@ethersproject/providers" "5.6.8"
+    "@gelatonetwork/limit-orders-react" "2.8.2"
+    "@honeycomb-finance/core" "1.0.2"
+    "@honeycomb-finance/elixir" "1.0.5"
+    "@honeycomb-finance/shared" "1.0.3"
+    "@honeycomb-finance/state-hooks" "1.0.3"
+    "@honeycomb-finance/token-drawer" "1.0.4"
+    "@honeycomb-finance/wallet-connectors" "1.0.4"
+    "@orbs-network/twap-ui" "0.5.2"
+    "@orbs-network/twap-ui-pangolin" "0.5.4"
+    "@reduxjs/toolkit" "1.8.0"
+    "@web3-react/core" "6.0.9"
+    polished "4.1.3"
+    react-feather "2.0.9"
+    react-redux "7.2.6"
+    redux-localstorage-simple "2.4.1"
+    styled-components "5.3.3"
+    styled-system "5.1.5"
+
 "@humanwhocodes/config-array@^0.5.0":
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.5.0.tgz#1407967d4c6eecd7388f83acf1eaf4d0c6e58ef9"
@@ -4867,10 +4911,10 @@
     tiny-warning "^1.0.3"
     toformat "^2.0.0"
 
-"@pangolindex/sdk@5.3.9":
-  version "5.3.9"
-  resolved "https://registry.yarnpkg.com/@pangolindex/sdk/-/sdk-5.3.9.tgz#021d901297f940505b6c09bf636ec05387810064"
-  integrity sha512-WybajNbWvPz/P5WgMelMZsNl2oMMT8Jlez+zFwIUiBdBkuXQZjSbCy2xBjr3c2nO+4uGSEodqTSV0wOzomTuqQ==
+"@pangolindex/sdk@5.7.7":
+  version "5.7.7"
+  resolved "https://registry.yarnpkg.com/@pangolindex/sdk/-/sdk-5.7.7.tgz#5e1362d056f22f7b6d41af9b751399bba1c97bdf"
+  integrity sha512-Zw9v/nd0zuF+yeJooI5T298t9Soj8r2+bwBMUo1cn5XL/p61RoYr6nhaJRmhAtt5y9Ck8CMzCd+yiFhhwTpAMA==
   dependencies:
     big.js "^5.2.2"
     decimal.js-light "^2.5.0"

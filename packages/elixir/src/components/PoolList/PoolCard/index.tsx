@@ -33,7 +33,7 @@ const PoolCard: React.FC<PoolCardProps> = (props) => {
   const price0 = useUSDCPrice(pool?.token0 ?? undefined);
   const price1 = useUSDCPrice(pool?.token1 ?? undefined);
 
-  const [underlyingToken0, underlyingToken1] = useUnderlyingTokens(pool?.token0, pool?.token1, pool?.fee);
+  const [underlyingToken0, underlyingToken1] = useUnderlyingTokens(pool?.token0, pool?.token1, pool?.initialFee);
   const totalFiatValueOfPool: CurrencyAmount | null = useMemo(() => {
     if (!price0 || !price1 || !underlyingToken0 || !underlyingToken1) return null;
 

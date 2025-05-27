@@ -51,7 +51,7 @@ export class InjectedWallet extends Wallet {
   }
 
   installed(): boolean {
-    return this.walletKey ? Boolean(window.ethereum && window.ethereum[this.walletKey]) : true;
+    return this.walletKey ? this.walletKey === 'okxwallet' ? Boolean(window && window[this.walletKey]) : Boolean(window.ethereum && window.ethereum[this.walletKey]) : true;
   }
 }
 

@@ -1,9 +1,9 @@
-import { useChainId } from '@honeycomb-finance/shared';
 import { Currency, Token } from '@pangolindex/sdk';
 import React, { useMemo } from 'react';
 import { LogoSize } from 'src/constants';
 import { getTokenLogoURL } from '../utils/getTokenLogoURL';
 import { StyledLogo } from './styles';
+import { useChainId } from '@honeycomb-finance/shared';
 
 export default function CurrencyLogo({
   currency,

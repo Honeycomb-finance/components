@@ -166,6 +166,8 @@ export function useSwapCallback(
             value,
           };
 
+          console.log(txn)
+
           try {
             const estimatedGasLimit = await library.getSigner().estimateGas(txn);
 

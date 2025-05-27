@@ -180,6 +180,9 @@ export function useDerivedSwapInfo(): {
     !isExactIn ? memoParsedAmount : undefined,
   );
 
+  console.log(bestElixirTradeExactIn?.executionPrice.raw.toSignificant(6))
+  console.log(bestElixirTradeExactOut?.executionPrice.raw.toSignificant(6))
+  
   // get trade from elixir pools
   // v2BestTradeExactIn?.outputAmount > bestElixirTradeExactIn?.outputAmount => take v2 trade
   // v2BestTradeExactIn?.outputAmount < bestElixirTradeExactIn?.outputAmount => take v3 trade

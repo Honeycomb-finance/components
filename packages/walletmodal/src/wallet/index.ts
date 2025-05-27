@@ -3,6 +3,7 @@ import { CHAINS, ChainId, NetworkType } from '@pangolindex/sdk';
 import { isMobile } from 'react-device-detect';
 import injectWalletIcon from 'src/assets/images/inject-wallet.png';
 import metamaskIcon from 'src/assets/images/metamask.png';
+import okxwalletIcon from 'src/assets/images/okxwallet.png';
 import rabbyIcon from 'src/assets/svg/rabby.svg';
 import { AvalancheCoreWallet, BitKeepWallet, InjectedWallet, TalismanWallet } from './classes/injected';
 import { HashPackWallet, NearWallet, XDefiWallet } from './classes/nonInjected';
@@ -24,6 +25,14 @@ export const metamask = new InjectedWallet({
   description: 'A crypto wallet & gateway to blockchain apps.',
   supportedChains: [NetworkType.EVM],
   walletKey: 'isMetaMask',
+});
+export const okxwallet = new InjectedWallet({
+  name: 'OKX Wallet',
+  href: 'https://www.okx.com/web3',
+  icon: okxwalletIcon,
+  description: 'Your portal to Web3.',
+  supportedChains: [NetworkType.EVM],
+  walletKey: 'okxwallet',
 });
 export const rabbyWallet = new InjectedWallet({
   name: 'Rabby Wallet',
@@ -49,6 +58,7 @@ export const coinbaseWallet = new CoinbaseWallet();
 export const SUPPORTED_WALLETS: { [key: string]: Wallet } = {
   INJECTED: injectWallet,
   METAMASK: metamask,
+  OKXWALLET: okxwallet,
   RABBY: rabbyWallet,
   TALISMAN: talismanWallet,
   BITKEEP: bitkeepWallet,
