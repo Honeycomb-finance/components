@@ -321,7 +321,7 @@ export class Hedera {
   get HEDERA_API_BASE_URL(): string {
     const chainId = this.hashConnect.activeChainId;
     return chainId === ChainId.HEDERA_MAINNET
-      ? `https://mainnet-public.mirrornode.hedera.com`
+      ? `https://mainnet.mirrornode.hedera.com`
       : `https://testnet.mirrornode.hedera.com`;
   }
 
